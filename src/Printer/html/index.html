@@ -3,9 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Printer</title>
 </head>
 <body>
-    
+    <div class="container">
+        <header class="header">
+          <h1>Drucker</h1>
+          <button class="button-new">Neu</button>
+        </header>
+        <div class="printer-list">
+          <table>
+            <thead>
+              <tr>
+                <th>Bezeichnung</th>
+                <th>Druckformat</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+
+        <td colspan="2" class="divider"></td>
+
+        <div class="printer-details">
+          <form>
+            <div class="form-row">
+              <label for="name">Bezeichnung</label>
+              <input type="text" id="name">
+            </div>
+           
+            <div class="form-row">
+              <label for="margin">Rand</label>
+              <input type="text" id="margin" placeholder="in mm">
+            </div>
+            <div class="form-row">
+              <label for="paper">Name</label>
+              <input type="text" id="paper">
+            </div>
+            <div class="form-row">
+              <label for="klick-4c-ek">Klick 4c EK</label>
+              <input type="text" id="klick-4c-ek">
+            </div>
+            <div class="form-row">
+              <label for="klick-1c-ek">Klick 1c EK</label>
+              <input type="text" id="klick-1c-ek">
+            </div>
+            <div class="form-row">
+              <label for="klick-4c-vk">Klick 4c VK</label>
+              <input type="text" id="klick-4c-vk">
+            </div>
+            <div class="form-row">
+              <label for="klick-1c-vk">Klick 1c VK</label>
+              <input type="text" id="klick-1c-vk" >
+            </div>
+            <div class="form-row">
+                <label for="dimensions">max. Druckformat LxB</label>
+                <div class="dimensions">
+                  <input type="text" id="width">x 
+                  <input type="text" id="height">
+                </div>
+              </div>
+          </form>
+        </div>
+      </div>
+      <script src="../js/app.js"></script>
 </body>
 </html>
