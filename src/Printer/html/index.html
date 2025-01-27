@@ -10,26 +10,37 @@
     <div class="container">
         <header class="header">
           <h1>Drucker</h1>
-          <button class="button-new">Neu</button>
+          <button class="button-header" id="button-add" disabled="true">Hinzufügen</button>
+          <button class="button-header" id="button-update" disabled="true">Update</button>
+          <button class="button-header" id="button-delete" disabled="true">Löschen</button>
+          <button class="button-header" id="button-clear" disabled="true">Zurücksetzen</button>
         </header>
+
+
         <div class="printer-list">
           <table>
             <thead>
               <tr>
                 <th>Bezeichnung</th>
-                <th>Druckformat</th>
+                <th>MaschinenFormatL</th>
+                <th>MaschinenFormatB</th>
               </tr>
             </thead>
+            <tbody>
+
+            </tbody>
           </table>
         </div>
 
-        <td colspan="2" class="divider"></td>
+
+        <hr class="blue-line">
+
 
         <div class="printer-details">
           <form>
             <div class="form-row">
-              <label for="name">Bezeichnung</label>
-              <input type="text" id="name">
+              <label for="description">Bezeichnung</label>
+              <input type="text" id="description">
             </div>
            
             <div class="form-row">
@@ -37,8 +48,8 @@
               <input type="text" id="margin" placeholder="in mm">
             </div>
             <div class="form-row">
-              <label for="paper">Name</label>
-              <input type="text" id="paper">
+              <label for="name">Name</label>
+              <input type="text" id="name">
             </div>
             <div class="form-row">
               <label for="klick-4c-ek">Klick 4c EK</label>
@@ -65,7 +76,80 @@
               </div>
           </form>
         </div>
-      </div>
-      <script src="../js/app.js"></script>
+    </div>
+      <script>
+        const inputs = document.querySelectorAll('input[type="text"]');
+
+        const addbutton = document.getElementById('button-add');
+        const clearbutton = document.getElementById('button-clear');
+
+        const apiUrl = "http://localhost:5192/Printer"; 
+
+        function checkFields() 
+        {
+            const allFilled = Array.from(inputs).every(input => input.value.trim() !== "");
+            const anyFilled = Array.from(inputs).some(input => input.value.trim() !== "");
+
+            addbutton.disabled = !allFilled;
+            clearbutton.disabled = !anyFilled;
+        }
+
+        document.querySelectorAll('input[type="text"]').forEach(input => 
+        {
+            input.addEventListener('input', checkFields);  // Jedes Mal, wenn ein Eingabewert geändert wird
+        });
+
+
+
+        document.addEventListener('DOMContentLoaded', checkFields);
+
+        clearbutton.addEventListener('click', () => {
+            Array.from(inputs).some(input => input.value = "");
+        });
+
+
+
+        addbutton.addEventListener('click', async () => {
+            const description = document.getElementById("description").value.trim();
+            const margin = document.getElementById("margin").value.trim();
+            const name = document.getElementById("name").value.trim();
+            const klick_4c_ek = document.getElementById("klick-4c-ek").value.trim();
+            const klick_1c_ek = document.getElementById("klick-1c-ek").value.trim();
+            const klick_4c_vk = document.getElementById("klick-4c-vk").value.trim();
+            const klick_1c_vk = document.getElementById("klick-1c-vk").value.trim();
+
+
+            const newPrinter = {
+                Description: description,
+                Margin: parseInt(margin),
+                Name: name,
+                Klick_4c_ek: parseInt(klick_4c_ek),
+                Klick_1c_ek: parseInt(klick_1c_ek),
+                Klick_4c_vk: parseInt(klick_4c_vk),
+                Klick_1c_vk: parseInt(klick_1c_vk)
+            };
+
+            try 
+            {
+                const response = await fetch(apiUrl, 
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json", },
+                    body: JSON.stringify(newPrinter)
+                });
+                    
+                alert("Drucker erfolgreich hinzugefügt!");
+                //populateTable(); // Tabelle aktualisieren
+
+            } 
+            catch (error) 
+            {
+                alert("Drucker konnte nicht hinzugefügt werden!");
+                console.error("Fehler beim Hinzufügen eines neuen Druckers: ", error);
+            }
+
+            Array.from(inputs).some(input => input.value = "");
+        });
+      </script>
 </body>
 </html>

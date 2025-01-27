@@ -29,23 +29,29 @@ body {
     margin: 0;
   }
   
-  .button-new {
+  .button-header {
     background-color: #0078D7;
     color: white;
+    font-size: 15px;
     border: none;
-    padding: 10px 20px;
+    padding: 15px;
     border-radius: 4px;
     cursor: pointer;
   }
   
-  .button-new:hover {
+  .button-header:hover {
     background-color: #005bb5;
+  }
+
+  .button-header:disabled {
+    background-color: #d6d6d6;
+    color: #a1a1a1;
+    cursor: not-allowed;
   }
   
   .printer-list table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
   }
   
   .printer-list th, .printer-list td {
@@ -88,9 +94,10 @@ body {
     margin-right: 5px;
   }
 
-  .divider {
+  .blue-line {
+    border: none;
     border-top: 2px solid #ccc;
-    height: 1px;
-    margin: 0;
+    margin: 10px 0;
+    height: 0;
   }
   
