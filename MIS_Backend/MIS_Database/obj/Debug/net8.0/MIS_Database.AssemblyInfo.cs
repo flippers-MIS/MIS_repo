@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MIS_Database")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bde9f009889668850b344c38b7dc31d388753189")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0596e8e449a2ce9bd8f03e99caf32a6fc107346")]
 [assembly: System.Reflection.AssemblyProductAttribute("MIS_Database")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MIS_Database")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

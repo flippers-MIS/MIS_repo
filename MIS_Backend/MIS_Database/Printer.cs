@@ -1,48 +1,30 @@
 ﻿namespace MIS_Database;
 
-public class Printer
+public partial class Printer
 {
-    public required int Id { get; init; }
-    public required string Name { get; set; }
-    public required double FormatWidth { get; set; }
-    public required double FormatLength { get; set; }
-    public string FormatWidthXLength => $"{FormatWidth}x{FormatLength}";
-    public required string FormatName { get; set; }
-    public required double BuyPrinceFor4cKlick { get; set; }        //einkaufspreis pro farbigen klick
-    public required double BuyPrinceFor1cKlick { get; set; }     //einkaufspreis pro schwarzweiss klick
-    public required double SellPriceFor4cKlick { get; set; }       //preis pro farbigen klick
-    public required double SellPriceFor1cKlick { get; set; }       //preis pro schwarzweiss klick
-    public required double UnprintedEdgeMM { get; set; }
+    public int Id { get; set; }
 
-    private Printer() { }
+    public string Name { get; set; } = null!;
 
-    public static Printer Parse(string line)
-    {
-        string[] parts;
-        try
-        {
-          parts = line.Split(',');
-        }
-        catch (Exception e)
-        {
-            throw new Exception($"Error parsing line: {line}", e);
-        }
+    public double FormatWidth { get; set; }
 
-        //id,  name,  format_width,format_length,format_name, buyPrinceFor4cKlick, buyPrinceFor1cKlick, sellPriceFor4cKlick, sellPriceFor1cKlick, unprintedEdgeMM
-        //1, Printer444, 78.0,            22.0,        A2,          0.002,                0.001,                 0.1,              0.05,                  5.0
+    public double FormatLength { get; set; }
 
-        return new Printer
-        {
-            Id = int.Parse(parts[0]),
-            Name = parts[1],
-            FormatWidth = double.Parse(parts[2]),
-            FormatLength = double.Parse(parts[3]),
-            FormatName = parts[3],
-            BuyPrinceFor4cKlick = double.Parse(parts[4]),
-            BuyPrinceFor1cKlick = double.Parse(parts[5]),
-            SellPriceFor4cKlick = double.Parse(parts[6]),
-            SellPriceFor1cKlick = double.Parse(parts[7]),
-            UnprintedEdgeMM = double.Parse(parts[8]),
-        };
-    }
+    public string FormatName { get; set; } = null!;
+
+    public double BuyPrinceFor4cKlick { get; set; }
+
+    public double BuyPrinceFor1cKlick { get; set; }
+
+    public double SellPriceFor4cKlick { get; set; }
+
+    public double SellPriceFor1cKlick { get; set; }
+
+    public double UnprintedEdgeMm { get; set; }
+
+    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+
+    public virtual ICollection<PostProcessing> PostProcessings { get; set; } = new List<PostProcessing>();
+
+    public virtual ICollection<PrinterPaper> PrinterPapers { get; set; } = new List<PrinterPaper>();
 }

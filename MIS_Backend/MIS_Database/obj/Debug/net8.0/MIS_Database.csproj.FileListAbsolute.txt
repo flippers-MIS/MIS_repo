@@ -1,0 +1,15 @@
+C:\MIS_Backend\MIS_repo\MIS_Backend\MIS_Database\bin\Debug\net8.0\MIS_Database.deps.json
+C:\MIS_Backend\MIS_repo\MIS_Backend\MIS_Database\bin\Debug\net8.0\MIS_Database.runtimeconfig.json
+C:\MIS_Backend\MIS_repo\MIS_Backend\MIS_Database\bin\Debug\net8.0\MIS_Database.dll
+C:\MIS_Backend\MIS_repo\MIS_Backend\MIS_Database\bin\Debug\net8.0\MIS_Database.pdb
+C:\MIS_Backend\MIS_repo\MIS_Backend\MIS_Database\obj\Debug\net8.0\MIS_Database.csproj.AssemblyReference.cache
+C:\MIS_Backend\MIS_repo\MIS_Backend\MIS_Database\obj\Debug\net8.0\MIS_Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\MIS_Backend\MIS_repo\MIS_Backend\MIS_Database\obj\Debug\net8.0\MIS_Database.AssemblyInfoInputs.cache
+C:\MIS_Backend\MIS_repo\MIS_Backend\MIS_Database\obj\Debug\net8.0\MIS_Database.AssemblyInfo.cs
+C:\MIS_Backend\MIS_repo\MIS_Backend\MIS_Database\obj\Debug\net8.0\MIS_Database.csproj.CoreCompileInputs.cache
+C:\MIS_Backend\MIS_repo\MIS_Backend\MIS_Database\obj\Debug\net8.0\MIS_Database.sourcelink.json
+C:\MIS_Backend\MIS_repo\MIS_Backend\MIS_Database\obj\Debug\net8.0\MIS_Database.dll
+C:\MIS_Backend\MIS_repo\MIS_Backend\MIS_Database\obj\Debug\net8.0\refint\MIS_Database.dll
+C:\MIS_Backend\MIS_repo\MIS_Backend\MIS_Database\obj\Debug\net8.0\MIS_Database.pdb
+C:\MIS_Backend\MIS_repo\MIS_Backend\MIS_Database\obj\Debug\net8.0\MIS_Database.genruntimeconfig.cache
+C:\MIS_Backend\MIS_repo\MIS_Backend\MIS_Database\obj\Debug\net8.0\ref\MIS_Database.dll
