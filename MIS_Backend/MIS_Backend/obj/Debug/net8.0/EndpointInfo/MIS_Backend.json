@@ -1,0 +1,991 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "SwaggerBackend",
+    "version": "v1"
+  },
+  "paths": {
+    "/products/printers": {
+      "get": {
+        "tags": [
+          "MIS_Backend"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Printer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/papers": {
+      "get": {
+        "tags": [
+          "MIS_Backend"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PaperDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "MIS_Backend"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaperDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Paper"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/papers/{id}": {
+      "get": {
+        "tags": [
+          "MIS_Backend"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaperDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "MIS_Backend"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaperDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Paper"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "MIS_Backend"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/orders": {
+      "get": {
+        "tags": [
+          "MIS_Backend"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ContactPerson": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "mailAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "note": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "customer": {
+            "$ref": "#/components/schemas/Customer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ContactPersonDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "mailAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "note": {
+            "type": "string",
+            "nullable": true
+          },
+          "customerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "customer": {
+            "$ref": "#/components/schemas/CustomerDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Customer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "mailAdress": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "street": {
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
+          "discount": {
+            "type": "number",
+            "format": "double"
+          },
+          "paymentTerms": {
+            "type": "string",
+            "format": "date"
+          },
+          "contactPeople": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContactPerson"
+            },
+            "nullable": true
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Order"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomerDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "mailAdress": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "street": {
+            "type": "string",
+            "nullable": true
+          },
+          "zipCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
+          "discount": {
+            "type": "number",
+            "format": "double"
+          },
+          "paymentTerms": {
+            "type": "string",
+            "format": "date"
+          },
+          "contactPeople": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContactPersonDto"
+            },
+            "nullable": true
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "customerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "printerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "orderDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "customer": {
+            "$ref": "#/components/schemas/Customer"
+          },
+          "printer": {
+            "$ref": "#/components/schemas/Printer"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "customerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "printerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "orderDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "customer": {
+            "$ref": "#/components/schemas/CustomerDto"
+          },
+          "printer": {
+            "$ref": "#/components/schemas/PrinterDto"
+          },
+          "user": {
+            "$ref": "#/components/schemas/UserDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Paper": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "buyPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "sellPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "printerPapers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrinterPaper"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaperDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "buyPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "sellPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "printerPapers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrinterPaperDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PostProcessing": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "printerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "bindingType": {
+            "type": "string",
+            "nullable": true
+          },
+          "standardPaperName": {
+            "type": "string",
+            "nullable": true
+          },
+          "cuttingTime": {
+            "type": "number",
+            "format": "double"
+          },
+          "cuttingCostEur": {
+            "type": "number",
+            "format": "double"
+          },
+          "cuttingStackHeight": {
+            "type": "number",
+            "format": "double"
+          },
+          "cuttingLarge": {
+            "type": "number",
+            "format": "double"
+          },
+          "cuttingSmall": {
+            "type": "number",
+            "format": "double"
+          },
+          "cuttingMaxSmallFormat": {
+            "type": "number",
+            "format": "double"
+          },
+          "cuttingCutContour": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberCircleOffer": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberCircleCalculation": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberCircleOrder": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberCircleService": {
+            "type": "number",
+            "format": "double"
+          },
+          "activeUser": {
+            "type": "string",
+            "nullable": true
+          },
+          "activeUserRole": {
+            "type": "string",
+            "nullable": true
+          },
+          "activeUserId": {
+            "type": "string",
+            "nullable": true
+          },
+          "programmingNote": {
+            "type": "string",
+            "nullable": true
+          },
+          "cartonLabels": {
+            "type": "string",
+            "nullable": true
+          },
+          "labelPrinterIpAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "printer": {
+            "$ref": "#/components/schemas/Printer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PostProcessingDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "printerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "bindingType": {
+            "type": "string",
+            "nullable": true
+          },
+          "standardPaperName": {
+            "type": "string",
+            "nullable": true
+          },
+          "cuttingTime": {
+            "type": "number",
+            "format": "double"
+          },
+          "cuttingCostEur": {
+            "type": "number",
+            "format": "double"
+          },
+          "cuttingStackHeight": {
+            "type": "number",
+            "format": "double"
+          },
+          "cuttingLarge": {
+            "type": "number",
+            "format": "double"
+          },
+          "cuttingSmall": {
+            "type": "number",
+            "format": "double"
+          },
+          "cuttingMaxSmallFormat": {
+            "type": "number",
+            "format": "double"
+          },
+          "cuttingCutContour": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberCircleOffer": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberCircleCalculation": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberCircleOrder": {
+            "type": "number",
+            "format": "double"
+          },
+          "numberCircleService": {
+            "type": "number",
+            "format": "double"
+          },
+          "activeUser": {
+            "type": "string",
+            "nullable": true
+          },
+          "activeUserRole": {
+            "type": "string",
+            "nullable": true
+          },
+          "activeUserId": {
+            "type": "string",
+            "nullable": true
+          },
+          "programmingNote": {
+            "type": "string",
+            "nullable": true
+          },
+          "cartonLabels": {
+            "type": "string",
+            "nullable": true
+          },
+          "labelPrinterIpAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "printer": {
+            "$ref": "#/components/schemas/PrinterDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Printer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "formatWidth": {
+            "type": "number",
+            "format": "double"
+          },
+          "formatLength": {
+            "type": "number",
+            "format": "double"
+          },
+          "formatName": {
+            "type": "string",
+            "nullable": true
+          },
+          "buyPrinceFor4cKlick": {
+            "type": "number",
+            "format": "double"
+          },
+          "buyPrinceFor1cKlick": {
+            "type": "number",
+            "format": "double"
+          },
+          "sellPriceFor4cKlick": {
+            "type": "number",
+            "format": "double"
+          },
+          "sellPriceFor1cKlick": {
+            "type": "number",
+            "format": "double"
+          },
+          "unprintedEdgeMm": {
+            "type": "number",
+            "format": "double"
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Order"
+            },
+            "nullable": true
+          },
+          "postProcessings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PostProcessing"
+            },
+            "nullable": true
+          },
+          "printerPapers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrinterPaper"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PrinterDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "formatWidth": {
+            "type": "number",
+            "format": "double"
+          },
+          "formatLength": {
+            "type": "number",
+            "format": "double"
+          },
+          "formatName": {
+            "type": "string",
+            "nullable": true
+          },
+          "buyPrinceFor4cKlick": {
+            "type": "number",
+            "format": "double"
+          },
+          "buyPrinceFor1cKlick": {
+            "type": "number",
+            "format": "double"
+          },
+          "sellPriceFor4cKlick": {
+            "type": "number",
+            "format": "double"
+          },
+          "sellPriceFor1cKlick": {
+            "type": "number",
+            "format": "double"
+          },
+          "unprintedEdgeMm": {
+            "type": "number",
+            "format": "double"
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderDto"
+            },
+            "nullable": true
+          },
+          "postProcessings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PostProcessingDto"
+            },
+            "nullable": true
+          },
+          "printerPapers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrinterPaperDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PrinterPaper": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "printerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paperId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paper": {
+            "$ref": "#/components/schemas/Paper"
+          },
+          "printer": {
+            "$ref": "#/components/schemas/Printer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PrinterPaperDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "printerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paperId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paper": {
+            "$ref": "#/components/schemas/PaperDto"
+          },
+          "printer": {
+            "$ref": "#/components/schemas/PrinterDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "nullable": true
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Order"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "nullable": true
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

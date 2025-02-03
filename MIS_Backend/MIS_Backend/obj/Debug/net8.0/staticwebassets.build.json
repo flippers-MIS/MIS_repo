@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "Q3blBlAaFTCkxK0aM3ejTnrGNKPJ+ATG0TXh/4Yp6NQ=",
+  "Hash": "XDiDCZWvi3kmKVxknQNbHqeRWIfJPenKeOgkP+M7ww4=",
   "Source": "MIS_Backend",
   "BasePath": "_content/MIS_Backend",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }
