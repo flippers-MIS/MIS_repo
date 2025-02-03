@@ -42,20 +42,24 @@ body {
     background-color: #005bb5;
   }
   
-  .printer-list table {
+  #printer-list table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
   }
   
-  .printer-list th, .printer-list td {
+  #printer-list th, #printer-list td {
     text-align: left;
     padding: 8px;
     border: 1px solid #ddd;
   }
   
-  .printer-list tr:nth-child(even) {
+  #printer-list tr:nth-child(even) {
     background-color: #f9f9f9;
+  }
+
+  #printer-list tbody tr:hover {
+    background-color: lightgray;
   }
   
   .printer-details {
