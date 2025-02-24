@@ -1,6 +1,6 @@
 import * as Helpers from '../../HelperFunctions/helper.mjs';
 
-const path = 'http://localhost:5192/Printer';
+const path = 'http://10.0.3.10:32769/Printer';
 
 const printers = [];
 let updatePrinterId = 0;
@@ -10,13 +10,26 @@ const name = document.querySelector('#name');
 const formatL = document.querySelector('#length');
 const formatB = document.querySelector('#width');
 const border = document.querySelector('#margin');
+// const click4cEK = document.querySelector('#klick-4c-ek');
+// const click1cEK = document.querySelector('#klick-1c-ek');
+// const click4cVK = document.querySelector('#klick-4c-vk');
+// const click1cVK = document.querySelector('#klick-1c-vk');
 
 const updateButton = document.querySelector("#button-update");
+
+const inputs = document.querySelectorAll('input[type="text"]');
+const addbutton = document.getElementById('button-add');
+const clearbutton = document.getElementById('button-clear');
+
+// const apiUrl = "http://localhost:5192/Printer"; 
+
+
 
 
 
 function initializeTable(printerJson) {
-    printerJson.forEach(item => {
+    printerJson.forEach(item => 
+    {
         printers.push(item);
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -38,8 +51,18 @@ function initializeTable(printerJson) {
     });
 }
 
-async function addRow() {
-  const newPrinter = {
+
+
+
+/*------------------------------------------ADD-BUTTON---------------------------------------------------*/
+
+
+
+
+async function addRow() 
+{
+  const newPrinter = 
+  {
       PrinterId: parseInt(printers.length),
       MaschinenName: name.value,
       MaschinenFormatL: parseInt(formatL.value),
@@ -50,11 +73,11 @@ async function addRow() {
   console.log(JSON.stringify(newPrinter));
   try 
   {
-    const response = await fetch(apiUrl, 
+    const response = await fetch(path, 
     {
         method: "POST",
         headers: { "Content-Type": "application/json", },
-        body: JSON.stringify(newPrinter), // Daten an Server senden
+        body: JSON.stringify(newPrinter),
     });
 
     if (!response.ok) 
@@ -63,17 +86,22 @@ async function addRow() {
     }
 
     alert("Drucker erfolgreich hinzugefügt!");
-    location.reload(); // Tabelle aktualisieren
+    location.reload(); 
 
   } 
   catch (error) 
   {
     console.error("Fehler beim Hinzufügen eines neuen Druckers: ", error);
   }
-
-  // Eingabefelder leeren
   Array.from(inputs).some(input => input.value = "");
 }
+
+
+
+
+/*------------------------------------------DELETE---------------------------------------------------*/
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const table = document.querySelector("#printer-list tbody");
@@ -84,7 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let selectedPrinterId = null;
 
-    table.addEventListener("contextmenu", (event) => {
+    table.addEventListener("contextmenu", (event) => 
+    {
         event.preventDefault();
         const row = event.target.closest("tr");
         if (!row) return;
@@ -100,9 +129,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.getElementById("context-delete").addEventListener("click", async () => {
-        if (selectedPrinterId) {
-            try {
-                const response = await fetch(`${apiUrl}/${selectedPrinterId}`, {
+        if (selectedPrinterId) 
+            {
+            try 
+            {
+                const response = await fetch(`${path}/${selectedPrinterId}`, 
+                {
                     method: "DELETE",
                 });
 
@@ -119,32 +151,47 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
+
+
+
+/*------------------------------------------UPDATE-BUTTON---------------------------------------------------*/
+
+
+
+
 updateButton.addEventListener('click', async () => {
-    const newPrinter = {
+    const newPrinter = 
+    {
         PrinterId: updatePrinterId,
         MaschinenName: name.value,
+        UnbedruckbarerRand: parseInt(border.value),
+        // Klick4cEk:const click4cEK.value
+        // Klick1cEk:const click1cEK.value
+        // Klick4cVk: click4cVK.value
+        // Klick1cVk: click1cVK.value
         MaschinenFormatL: parseInt(formatL.value),
         MaschinenFormatB: parseInt(formatB.value),
-        FarbFormat: '0',
-        UnbedruckbarerRand: parseInt(border.value),
     };
     console.log(JSON.stringify(newPrinter));
+
+
     try 
     {
-      const response = await fetch(`${apiUrl}/${updatePrinterId}`, 
-      {
-          method: "PUT",
-          headers: { "Content-Type": "application/json", },
-          body: JSON.stringify(newPrinter), // Daten an Server senden
-      });
+      const response = await fetch(`${path}/${updatePrinterId}`, 
+        {
+            method: "PUT",
+            headers: { "Content-Type": "application/json", },
+            body: JSON.stringify(newPrinter),
+        });
   
       if (!response.ok) 
       {
-          throw new Error(`Fehler beim Hinzufügen: ${response.status}`);
+          throw new Error(`Response beim PUT-Request fehlerhaft: ${response.status}`);
       }
   
       alert("Drucker erfolgreich hinzugefügt!");
-      location.reload(); // Tabelle aktualisieren
+      location.reload();
   
     } 
     catch (error) 
@@ -152,22 +199,32 @@ updateButton.addEventListener('click', async () => {
       console.error("Fehler beim Hinzufügen eines neuen Druckers: ", error);
     }
   
-    // Eingabefelder leeren
     Array.from(inputs).some(input => input.value = "");
 })
 
-//Main
-let printerJson = await Helpers.fetchTable(path);
-initializeTable(printerJson);
 
-// code vom Italienischen Kollegen
 
-const inputs = document.querySelectorAll('input[type="text"]');
 
-const addbutton = document.getElementById('button-add');
-const clearbutton = document.getElementById('button-clear');
 
-const apiUrl = "http://localhost:5192/Printer"; 
+/*------------------------------------------RESET-BUTTON---------------------------------------------------*/
+
+
+
+clearbutton.addEventListener('click', () => {
+    Array.from(inputs).some(input => input.value = "");
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 function checkFields() 
 {
@@ -175,9 +232,11 @@ function checkFields()
     const anyFilled = Array.from(inputs).some(input => input.value.trim() !== "");
 
     addbutton.disabled = !allFilled;
-    updateButton.disabled = !allFilled && updatePrinterId !== null;
+    updateButton.disabled = updatePrinterId == 0;
     clearbutton.disabled = !anyFilled;
 }
+
+
 
 document.querySelectorAll('input[type="text"]').forEach(input => 
 {
@@ -186,11 +245,9 @@ document.querySelectorAll('input[type="text"]').forEach(input =>
 
 
 
-document.addEventListener('DOMContentLoaded', checkFields);
 
-clearbutton.addEventListener('click', () => {
-    Array.from(inputs).some(input => input.value = "");
-});
+// document.addEventListener('DOMContentLoaded', checkFields);
+
 
 
 
@@ -236,3 +293,9 @@ addbutton.addEventListener('click', async () => {
 
     // Array.from(inputs).some(input => input.value = "");
 });
+
+
+
+//Main
+// let printerJson = await Helpers.fetchTable(path);
+// initializeTable(printerJson);
