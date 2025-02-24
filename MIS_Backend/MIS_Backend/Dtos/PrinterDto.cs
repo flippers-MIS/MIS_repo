@@ -22,10 +22,10 @@
 
         public double UnprintedEdgeMm { get; set; }
 
-        public virtual ICollection<OrderDto> Orders { get; set; } = new List<OrderDto>();
+        //public virtual ICollection<OrderDto> Orders { get; set; } = new List<OrderDto>();
 
-        public virtual ICollection<PostProcessingDto> PostProcessings { get; set; } = new List<PostProcessingDto>();
+        //public virtual ICollection<PostProcessingDto> PostProcessings { get; set; } = new List<PostProcessingDto>();
 
-        public virtual ICollection<PrinterPaperDto> PrinterPapers { get; set; } = new List<PrinterPaperDto>();
+        //public virtual ICollection<PrinterPaperDto> PrinterPapers { get; set; } = new List<PrinterPaperDto>();
     }
 }

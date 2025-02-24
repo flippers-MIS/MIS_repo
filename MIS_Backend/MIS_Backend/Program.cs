@@ -5,7 +5,6 @@ using MIS_Backend.Maps;
 using MIS_Backend.Services;
 using MIS_Database;
 
-var builder = WebApplication.CreateBuilder(args);
 
 string corsKey = "_myCorsKey";
 string swaggerVersion = "v1";
@@ -13,6 +12,10 @@ string swaggerTitle = "SwaggerBackend";
 string restClientFolder = Environment.CurrentDirectory;
 string restClientFilename = "_requests.http";
 
+var builder = WebApplication.CreateBuilder(args);
+
+#region -------------------------------------------- ConfigureServices
+builder.Services.AddControllers();
 builder.Services
   .AddEndpointsApiExplorer()
   .AddAuthorization()
@@ -32,6 +35,15 @@ builder.Services
   );
 
 string? connectionString = builder.Configuration.GetConnectionString("MIS_Database");
+string location = System.Reflection.Assembly.GetEntryAssembly()!.Location;
+string dataDirectory = Path.GetDirectoryName(location)!;
+connectionString = connectionString?.Replace("|DataDirectory|", dataDirectory + Path.DirectorySeparatorChar);
+Console.ForegroundColor = ConsoleColor.Cyan;
+Console.WriteLine($"++++ ConnectionString: {connectionString}");
+Console.ResetColor();
+builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
+#endregion
+
 
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddScoped<UserService>();
@@ -41,8 +53,27 @@ builder.Services.AddScoped<ProductService>();
 
 var app = builder.Build();
 
+#region -------------------------------------------- Middleware pipeline
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine("++++ Swagger enabled: http://localhost:5000");
+    app.UseSwagger();
+    Console.WriteLine($@"++++ RestClient generating (after first request) to {restClientFolder}\{restClientFilename}");
+    app.UseRestClientGenerator();
+    app.UseSwaggerUI(x => x.SwaggerEndpoint($"/swagger/{swaggerVersion}/swagger.json", swaggerTitle));
+    Console.ResetColor();
+}
+
+app.UseCors(corsKey);
+//app.UseHttpsRedirection();
+app.UseAuthorization();
+#endregion
+
 app.MapProduct();
 app.MapOrder();
 app.MapUser();
 
+Console.WriteLine($"Ready for clients at {DateTime.Now:HH:mm:ss} ...");
 app.Run();

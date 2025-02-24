@@ -12,6 +12,6 @@
 
         public string? Notes { get; set; }
 
-        public virtual ICollection<PrinterPaperDto> PrinterPapers { get; set; } = new List<PrinterPaperDto>();
+        //public virtual ICollection<PrinterPaperDto> PrinterPapers { get; set; } = new List<PrinterPaperDto>();
     }
 }

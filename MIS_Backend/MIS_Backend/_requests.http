@@ -1,1 +1,39 @@
-﻿@baseUrl = http://localhost:5000
+@baseUrl = http://localhost:5000
+##################################################
+
+
+################################################## orders
+GET {{baseUrl}}/orders
+#####
+
+################################################## products
+DELETE {{baseUrl}}/products/papers/1
+#####
+GET {{baseUrl}}/products/papers
+#####
+GET {{baseUrl}}/products/papers/1
+#####
+GET {{baseUrl}}/products/printers
+#####
+POST {{baseUrl}}/products/papers
+Content-type: application/json
+
+{
+   "id": 1,
+   "name": "abc",
+   "buyPrice": 1,
+   "sellPrice": 1,
+   "notes": "abc"
+}
+#####
+PUT {{baseUrl}}/products/papers/1
+Content-type: application/json
+
+{
+   "id": 1,
+   "name": "abc",
+   "buyPrice": 1,
+   "sellPrice": 1,
+   "notes": "abc"
+}
+#####
