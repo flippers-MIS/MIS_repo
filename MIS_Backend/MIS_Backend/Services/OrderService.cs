@@ -9,7 +9,7 @@ namespace MIS_Backend.Services
         public Order GetOrderById(int id)
             => db.Orders.Where(o => o.Id == id).First();
 
-        public Order AddeOrder(Order order)
+        public Order AddOrder(Order order)
         {
             db.Orders.Add(order);
             db.SaveChanges();
