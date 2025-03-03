@@ -1,6 +1,6 @@
 import * as Helpers from '../../HelperFunctions/helper.mjs';
 
-const path = 'http://localhost:32771/Printer';
+const path = 'http://localhost:32772/Printer';
 
 const printers = [];
 let updatePrinterId = 0;
@@ -48,7 +48,7 @@ async function addRow() {
       MaschinenFormatB: parseInt(formatB.value),
       FarbFormat: '0',
       UnbedruckbarerRand: parseInt(border.value),
-      inactiv: inactive ? 0 : 1,
+      inaktiv: inactive ? 1 : 0,
   };
   console.log(JSON.stringify(newPrinter));
   try 
@@ -132,6 +132,7 @@ async function putPrinter() {
         MaschinenFormatB: parseInt(formatB.value),
         FarbFormat: '0',
         UnbedruckbarerRand: parseInt(border.value),
+        inaktiv: inactive ? 1 : 0,
     };
     console.log(JSON.stringify(newPrinter));
     try 
@@ -175,14 +176,14 @@ const clearbutton = document.getElementById('button-clear');
 function checkFields() 
 {
     const allFilled = Array.from(inputs).every(input => input.value.trim() !== "");
-    const anyFilled = Array.from(inputs).some(input => input.value.trim() !== "");
+    const anyFilled = Array.from(inputs).some(input => input.value.trim() !== "" || !input.value);
 
     addbutton.disabled = !allFilled;
     updateButton.disabled = !anyFilled || updatePrinterId === 0;
     clearbutton.disabled = !anyFilled;
 }
 
-document.querySelectorAll('input[type="text"]').forEach(input => 
+document.querySelectorAll('input').forEach(input => 
 {
     input.addEventListener('input', checkFields);  // Jedes Mal, wenn ein Eingabewert geändert wird
 });
