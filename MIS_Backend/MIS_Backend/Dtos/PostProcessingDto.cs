@@ -2,7 +2,7 @@
 {
     public class PostProcessingDto
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public int PrinterId { get; set; }
 
@@ -44,6 +44,6 @@
 
         public string LabelPrinterIpAddress { get; set; } = null!;
 
-        public virtual PrinterDto Printer { get; set; } = null!;
+        //public PrinterDto Printer { get; set; } = null!;
     }
 }

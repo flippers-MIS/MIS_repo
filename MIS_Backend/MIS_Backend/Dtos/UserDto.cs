@@ -2,7 +2,7 @@
 {
     public class UserDto
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public string Name { get; set; } = null!;
 
@@ -10,6 +10,6 @@
 
         public string Role { get; set; } = null!;
 
-        public virtual ICollection<OrderDto> Orders { get; set; } = new List<OrderDto>();
+        //public List<OrderDto> Orders { get; set; } = [];
     }
 }

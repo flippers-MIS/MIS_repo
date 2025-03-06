@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MIS_Database\MIS_Database.csproj" />
+    <ProjectReference Include="..\DB_Libary\DB_Libary.csproj" />
   </ItemGroup>
 
 </Project>

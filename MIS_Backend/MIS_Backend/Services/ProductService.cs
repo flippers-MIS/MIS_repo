@@ -1,4 +1,4 @@
-﻿using MIS_Database;
+﻿using CustomersDb;
 
 namespace MIS_Backend.Services;
 public class ProductService(DatabaseContext db)
@@ -29,7 +29,7 @@ public class ProductService(DatabaseContext db)
         oldPrinter.BuyPrinceFor1cKlick = updatedPrinter.BuyPrinceFor1cKlick;
         oldPrinter.SellPriceFor4cKlick = updatedPrinter.SellPriceFor4cKlick;
         oldPrinter.SellPriceFor1cKlick = updatedPrinter.SellPriceFor1cKlick;
-        oldPrinter.UnprintedEdgeMm = updatedPrinter.UnprintedEdgeMm;
+        oldPrinter.UnprintedEdgeMM = updatedPrinter.UnprintedEdgeMM;
 
         db.SaveChanges();
         return updatedPrinter;

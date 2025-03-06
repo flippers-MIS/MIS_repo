@@ -2,7 +2,7 @@
 {
     public class OrderDto
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public int CustomerId { get; set; }
 
@@ -25,5 +25,7 @@
         public virtual PrinterDto Printer { get; set; } = null!;
 
         public virtual UserDto User { get; set; } = null!;
+        public PostProcessingDto? PostProcessing { get; set; }
+
     }
 }

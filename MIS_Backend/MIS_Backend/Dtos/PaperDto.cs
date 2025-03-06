@@ -2,7 +2,7 @@
 {
     public class PaperDto
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public string Name { get; set; } = null!;
 
@@ -11,7 +11,6 @@
         public double SellPrice { get; set; }
 
         public string? Notes { get; set; }
-
-        //public virtual ICollection<PrinterPaperDto> PrinterPapers { get; set; } = new List<PrinterPaperDto>();
+        //public List<PrinterDto> Printers { get; set; } = [];
     }
 }

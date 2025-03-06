@@ -1,9 +1,9 @@
-﻿using MIS_Database;
+﻿using CustomersDb;
 namespace MIS_Backend.Services
 {
     public class OrderService(DatabaseContext db)
     {
-        public List<Order> GetAllOrders() 
+        public List<Order> GetAllOrders()
             => db.Orders.ToList();
 
         public Order GetOrderById(int id)
@@ -34,7 +34,7 @@ namespace MIS_Backend.Services
         }
 
         public void DeleteOrder(int id)
-        {           
+        {
             db.Orders.Remove(GetOrderById(id));
             db.SaveChanges();
         }

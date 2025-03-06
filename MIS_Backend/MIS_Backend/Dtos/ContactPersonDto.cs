@@ -2,7 +2,7 @@
 {
     public class ContactPersonDto
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public string FirstName { get; set; } = null!;
 
@@ -14,7 +14,7 @@
 
         public string? Note { get; set; }
 
-        public int CustomerId { get; set; }
+        //public int CustomerId { get; set; }
 
         public virtual CustomerDto Customer { get; set; } = null!;
     }

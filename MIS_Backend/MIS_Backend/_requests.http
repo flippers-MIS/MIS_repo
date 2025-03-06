@@ -3,7 +3,149 @@
 
 
 ################################################## orders
+DELETE {{baseUrl}}/orders/1
+#####
 GET {{baseUrl}}/orders
+#####
+GET {{baseUrl}}/orders/1
+#####
+POST {{baseUrl}}/orders
+Content-type: application/json
+
+{
+   "customerId": 1,
+   "printerId": 1,
+   "userId": 1,
+   "orderDate": "2024-03-04",
+   "quantity": 1,
+   "totalPrice": 1,
+   "status": "abc",
+   "notes": "abc",
+   "customer": 
+   {
+      "firstname": "abc",
+      "lastname": "abc",
+      "mailadress": "abc",
+      "phonenumber": "abc",
+      "city": "abc",
+      "street": "abc",
+      "zipcode": 1,
+      "country": "abc",
+      "discount": 1,
+      "paymentterms": "abc"
+   },
+   "printer": 
+   {
+      "name": "abc",
+      "unprintededgemm": 1,
+      "formatname": "abc",
+      "buyprincefor4cklick": 1,
+      "buyprincefor1cklick": 1,
+      "sellpricefor4cklick": 1,
+      "sellpricefor1cklick": 1,
+      "formatwidth": 1,
+      "formatlength": 1,
+      "inaktiv": 1
+   },
+   "user": 
+   {
+      "name": "abc",
+      "password": "abc",
+      "role": "abc"
+   },
+   "postProcessing": 
+   {
+      "printerid": 1,
+      "bindingtype": "abc",
+      "standardpapername": "abc",
+      "cuttingtime": 1,
+      "cuttingcosteur": 1,
+      "cuttingstackheight": 1,
+      "cuttinglarge": 1,
+      "cuttingsmall": 1,
+      "cuttingmaxsmallformat": 1,
+      "cuttingcutcontour": 1,
+      "numbercircleoffer": 1,
+      "numbercirclecalculation": 1,
+      "numbercircleorder": 1,
+      "numbercircleservice": 1,
+      "activeuser": "abc",
+      "activeuserrole": "abc",
+      "activeuserid": "abc",
+      "programmingnote": "abc",
+      "cartonlabels": "abc",
+      "labelprinteripaddress": "abc"
+   }
+}
+#####
+PUT {{baseUrl}}/orders/1
+Content-type: application/json
+
+{
+   "customerId": 1,
+   "printerId": 1,
+   "userId": 1,
+   "orderDate": "abc",
+   "quantity": 1,
+   "totalPrice": 1,
+   "status": "abc",
+   "notes": "abc",
+   "customer": 
+   {
+      "firstname": "abc",
+      "lastname": "abc",
+      "mailadress": "abc",
+      "phonenumber": "abc",
+      "city": "abc",
+      "street": "abc",
+      "zipcode": 1,
+      "country": "abc",
+      "discount": 1,
+      "paymentterms": "abc"
+   },
+   "printer": 
+   {
+      "name": "abc",
+      "unprintededgemm": 1,
+      "formatname": "abc",
+      "buyprincefor4cklick": 1,
+      "buyprincefor1cklick": 1,
+      "sellpricefor4cklick": 1,
+      "sellpricefor1cklick": 1,
+      "formatwidth": 1,
+      "formatlength": 1,
+      "inaktiv": 1
+   },
+   "user": 
+   {
+      "name": "abc",
+      "password": "abc",
+      "role": "abc"
+   },
+   "postProcessing": 
+   {
+      "printerid": 1,
+      "bindingtype": "abc",
+      "standardpapername": "abc",
+      "cuttingtime": 1,
+      "cuttingcosteur": 1,
+      "cuttingstackheight": 1,
+      "cuttinglarge": 1,
+      "cuttingsmall": 1,
+      "cuttingmaxsmallformat": 1,
+      "cuttingcutcontour": 1,
+      "numbercircleoffer": 1,
+      "numbercirclecalculation": 1,
+      "numbercircleorder": 1,
+      "numbercircleservice": 1,
+      "activeuser": "abc",
+      "activeuserrole": "abc",
+      "activeuserid": "abc",
+      "programmingnote": "abc",
+      "cartonlabels": "abc",
+      "labelprinteripaddress": "abc"
+   }
+}
 #####
 
 ################################################## products
@@ -19,7 +161,6 @@ POST {{baseUrl}}/products/papers
 Content-type: application/json
 
 {
-   "id": 1,
    "name": "abc",
    "buyPrice": 1,
    "sellPrice": 1,
@@ -30,10 +171,20 @@ PUT {{baseUrl}}/products/papers/1
 Content-type: application/json
 
 {
-   "id": 1,
    "name": "abc",
    "buyPrice": 1,
    "sellPrice": 1,
    "notes": "abc"
+}
+#####
+
+################################################## user
+POST {{baseUrl}}/user
+Content-type: application/json
+
+{
+   "name": "abc",
+   "password": "abc",
+   "role": "abc"
 }
 #####

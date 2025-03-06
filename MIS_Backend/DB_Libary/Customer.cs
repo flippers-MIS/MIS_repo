@@ -1,0 +1,22 @@
+﻿namespace CustomersDb;
+
+public class Customer
+{
+    public int Id { get; init; }
+    public string FirstName { get; set; } = string.Empty;
+    public string LastName { get; set; } = string.Empty;
+    public string MailAdress { get; set; } = string.Empty;
+    public string PhoneNumber { get; set; } = string.Empty;
+    public string City { get; set; } = string.Empty;    
+    public string Street { get; set; } = string.Empty;
+    public int ZipCode { get; set; }
+    public string Country { get; set; } = string.Empty;
+    public double Discount { get; set; }
+    public DateOnly PaymentTerms { get; set; }
+   
+
+    public string Name => $"{FirstName} {LastName}";
+
+    //public  List<Order> Orders { get; set; } = [];
+}
+

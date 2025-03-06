@@ -1,9 +1,11 @@
+using CustomersDb;
 using GrueneisR.RestClientGenerator;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using MIS_Backend;
+using MIS_Backend.Dtos;
 using MIS_Backend.Maps;
 using MIS_Backend.Services;
-using MIS_Database;
 
 
 string corsKey = "_myCorsKey";
@@ -34,10 +36,15 @@ builder.Services
   //.EnableLogging()
   );
 
-string? connectionString = builder.Configuration.GetConnectionString("MIS_Database");
-string location = System.Reflection.Assembly.GetEntryAssembly()!.Location;
-string dataDirectory = Path.GetDirectoryName(location)!;
-connectionString = connectionString?.Replace("|DataDirectory|", dataDirectory + Path.DirectorySeparatorChar);
+//string? connectionString = builder.Configuration.GetConnectionString("MIS_Database");
+//string location = System.Reflection.Assembly.GetEntryAssembly()!.Location;
+//string dataDirectory = Path.GetDirectoryName(location)!;
+var config = new ConfigurationBuilder()
+  .SetBasePath(AppContext.BaseDirectory)
+  .AddJsonFile("appsettings.json")
+  .Build();
+string connectionString = config.GetConnectionString("MisDatabase")!;
+//connectionString = connectionString?.Replace("|DataDirectory|", dataDirectory + Path.DirectorySeparatorChar);
 Console.ForegroundColor = ConsoleColor.Cyan;
 Console.WriteLine($"++++ ConnectionString: {connectionString}");
 Console.ResetColor();
@@ -74,6 +81,8 @@ app.UseAuthorization();
 app.MapProduct();
 app.MapOrder();
 app.MapUser();
+
+app.MapPost("/user", (UserService service, UserDto user) => service.AddUser(new User().CopyFrom(user)));
 
 Console.WriteLine($"Ready for clients at {DateTime.Now:HH:mm:ss} ...");
 app.Run();

@@ -2,13 +2,11 @@
 {
     public class PrinterDto
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public string Name { get; set; } = null!;
 
-        public double FormatWidth { get; set; }
-
-        public double FormatLength { get; set; }
+        public double UnprintedEdgeMM { get; set; }
 
         public string FormatName { get; set; } = null!;
 
@@ -19,8 +17,10 @@
         public double SellPriceFor4cKlick { get; set; }
 
         public double SellPriceFor1cKlick { get; set; }
+        public double FormatWidth { get; set; }
+        public double FormatLength { get; set; }
+        public int Inaktiv { get; set; }
 
-        public double UnprintedEdgeMm { get; set; }
 
         //public virtual ICollection<OrderDto> Orders { get; set; } = new List<OrderDto>();
 

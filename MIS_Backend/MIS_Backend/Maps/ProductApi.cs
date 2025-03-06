@@ -1,6 +1,6 @@
-﻿using MIS_Backend.Dtos;
+﻿using CustomersDb;
+using MIS_Backend.Dtos;
 using MIS_Backend.Services;
-using MIS_Database;
 
 namespace MIS_Backend.Maps
 {
@@ -15,10 +15,10 @@ namespace MIS_Backend.Maps
             paperGroup.MapGet("{id}", (ProductService service, int id) => new PaperDto().CopyFrom(service.GetPaperById(id)));
             paperGroup.MapPost("", (ProductService service, PaperDto paper) =>
             {
-                var newPaper = new Paper();
-                newPaper.CopyFrom(paper);
-                return service.AddPaper(newPaper);
-            });
+            var newPaper = new Paper();
+            newPaper.CopyFrom(paper);
+            return service.AddPaper(newPaper);
+        });
 
             paperGroup.MapPut("{id}", (ProductService service, int id, PaperDto paper) => service.UpdatePaper(id, new Paper().CopyFrom(paper)));
             paperGroup.MapDelete("{id}", (ProductService service, int id) => service.DeletePaper(id));
@@ -29,5 +29,5 @@ namespace MIS_Backend.Maps
 
             return routes;
         }
-    }
+}
 }

@@ -1,0 +1,14 @@
+C:\Users\Katrin\Downloads\SchauerDbGenerator\SchauerDbGenerator\CustomersDb\bin\Debug\net8.0\CustomersDb.deps.json
+C:\Users\Katrin\Downloads\SchauerDbGenerator\SchauerDbGenerator\CustomersDb\bin\Debug\net8.0\CustomersDb.runtimeconfig.json
+C:\Users\Katrin\Downloads\SchauerDbGenerator\SchauerDbGenerator\CustomersDb\bin\Debug\net8.0\CustomersDb.dll
+C:\Users\Katrin\Downloads\SchauerDbGenerator\SchauerDbGenerator\CustomersDb\bin\Debug\net8.0\CustomersDb.pdb
+C:\Users\Katrin\Downloads\SchauerDbGenerator\SchauerDbGenerator\CustomersDb\obj\Debug\net8.0\CustomersDb.csproj.AssemblyReference.cache
+C:\Users\Katrin\Downloads\SchauerDbGenerator\SchauerDbGenerator\CustomersDb\obj\Debug\net8.0\CustomersDb.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Katrin\Downloads\SchauerDbGenerator\SchauerDbGenerator\CustomersDb\obj\Debug\net8.0\CustomersDb.AssemblyInfoInputs.cache
+C:\Users\Katrin\Downloads\SchauerDbGenerator\SchauerDbGenerator\CustomersDb\obj\Debug\net8.0\CustomersDb.AssemblyInfo.cs
+C:\Users\Katrin\Downloads\SchauerDbGenerator\SchauerDbGenerator\CustomersDb\obj\Debug\net8.0\CustomersDb.csproj.CoreCompileInputs.cache
+C:\Users\Katrin\Downloads\SchauerDbGenerator\SchauerDbGenerator\CustomersDb\obj\Debug\net8.0\CustomersDb.dll
+C:\Users\Katrin\Downloads\SchauerDbGenerator\SchauerDbGenerator\CustomersDb\obj\Debug\net8.0\refint\CustomersDb.dll
+C:\Users\Katrin\Downloads\SchauerDbGenerator\SchauerDbGenerator\CustomersDb\obj\Debug\net8.0\CustomersDb.pdb
+C:\Users\Katrin\Downloads\SchauerDbGenerator\SchauerDbGenerator\CustomersDb\obj\Debug\net8.0\CustomersDb.genruntimeconfig.cache
+C:\Users\Katrin\Downloads\SchauerDbGenerator\SchauerDbGenerator\CustomersDb\obj\Debug\net8.0\ref\CustomersDb.dll

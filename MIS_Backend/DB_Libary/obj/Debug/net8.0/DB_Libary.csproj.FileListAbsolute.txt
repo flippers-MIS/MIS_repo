@@ -1,0 +1,15 @@
+C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\bin\Debug\net8.0\DB_Libary.deps.json
+C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\bin\Debug\net8.0\DB_Libary.runtimeconfig.json
+C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\bin\Debug\net8.0\DB_Libary.dll
+C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\bin\Debug\net8.0\DB_Libary.pdb
+C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\obj\Debug\net8.0\DB_Libary.csproj.AssemblyReference.cache
+C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\obj\Debug\net8.0\DB_Libary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\obj\Debug\net8.0\DB_Libary.AssemblyInfoInputs.cache
+C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\obj\Debug\net8.0\DB_Libary.AssemblyInfo.cs
+C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\obj\Debug\net8.0\DB_Libary.csproj.CoreCompileInputs.cache
+C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\obj\Debug\net8.0\DB_Libary.sourcelink.json
+C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\obj\Debug\net8.0\DB_Libary.dll
+C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\obj\Debug\net8.0\refint\DB_Libary.dll
+C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\obj\Debug\net8.0\DB_Libary.pdb
+C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\obj\Debug\net8.0\DB_Libary.genruntimeconfig.cache
+C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\obj\Debug\net8.0\ref\DB_Libary.dll

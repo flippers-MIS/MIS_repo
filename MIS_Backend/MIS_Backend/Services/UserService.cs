@@ -1,4 +1,5 @@
-﻿using MIS_Database;
+﻿using CustomersDb;
+
 namespace MIS_Backend.Services;
 
 public class UserService(DatabaseContext db)
@@ -52,8 +53,7 @@ public class UserService(DatabaseContext db)
             var user = db.Users.Where(u => u.Id == id).First();
             user.Name = updatedUser.Name;
             user.Password = updatedUser.Password;
-            user.Role = updatedUser.Role;
-            user.Orders = updatedUser.Orders;
+            user.Role = updatedUser.Role;            
             db.SaveChanges();
 
         }
@@ -108,8 +108,7 @@ public class UserService(DatabaseContext db)
             customer.FirstName = updatedCustomer.FirstName;
             customer.LastName = updatedCustomer.LastName;
             customer.MailAdress = updatedCustomer.MailAdress;
-            customer.PhoneNumber = updatedCustomer.PhoneNumber;
-            customer.Orders = updatedCustomer.Orders;
+            customer.PhoneNumber = updatedCustomer.PhoneNumber;            
             db.SaveChanges();
         }
         catch (Exception e)
