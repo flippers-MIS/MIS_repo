@@ -1,6 +1,6 @@
 import * as Helpers from '../../HelperFunctions/helper.mjs';
 
-const path = 'http://localhost:5192/Printer';
+const path = 'http://localhost:32772/Printer';
 
 const printers = [];
 let updatePrinterId = 0;
@@ -34,27 +34,26 @@ const clearbutton = document.getElementById('button-clear');
 
 
 function initializeTable(printerJson) {
-    console.log("printerJson: ", JSON.stringify(printerJson));
-
-    printerJson.forEach(item => 
-    {
-        printers.push(item);
-        const row = document.createElement('tr');
-        row.innerHTML = `
-        <td>${item.name}</td>
-        <td>${item.druckformatL}</td>
-        <td>${item.druckformatB}</td>
-        `;
-        row.addEventListener('click', (e) => {
-            const printer = printers.find(item => item.printerId === parseInt(e.currentTarget.getAttribute('data-id')));
-            updatePrinterId = parseInt(e.currentTarget.getAttribute('data-id'));
-            name.value = printer.maschinenName;
-            formatL.value = printer.maschinenFormatL;
-            formatB.value = printer.maschinenFormatB;
-            border.value = printer.unbedruckbarerRand;
-            console.log(updatePrinterId);
-        });
-        table.appendChild(row);
+    printerJson.forEach(item => {
+        if (item.inaktiv == 0) {
+            printers.push(item);
+            const row = document.createElement('tr');
+            row.innerHTML = `
+            <td>${item.maschinenName}</td>
+            <td>${item.maschinenFormatL}</td>
+            <td>${item.maschinenFormatB}</td>
+            `;
+            row.setAttribute('data-id', item.printerId);
+            row.addEventListener('click', (e) => {
+                const printer = printers.find(item => item.printerId === parseInt(e.currentTarget.getAttribute('data-id')));
+                updatePrinterId = parseInt(e.currentTarget.getAttribute('data-id'));
+                name.value = printer.maschinenName;
+                formatL.value = printer.maschinenFormatL;
+                formatB.value = printer.maschinenFormatB;
+                border.value = printer.unbedruckbarerRand;
+            });
+            table.appendChild(row);
+        }
     });
 }
 
@@ -117,6 +116,7 @@ async function addRow()
 
 
 
+
 /*------------------------------------------UPDATE-BUTTON---------------------------------------------------*/
 
 
@@ -134,6 +134,9 @@ updateButton.addEventListener('click', async () => {
         // Klick1cVk: click1cVK.value
         MaschinenFormatL: parseInt(formatL.value),
         MaschinenFormatB: parseInt(formatB.value),
+        FarbFormat: '0',
+        UnbedruckbarerRand: parseInt(border.value),
+        inaktiv: inactive ? 1 : 0,
     };
     console.log(JSON.stringify(newPrinter));
 
@@ -141,11 +144,11 @@ updateButton.addEventListener('click', async () => {
     try 
     {
       const response = await fetch(`${path}/${updatePrinterId}`, 
-        {
-            method: "PUT",
-            headers: { "Content-Type": "application/json", },
-            body: JSON.stringify(newPrinter),
-        });
+      {
+          method: "PUT",
+          headers: { "Content-Type": "application/json", },
+          body: JSON.stringify(newPrinter), // Daten an Server senden
+      });
   
       if (!response.ok) 
       {
@@ -162,23 +165,7 @@ updateButton.addEventListener('click', async () => {
     }
   
     Array.from(inputs).some(input => input.value = "");
-})
-
-
-
-
-
-/*------------------------------------------RESET-BUTTON---------------------------------------------------*/
-
-
-
-clearbutton.addEventListener('click', () => {
-    Array.from(inputs).some(input => input.value = "");
-    clearbutton.disabled = true;
-});
-
-
-
+}
 
 
 
@@ -192,26 +179,28 @@ clearbutton.addEventListener('click', () => {
 function checkFields() 
 {
     const allFilled = Array.from(inputs).every(input => input.value.trim() !== "");
-    const anyFilled = Array.from(inputs).some(input => input.value.trim() !== "");
+    const anyFilled = Array.from(inputs).some(input => input.value.trim() !== "" || !input.value);
 
     addbutton.disabled = !allFilled;
-    updateButton.disabled = updatePrinterId == 0;
+    updateButton.disabled = !anyFilled || updatePrinterId === 0;
     clearbutton.disabled = !anyFilled;
 }
 
+document.querySelectorAll('input').forEach(input => 
 
-
-document.querySelectorAll('input[type="text"]').forEach(input => 
 {
     input.addEventListener('input', checkFields);  // Jedes Mal, wenn ein Eingabewert geändert wird
 });
 
 
+/*------------------------------------------RESET-BUTTON---------------------------------------------------*/
 
-
-// document.addEventListener('DOMContentLoaded', checkFields);
-
-
+clearbutton.addEventListener('click', () => {
+    Array.from(inputs).some(input => input.value = "");
+    clearbutton.disabled = true;
+    addbutton.disabled = true;
+    updateButton = true;
+});
 
 
 addbutton.addEventListener('click', async () => {
