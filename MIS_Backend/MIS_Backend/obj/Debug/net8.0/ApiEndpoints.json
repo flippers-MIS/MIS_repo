@@ -26,7 +26,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "order",
+        "Name": "orderDto",
         "Type": "MIS_Backend.Dtos.OrderDto",
         "IsRequired": true
       }
@@ -79,7 +79,7 @@
         "IsRequired": true
       },
       {
-        "Name": "order",
+        "Name": "orderDto",
         "Type": "MIS_Backend.Dtos.OrderDto",
         "IsRequired": true
       }
@@ -253,14 +253,86 @@
   },
   {
     "ContainingType": "Program\u002B\u003C\u003Ec",
-    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_6",
-    "RelativePath": "user",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_9",
+    "RelativePath": "TESTorder",
     "HttpMethod": "POST",
     "IsController": false,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "user",
+        "Name": "orderDto",
+        "Type": "MIS_Backend.Dtos.OrderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CustomersDb.Order",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Program\u002B\u003C\u003Ec",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_8",
+    "RelativePath": "TESTpaper",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "paperDto",
+        "Type": "MIS_Backend.Dtos.PaperDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CustomersDb.Paper",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Program\u002B\u003C\u003Ec",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_7",
+    "RelativePath": "TESTprinter",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "printerDto",
+        "Type": "MIS_Backend.Dtos.PrinterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CustomersDb.Printer",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Program\u002B\u003C\u003Ec",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_6",
+    "RelativePath": "TESTuserDto",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userDto",
         "Type": "MIS_Backend.Dtos.UserDto",
         "IsRequired": true
       }
@@ -268,6 +340,24 @@
     "ReturnTypes": [
       {
         "Type": "CustomersDb.User",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MIS_Backend.Maps.UserApi\u002B\u003C\u003Ec",
+    "Method": "\u003CMapUser\u003Eb__0_0",
+    "RelativePath": "users/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[MIS_Backend.Dtos.UserDto, MIS_Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "application/json"
         ],

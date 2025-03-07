@@ -2,7 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-string dbPath = @"C:\Projekt\MIS_repo\MIS_Backend\MIS_Database\MisDatabase.mdf";
+string dbPath = @"C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\MisDatabase.mdf";
 string dbName = "MisDatabase";
 
 string connectionString = @$"Server=(LocalDB)\mssqllocaldb;attachdbfilename={dbPath};Database={dbName};integrated security=True;MultipleActiveResultSets=True";

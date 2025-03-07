@@ -2,7 +2,7 @@
 {
     public class CustomerDto
     {
-        //public int Id { get; set; }
+        public int Id { get; set; }
 
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
@@ -13,7 +13,7 @@
         public int ZipCode { get; set; }
         public string Country { get; set; } = null!;
         public double Discount { get; set; }
-        public DateOnly PaymentTerms { get; set; }
+        public string PaymentTerms { get; set; } = null!;
 
         //public List<ContactPersonDto> ContactPeople { get; set; } = [];
         //public  List<OrderDto> Orders { get; set; } = [];

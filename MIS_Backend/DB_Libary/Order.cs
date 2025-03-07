@@ -3,11 +3,11 @@
 public class Order
 {
     public int Id { get; set; } 
-    public int CustomerId { get; set; } 
-    public int PrinterId { get; set; } 
-    public int UserId { get; set; } 
+    //public int CustomerId { get; set; } 
+    //public int PrinterId { get; set; } 
+    //public int UserId { get; set; } 
 
-    public DateOnly OrderDate { get; set; }
+    public string OrderDate { get; set; } = string.Empty;
     public int Quantity { get; set; } 
     public double TotalPrice { get; set; } 
     public string Status { get; set; } = string.Empty; 

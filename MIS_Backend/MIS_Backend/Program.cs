@@ -82,7 +82,24 @@ app.MapProduct();
 app.MapOrder();
 app.MapUser();
 
-app.MapPost("/user", (UserService service, UserDto user) => service.AddUser(new User().CopyFrom(user)));
+//DummyValues
+app.MapPost("/TESTuserDto", (UserService service, UserDto userDto) => service.AddUser(new User().CopyFrom(userDto)));
+app.MapPost("/TESTprinter", (ProductService service, PrinterDto printerDto) => service.AddPrinter(new Printer().CopyFrom(printerDto)));
+app.MapPost("/TESTpaper", (ProductService service, PaperDto paperDto) => service.AddPaper(new Paper().CopyFrom(paperDto)));
+app.MapPost("/TESTorder", (OrderService service, OrderDto orderDto) => service.AddOrder(new Order
+{
+    OrderDate = orderDto.OrderDate,
+    Quantity = orderDto.Quantity,
+    TotalPrice = orderDto.TotalPrice,
+    Status = orderDto.Status,
+    Notes = orderDto.Notes,
+    Customer = new Customer().CopyFrom(orderDto.Customer),
+    Printer = new Printer().CopyFrom(orderDto.Printer),
+    User = new User().CopyFrom(orderDto.User),
+    PostProcessing = orderDto.PostProcessing?.TransformTo<PostProcessing>()
+}));
+
+
 
 Console.WriteLine($"Ready for clients at {DateTime.Now:HH:mm:ss} ...");
 app.Run();

@@ -13,12 +13,7 @@ namespace MIS_Backend.Maps
             var paperGroup = group.MapGroup("/papers");
             paperGroup.MapGet("", (ProductService service) => service.GetAllPapers().Select(x => new PaperDto().CopyFrom(x)).ToList());
             paperGroup.MapGet("{id}", (ProductService service, int id) => new PaperDto().CopyFrom(service.GetPaperById(id)));
-            paperGroup.MapPost("", (ProductService service, PaperDto paper) =>
-            {
-            var newPaper = new Paper();
-            newPaper.CopyFrom(paper);
-            return service.AddPaper(newPaper);
-        });
+            paperGroup.MapPost("", (ProductService service, PaperDto paper) => service.AddPaper(new Paper().CopyFrom(paper, ["Id"])));
 
             paperGroup.MapPut("{id}", (ProductService service, int id, PaperDto paper) => service.UpdatePaper(id, new Paper().CopyFrom(paper)));
             paperGroup.MapDelete("{id}", (ProductService service, int id) => service.DeletePaper(id));

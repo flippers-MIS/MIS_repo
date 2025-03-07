@@ -12,8 +12,8 @@ public class Customer
     public int ZipCode { get; set; }
     public string Country { get; set; } = string.Empty;
     public double Discount { get; set; }
-    public DateOnly PaymentTerms { get; set; }
-   
+    public string PaymentTerms { get; set; } = string.Empty;
+
 
     public string Name => $"{FirstName} {LastName}";
 

@@ -2,7 +2,7 @@
 {
     public class PostProcessingDto
     {
-        //public int Id { get; set; }
+        public int Id { get; set; }
 
         public int PrinterId { get; set; }
 
