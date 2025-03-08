@@ -12,5 +12,6 @@ public class Printer
     public double SellPriceFor4cKlick { get; set; }
     public double SellPriceFor1cKlick { get; set; }
     public double UnprintedEdgeMM { get; set; }
+    public int Inactive { get; set; }
 }
 

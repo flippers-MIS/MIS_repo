@@ -3,7 +3,7 @@
 
 
 ################################################## orders
-DELETE {{baseUrl}}/orders/1
+DELETE {{baseUrl}}/orders/2
 #####
 GET {{baseUrl}}/orders
 #####
@@ -45,7 +45,7 @@ Content-type: application/json
       "sellpricefor1cklick": 1,
       "formatwidth": 1,
       "formatlength": 1,
-      "inaktiv": 1
+      "inactive": 1
    },
    "user": 
    {
@@ -80,12 +80,12 @@ Content-type: application/json
    }
 }
 #####
-PUT {{baseUrl}}/orders/1
+PUT {{baseUrl}}/orders/3
 Content-type: application/json
 
 {
    "id": 1,
-   "orderDate": "abc",
+   "orderDate": "Affenpo",
    "quantity": 1,
    "totalPrice": 1,
    "status": "abc",
@@ -116,7 +116,7 @@ Content-type: application/json
       "sellpricefor1cklick": 1,
       "formatwidth": 1,
       "formatlength": 1,
-      "inaktiv": 1
+      "inactive": 1
    },
    "user": 
    {
@@ -161,6 +161,8 @@ GET {{baseUrl}}/products/papers/1
 #####
 GET {{baseUrl}}/products/printers
 #####
+GET {{baseUrl}}/products/printers/1
+#####
 POST {{baseUrl}}/products/papers
 Content-type: application/json
 
@@ -170,6 +172,23 @@ Content-type: application/json
    "buyPrice": 1,
    "sellPrice": 1,
    "notes": "abc"
+}
+#####
+POST {{baseUrl}}/products/printers
+Content-type: application/json
+
+{
+   "id": 1,
+   "name": "abc",
+   "unprintedEdgeMM": 1,
+   "formatName": "abc",
+   "buyPrinceFor4cKlick": 1,
+   "buyPrinceFor1cKlick": 1,
+   "sellPriceFor4cKlick": 1,
+   "sellPriceFor1cKlick": 1,
+   "formatWidth": 1,
+   "formatLength": 1,
+   "inactive": 1
 }
 #####
 PUT {{baseUrl}}/products/papers/1
@@ -182,6 +201,25 @@ Content-type: application/json
    "sellPrice": 1,
    "notes": "abc"
 }
+#####
+PUT {{baseUrl}}/products/printers/1
+Content-type: application/json
+
+{
+   "id": 1,
+   "name": "abc",
+   "unprintedEdgeMM": 1,
+   "formatName": "abc",
+   "buyPrinceFor4cKlick": 1,
+   "buyPrinceFor1cKlick": 1,
+   "sellPriceFor4cKlick": 1,
+   "sellPriceFor1cKlick": 1,
+   "formatWidth": 1,
+   "formatLength": 1,
+   "inactive": 1
+}
+#####
+PUT {{baseUrl}}/products/printers/changeInactive/1
 #####
 
 ################################################## TESTorder
@@ -221,7 +259,7 @@ Content-type: application/json
       "sellpricefor1cklick": 1,
       "formatwidth": 1,
       "formatlength": 1,
-      "inaktiv": 1
+      "inactive": 1
    },
    "user": 
    {
@@ -285,7 +323,7 @@ Content-type: application/json
    "sellPriceFor1cKlick": 1,
    "formatWidth": 1,
    "formatLength": 1,
-   "inaktiv": 1
+   "inactive": 1
 }
 #####
 

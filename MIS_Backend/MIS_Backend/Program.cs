@@ -84,7 +84,7 @@ app.MapUser();
 
 //DummyValues
 app.MapPost("/TESTuserDto", (UserService service, UserDto userDto) => service.AddUser(new User().CopyFrom(userDto)));
-app.MapPost("/TESTprinter", (ProductService service, PrinterDto printerDto) => service.AddPrinter(new Printer().CopyFrom(printerDto)));
+app.MapPost("/TESTprinter", (ProductService service, PrinterDto printerDto) => service.AddPrinter(new Printer().CopyFrom(printerDto, ["Id"])));
 app.MapPost("/TESTpaper", (ProductService service, PaperDto paperDto) => service.AddPaper(new Paper().CopyFrom(paperDto)));
 app.MapPost("/TESTorder", (OrderService service, OrderDto orderDto) => service.AddOrder(new Order
 {

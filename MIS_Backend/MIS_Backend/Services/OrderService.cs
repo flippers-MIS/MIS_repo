@@ -1,13 +1,25 @@
 ﻿using CustomersDb;
+using Microsoft.EntityFrameworkCore;
 namespace MIS_Backend.Services
 {
     public class OrderService(DatabaseContext db)
     {
         public List<Order> GetAllOrders()
-            => db.Orders.ToList();
+            => db.Orders
+            .Include(o => o.Customer)
+            .Include(o => o.User)
+            .Include(o => o.Printer)
+            .Include(o => o.PostProcessing)
+            .ToList();
 
         public Order GetOrderById(int id)
-            => db.Orders.Where(o => o.Id == id).First();
+            => db.Orders
+            .Where(o => o.Id == id)
+            .Include(o => o.Customer)
+            .Include(o => o.User)
+            .Include(o => o.Printer)
+            .Include(o => o.PostProcessing)
+            .First();
 
         public Order AddOrder(Order order)
         {

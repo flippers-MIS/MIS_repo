@@ -19,7 +19,7 @@
         public double SellPriceFor1cKlick { get; set; }
         public double FormatWidth { get; set; }
         public double FormatLength { get; set; }
-        public int Inaktiv { get; set; }
+        public int Inactive { get; set; }
 
 
         //public virtual ICollection<OrderDto> Orders { get; set; } = new List<OrderDto>();

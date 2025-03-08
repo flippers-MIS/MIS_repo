@@ -30,15 +30,28 @@ public class ProductService(DatabaseContext db)
         oldPrinter.SellPriceFor4cKlick = updatedPrinter.SellPriceFor4cKlick;
         oldPrinter.SellPriceFor1cKlick = updatedPrinter.SellPriceFor1cKlick;
         oldPrinter.UnprintedEdgeMM = updatedPrinter.UnprintedEdgeMM;
+        oldPrinter.Inactive = updatedPrinter.Inactive;
 
         db.SaveChanges();
         return updatedPrinter;
     }
 
-    public void DeletePrinter(int id)
+    //public void DeletePrinter(int id)
+    //{
+    //    db.Printers.Remove(GetPrinterById(id));
+    //    db.SaveChanges();
+    //}
+
+    public int ChangeInactiveValueForPrinter(int id)
     {
-        db.Printers.Remove(GetPrinterById(id));
+        var activePrinter = db.Printers.Where(p => p.Id == id).First();
+
+        activePrinter.Inactive = activePrinter.Inactive == 1 ? 0 : 1;
+
         db.SaveChanges();
+
+        return activePrinter.Inactive;
+
     }
 
     //Paper
