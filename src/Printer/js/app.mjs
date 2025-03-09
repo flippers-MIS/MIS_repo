@@ -1,6 +1,6 @@
 import * as Helpers from '../../HelperFunctions/helper.mjs';
 
-const path = 'http://localhost:32772/Printer';
+const path = 'http://localhost:5192/Printer';
 
 const printers = [];
 let updatePrinterId = 0;
@@ -20,7 +20,7 @@ const formatL = document.querySelector('#length');
 const formatB = document.querySelector('#width');
 const inactive = document.querySelector('#inactive');
 
-const inputs = document.querySelectorAll('input[type="text"]');
+const inputs = document.querySelectorAll('input');
 
 
 
@@ -34,23 +34,29 @@ const clearbutton = document.getElementById('button-clear');
 
 
 function initializeTable(printerJson) {
+    table.innerHTML = '';
     printerJson.forEach(item => {
         if (item.inaktiv == 0) {
             printers.push(item);
             const row = document.createElement('tr');
             row.innerHTML = `
-            <td>${item.maschinenName}</td>
-            <td>${item.maschinenFormatL}</td>
-            <td>${item.maschinenFormatB}</td>
+            <td>${item.name}</td>
+            <td>${item.druckformatL}</td>
+            <td>${item.druckformatB}</td>
             `;
-            row.setAttribute('data-id', item.printerId);
+            row.setAttribute('data-id', item.id);
             row.addEventListener('click', (e) => {
-                const printer = printers.find(item => item.printerId === parseInt(e.currentTarget.getAttribute('data-id')));
+                const printer = printers.find(item => item.id === parseInt(e.currentTarget.getAttribute('data-id')));
                 updatePrinterId = parseInt(e.currentTarget.getAttribute('data-id'));
-                name.value = printer.maschinenName;
-                formatL.value = printer.maschinenFormatL;
-                formatB.value = printer.maschinenFormatB;
-                border.value = printer.unbedruckbarerRand;
+                name.value = printer.name;
+                formatL.value = printer.druckformatL;
+                formatB.value = printer.druckformatB;
+                border.value = printer.rand;
+                description.value = printer.bezeichnung;
+                click4cEK.value = printer.eK4c;
+                click1cEK.value = printer.eK1c;
+                click4cVK.value = printer.vK4c;
+                click1cVK.value = printer.vK1c;
             });
             table.appendChild(row);
         }
@@ -67,19 +73,19 @@ function initializeTable(printerJson) {
 
 async function addRow() 
 {
-    const printer = [];
   const newPrinter = 
   {
-      Bezeichnung: description.value,
-      Rand: parseInt(border.value),
-      Name: name.value,
-      EK4c: click4cEK.value,
-      EK1c: click1cEK.value,
-      VK4c: click4cVK.value,
-      VK1c: click1cVK.value,
-      DruckformatL: parseInt(formatL.value),
-      DruckformatB: parseInt(formatB.value),
-      Inaktiv: inactive ? 1 : 0,
+    Id: printers.length + 1,
+    Bezeichnung: description.value,
+    Rand: parseInt(border.value),
+    Name: name.value,
+    EK4c: click4cEK.value,
+    EK1c: click1cEK.value,
+    VK4c: click4cVK.value,
+    VK1c: click1cVK.value,
+    DruckformatL: parseInt(formatL.value),
+    DruckformatB: parseInt(formatB.value),
+    Inaktiv: inactive.checked ? 1 : 0,
   };
   console.log(JSON.stringify(newPrinter));
   addbutton.disabled = true;
@@ -101,8 +107,8 @@ async function addRow()
         throw new Error(`Fehler beim Hinzufügen: ${response.status}`);
     }
 
-    printer.push(data);
-    initializeTable(printer); 
+    printerJson = await Helpers.fetchTable(path);
+    initializeTable(printerJson); 
     userMessage.textContent = "Drucker wurde erfolgreich hinzugefügt";
     userMessage.style.color = "green";
   } 
@@ -111,6 +117,7 @@ async function addRow()
     console.error("Fehler beim Hinzufügen eines neuen Druckers: ", error);
   }
   Array.from(inputs).some(input => input.value = "");
+  clearbutton.disabled = true;
 }
 
 
@@ -125,18 +132,17 @@ async function addRow()
 updateButton.addEventListener('click', async () => {
     const newPrinter = 
     {
-        PrinterId: updatePrinterId,
-        MaschinenName: name.value,
-        UnbedruckbarerRand: parseInt(border.value),
-        // Klick4cEk:const click4cEK.value
-        // Klick1cEk:const click1cEK.value
-        // Klick4cVk: click4cVK.value
-        // Klick1cVk: click1cVK.value
-        MaschinenFormatL: parseInt(formatL.value),
-        MaschinenFormatB: parseInt(formatB.value),
-        FarbFormat: '0',
-        UnbedruckbarerRand: parseInt(border.value),
-        inaktiv: inactive ? 1 : 0,
+        Id: updatePrinterId,
+        Bezeichnung: description.value,
+        Rand: parseInt(border.value),
+        Name: name.value,
+        EK4c: click4cEK.value,
+        EK1c: click1cEK.value,
+        VK4c: click4cVK.value,
+        VK1c: click1cVK.value,
+        DruckformatL: parseInt(formatL.value),
+        DruckformatB: parseInt(formatB.value),
+        Inaktiv: inactive.checked ? 1 : 0,
     };
     console.log(JSON.stringify(newPrinter));
 
@@ -155,9 +161,10 @@ updateButton.addEventListener('click', async () => {
           throw new Error(`Response beim PUT-Request fehlerhaft: ${response.status}`);
       }
   
-      alert("Drucker erfolgreich hinzugefügt!");
-      location.reload();
-  
+      printerJson = await Helpers.fetchTable(path);
+      initializeTable(printerJson); 
+      userMessage.textContent = "Drucker wurde erfolgreich geupdated";
+      userMessage.style.color = "green";  
     } 
     catch (error) 
     {
@@ -165,7 +172,8 @@ updateButton.addEventListener('click', async () => {
     }
   
     Array.from(inputs).some(input => input.value = "");
-}
+    clearbutton.disabled = true;
+})
 
 
 
@@ -181,7 +189,7 @@ function checkFields()
     const allFilled = Array.from(inputs).every(input => input.value.trim() !== "");
     const anyFilled = Array.from(inputs).some(input => input.value.trim() !== "" || !input.value);
 
-    addbutton.disabled = !allFilled;
+    addbutton.disabled = !allFilled || !(updatePrinterId === 0);
     updateButton.disabled = !anyFilled || updatePrinterId === 0;
     clearbutton.disabled = !anyFilled;
 }
@@ -197,9 +205,10 @@ document.querySelectorAll('input').forEach(input =>
 
 clearbutton.addEventListener('click', () => {
     Array.from(inputs).some(input => input.value = "");
+    inactive.checked = false
     clearbutton.disabled = true;
     addbutton.disabled = true;
-    updateButton = true;
+    updateButton.disabled = true;
 });
 
 
