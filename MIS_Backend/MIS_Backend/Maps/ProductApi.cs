@@ -31,7 +31,9 @@ public static class ProductApi
         printerGroup.MapPost("", (ProductService service, PrinterDto printerDto) => service.AddPrinter(new Printer().CopyFrom(printerDto, ["Id"])));
         //PUT
         printerGroup.MapPut("{id}", (ProductService service, int id, PrinterDto printerDto) => service.UpdatePrinter(id, new Printer().CopyFrom(printerDto)));
-        printerGroup.MapPut("/changeInactive/{id}", (ProductService service, int id) => service.ChangeInactiveValueForPrinter(id));          
+        printerGroup.MapPut("/changeInactive/{id}", (ProductService service, int id) => service.ChangeInactiveValueForPrinter(id));
+        //DELETE
+        printerGroup.MapDelete("{id}", (ProductService service, int id) => service.DeletePrinter(id));
 
         return routes;
     }
