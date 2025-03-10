@@ -6,7 +6,16 @@ public class UserService(DatabaseContext db)
 {
     //User
     public List<User> GetAllUsers()
-        => db.Users.OrderBy(u => u.Name).ToList();
+    {
+        try
+        {
+            return [.. db.Users.OrderBy(u => u.Name)];
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to get all users.\nError: [{e}]");
+        }
+    }
 
     public User GetUserById(int id)
     {
@@ -53,7 +62,7 @@ public class UserService(DatabaseContext db)
             var user = db.Users.Where(u => u.Id == id).First();
             user.Name = updatedUser.Name;
             user.Password = updatedUser.Password;
-            user.Role = updatedUser.Role;            
+            user.Role = updatedUser.Role;
             db.SaveChanges();
 
         }
@@ -65,14 +74,30 @@ public class UserService(DatabaseContext db)
 
     public void DeleteUser(int id)
     {
-        db.Users.Remove(GetUserById(id));
-        db.SaveChanges();
+        try
+        {
+            db.Users.Remove(GetUserById(id));
+            db.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to delete user with id [{id}].\nError: [{e}]");
+        }
     }
 
     //Customer
 
     public List<Customer> GetAllCustomers()
-        => db.Customers.OrderBy(c => c.FirstName).ToList();
+    {
+        try
+        {
+            return [.. db.Customers.OrderBy(c => c.PersonName)];
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to get all customers.\nError: [{e}]");
+        }
+    }
 
     public Customer GetCustomerById(int id)
     {
@@ -105,10 +130,18 @@ public class UserService(DatabaseContext db)
         try
         {
             var customer = db.Customers.Where(c => c.Id == id).First();
-            customer.FirstName = updatedCustomer.FirstName;
-            customer.LastName = updatedCustomer.LastName;
+
+            customer.PersonName = updatedCustomer.PersonName;
+            customer.CompanyName = updatedCustomer.CompanyName;
             customer.MailAdress = updatedCustomer.MailAdress;
-            customer.PhoneNumber = updatedCustomer.PhoneNumber;            
+            customer.PhoneNumber = updatedCustomer.PhoneNumber;
+            customer.City = updatedCustomer.City;
+            customer.Street = updatedCustomer.Street;
+            customer.ZipCode = updatedCustomer.ZipCode;
+            customer.Country = updatedCustomer.Country;
+            customer.Discount = updatedCustomer.Discount;
+            customer.PaymentTerms = updatedCustomer.PaymentTerms;
+
             db.SaveChanges();
         }
         catch (Exception e)
@@ -119,7 +152,14 @@ public class UserService(DatabaseContext db)
 
     public void DeleteCustomer(int id)
     {
-        db.Customers.Remove(GetCustomerById(id));
-        db.SaveChanges();
+        try
+        {
+            db.Customers.Remove(GetCustomerById(id));
+            db.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to delete customer with id [{id}].\nError: [{e}]");
+        }
     }
 }

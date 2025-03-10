@@ -5,85 +5,171 @@ public class ProductService(DatabaseContext db)
 {
     //Printer
     public List<Printer> GetAllPrinter()
-        => db.Printers.OrderBy(p => p.Name).ToList();
+    {
+        try
+        {
+            return [.. db.Printers.OrderBy(p => p.Name)];
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to get all printers.\nError: [{e}]");
+        }
+    }
 
     public Printer GetPrinterById(int id)
-        => db.Printers.Where(p => p.Id == id).First();
+    {
+        try
+        {
+            return db.Printers.Where(p => p.Id == id).First();
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Printer with id [{id}] not found.\nError: [{e}]");
+        }
+    }
 
     public Printer AddPrinter(Printer printer)
     {
-        db.Printers.Add(printer);
-        db.SaveChanges();
-        return printer;
+        try
+        {
+            db.Printers.Add(printer);
+            db.SaveChanges();
+            return printer;
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to add printer.\nError: [{e}]");
+        }
     }
 
     public Printer UpdatePrinter(int id, Printer updatedPrinter)
     {
-        var oldPrinter = db.Printers.Where(p => p.Id == id).First();
+        try
+        {
+            var oldPrinter = db.Printers.Where(p => p.Id == id).First();
 
-        oldPrinter.Name = updatedPrinter.Name;
-        oldPrinter.FormatWidth = updatedPrinter.FormatWidth;
-        oldPrinter.FormatLength = updatedPrinter.FormatLength;
-        oldPrinter.FormatName = updatedPrinter.FormatName;
-        oldPrinter.BuyPrinceFor4cKlick = updatedPrinter.BuyPrinceFor4cKlick;
-        oldPrinter.BuyPrinceFor1cKlick = updatedPrinter.BuyPrinceFor1cKlick;
-        oldPrinter.SellPriceFor4cKlick = updatedPrinter.SellPriceFor4cKlick;
-        oldPrinter.SellPriceFor1cKlick = updatedPrinter.SellPriceFor1cKlick;
-        oldPrinter.UnprintedEdgeMM = updatedPrinter.UnprintedEdgeMM;
-        oldPrinter.Inactive = updatedPrinter.Inactive;
+            oldPrinter.Name = updatedPrinter.Name;
+            oldPrinter.FormatWidth = updatedPrinter.FormatWidth;
+            oldPrinter.FormatLength = updatedPrinter.FormatLength;
+            oldPrinter.FormatName = updatedPrinter.FormatName;
+            oldPrinter.BuyPrinceFor4cKlick = updatedPrinter.BuyPrinceFor4cKlick;
+            oldPrinter.BuyPrinceFor1cKlick = updatedPrinter.BuyPrinceFor1cKlick;
+            oldPrinter.SellPriceFor4cKlick = updatedPrinter.SellPriceFor4cKlick;
+            oldPrinter.SellPriceFor1cKlick = updatedPrinter.SellPriceFor1cKlick;
+            oldPrinter.UnprintedEdgeMM = updatedPrinter.UnprintedEdgeMM;
+            oldPrinter.Inactive = updatedPrinter.Inactive;
 
-        db.SaveChanges();
-        return updatedPrinter;
+            db.SaveChanges();
+
+            return updatedPrinter;
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to update printer.\nError: [{e}]");
+        }
     }
 
-    //public void DeletePrinter(int id)
-    //{
-    //    db.Printers.Remove(GetPrinterById(id));
-    //    db.SaveChanges();
-    //}
+    public void DeletePrinter(int id)
+    {
+        try
+        {
+            db.Printers.Remove(GetPrinterById(id));
+            db.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to delete printer.\nError: [{e}]");
+
+        }
+    }
 
     public int ChangeInactiveValueForPrinter(int id)
     {
-        var activePrinter = db.Printers.Where(p => p.Id == id).First();
+        try
+        {
+            var activePrinter = db.Printers.Where(p => p.Id == id).First();
 
-        activePrinter.Inactive = activePrinter.Inactive == 1 ? 0 : 1;
+            activePrinter.Inactive = activePrinter.Inactive == 1 ? 0 : 1;
 
-        db.SaveChanges();
+            db.SaveChanges();
 
-        return activePrinter.Inactive;
-
+            return activePrinter.Inactive;
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to change inactive value for printer.\nError: [{e}]");
+        }
     }
 
     //Paper
     public List<Paper> GetAllPapers()
-        => db.Papers.OrderBy(p => p.Name).ToList();
+    {
+        try
+        {
+            return [.. db.Papers.OrderBy(p => p.Name)];
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to get all papers.\nError: [{e}]");
+        }
+    }
 
     public Paper GetPaperById(int id)
-        => db.Papers.Where(p => p.Id == id).First();
+    {
+        try
+        {
+            return db.Papers.Where(p => p.Id == id).First();
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Paper with id [{id}] not found.\nError: [{e}]");
+        }
+    }
 
     public Paper AddPaper(Paper paper)
     {
-        db.Papers.Add(paper);
-        db.SaveChanges();
-        return paper;
+        try
+        {
+            db.Papers.Add(paper);
+            db.SaveChanges();
+            return paper;
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to add paper.\nError: [{e}]");
+        }  
     }
 
     public Paper UpdatePaper(int id, Paper updatedPaper)
     {
-        var oldPaper = db.Papers.Where(p => p.Id == id).First();
+        try
+        {
+            var oldPaper = db.Papers.Where(p => p.Id == id).First();
 
-        oldPaper.Name = updatedPaper.Name;
-        oldPaper.BuyPrice = updatedPaper.BuyPrice;
-        oldPaper.SellPrice = updatedPaper.SellPrice;
-        oldPaper.Notes = updatedPaper.Notes;
+            oldPaper.Name = updatedPaper.Name;
+            oldPaper.BuyPrice = updatedPaper.BuyPrice;
+            oldPaper.SellPrice = updatedPaper.SellPrice;
+            oldPaper.Notes = updatedPaper.Notes;
 
-        db.SaveChanges();
-        return updatedPaper;
+            db.SaveChanges();
+            return updatedPaper;
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to update paper.\nError: [{e}]");
+        }
     }
 
     public void DeletePaper(int id)
     {
-        db.Papers.Remove(GetPaperById(id));
-        db.SaveChanges();
+        try
+        {
+            db.Papers.Remove(GetPaperById(id));
+            db.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to delete paper.\nError: [{e}]");
+        }
     }
 }

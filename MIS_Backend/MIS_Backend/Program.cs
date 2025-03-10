@@ -2,8 +2,6 @@ using CustomersDb;
 using GrueneisR.RestClientGenerator;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using MIS_Backend;
-using MIS_Backend.Dtos;
 using MIS_Backend.Maps;
 using MIS_Backend.Services;
 
@@ -55,7 +53,6 @@ builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(c
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<OrderService>();
-builder.Services.AddScoped<PaymentService>();
 builder.Services.AddScoped<ProductService>();
 
 var app = builder.Build();
@@ -82,24 +79,24 @@ app.MapProduct();
 app.MapOrder();
 app.MapUser();
 
+#region -------------------------------------------- Dummy values
 //DummyValues
-app.MapPost("/TESTuserDto", (UserService service, UserDto userDto) => service.AddUser(new User().CopyFrom(userDto)));
-app.MapPost("/TESTprinter", (ProductService service, PrinterDto printerDto) => service.AddPrinter(new Printer().CopyFrom(printerDto, ["Id"])));
-app.MapPost("/TESTpaper", (ProductService service, PaperDto paperDto) => service.AddPaper(new Paper().CopyFrom(paperDto)));
-app.MapPost("/TESTorder", (OrderService service, OrderDto orderDto) => service.AddOrder(new Order
-{
-    OrderDate = orderDto.OrderDate,
-    Quantity = orderDto.Quantity,
-    TotalPrice = orderDto.TotalPrice,
-    Status = orderDto.Status,
-    Notes = orderDto.Notes,
-    Customer = new Customer().CopyFrom(orderDto.Customer),
-    Printer = new Printer().CopyFrom(orderDto.Printer),
-    User = new User().CopyFrom(orderDto.User),
-    PostProcessing = orderDto.PostProcessing?.TransformTo<PostProcessing>()
-}));
-
-
+//app.MapPost("/TESTuserDto", (UserService service, UserDto userDto) => service.AddUser(new User().CopyFrom(userDto)));
+//app.MapPost("/TESTprinter", (ProductService service, PrinterDto printerDto) => service.AddPrinter(new Printer().CopyFrom(printerDto, ["Id"])));
+//app.MapPost("/TESTpaper", (ProductService service, PaperDto paperDto) => service.AddPaper(new Paper().CopyFrom(paperDto)));
+//app.MapPost("/TESTorder", (OrderService service, OrderDto orderDto) => service.AddOrder(new Order
+//{
+//    OrderDate = orderDto.OrderDate,
+//    Quantity = orderDto.Quantity,
+//    TotalPrice = orderDto.TotalPrice,
+//    Status = orderDto.Status,
+//    Notes = orderDto.Notes,
+//    Customer = new Customer().CopyFrom(orderDto.Customer, ["Id"]),
+//    Printer = new Printer().CopyFrom(orderDto.Printer, ["Id"]),
+//    User = new User().CopyFrom(orderDto.User, ["Id"]),
+//    PostProcessing = new PostProcessing().CopyFrom(orderDto.PostProcessing, ["Id"]),
+//}));
+#endregion
 
 Console.WriteLine($"Ready for clients at {DateTime.Now:HH:mm:ss} ...");
 app.Run();

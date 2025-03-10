@@ -3,8 +3,8 @@
 public class Customer
 {
     public int Id { get; init; }
-    public string FirstName { get; set; } = string.Empty;
-    public string LastName { get; set; } = string.Empty;
+    public string PersonName { get; set; } = string.Empty;
+    public string CompanyName { get; set; } = string.Empty;
     public string MailAdress { get; set; } = string.Empty;
     public string PhoneNumber { get; set; } = string.Empty;
     public string City { get; set; } = string.Empty;    
@@ -15,7 +15,7 @@ public class Customer
     public string PaymentTerms { get; set; } = string.Empty;
 
 
-    public string Name => $"{FirstName} {LastName}";
+    //public string Name => $"{FirstName} {LastName}";
 
     //public  List<Order> Orders { get; set; } = [];
 }

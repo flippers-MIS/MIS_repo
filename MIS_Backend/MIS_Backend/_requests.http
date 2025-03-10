@@ -2,8 +2,50 @@
 ##################################################
 
 
+################################################## customers
+DELETE {{baseUrl}}/customers/3
+#####
+GET {{baseUrl}}/customers
+#####
+GET {{baseUrl}}/customers/7
+#####
+POST {{baseUrl}}/customers
+Content-type: application/json
+
+{
+   "id": 1,
+   "firstName": "newboy",
+   "lastName": "abc",
+   "mailAdress": "abc",
+   "phoneNumber": "abc",
+   "city": "abc",
+   "street": "abc",
+   "zipCode": 1,
+   "country": "abc",
+   "discount": 1,
+   "paymentTerms": "abc"
+}
+#####
+PUT {{baseUrl}}/customers/1
+Content-type: application/json
+
+{
+   "id": 1,
+   "firstName": "abc",
+   "lastName": "abc",
+   "mailAdress": "abc",
+   "phoneNumber": "abc",
+   "city": "abc",
+   "street": "abc",
+   "zipCode": 1,
+   "country": "abc",
+   "discount": 1,
+   "paymentTerms": "abc"
+}
+#####
+
 ################################################## orders
-DELETE {{baseUrl}}/orders/2
+DELETE {{baseUrl}}/orders/1
 #####
 GET {{baseUrl}}/orders
 #####
@@ -80,12 +122,12 @@ Content-type: application/json
    }
 }
 #####
-PUT {{baseUrl}}/orders/3
+PUT {{baseUrl}}/orders/1
 Content-type: application/json
 
 {
    "id": 1,
-   "orderDate": "Affenpo",
+   "orderDate": "abc",
    "quantity": 1,
    "totalPrice": 1,
    "status": "abc",
@@ -222,113 +264,14 @@ Content-type: application/json
 PUT {{baseUrl}}/products/printers/changeInactive/1
 #####
 
-################################################## TESTorder
-POST {{baseUrl}}/TESTorder
-Content-type: application/json
-
-{
-   "id": 1,
-   "orderDate": "abc",
-   "quantity": 1,
-   "totalPrice": 1,
-   "status": "abc",
-   "notes": "abc",
-   "customer": 
-   {
-      "id": 1,
-      "firstname": "abc",
-      "lastname": "abc",
-      "mailadress": "abc",
-      "phonenumber": "abc",
-      "city": "abc",
-      "street": "abc",
-      "zipcode": 1,
-      "country": "abc",
-      "discount": 1,
-      "paymentterms": "abc"
-   },
-   "printer": 
-   {
-      "id": 1,
-      "name": "abc",
-      "unprintededgemm": 1,
-      "formatname": "abc",
-      "buyprincefor4cklick": 1,
-      "buyprincefor1cklick": 1,
-      "sellpricefor4cklick": 1,
-      "sellpricefor1cklick": 1,
-      "formatwidth": 1,
-      "formatlength": 1,
-      "inactive": 1
-   },
-   "user": 
-   {
-      "id": 1,
-      "name": "abc",
-      "password": "abc",
-      "role": "abc"
-   },
-   "postProcessing": 
-   {
-      "id": 1,
-      "printerid": 1,
-      "bindingtype": "abc",
-      "standardpapername": "abc",
-      "cuttingtime": 1,
-      "cuttingcosteur": 1,
-      "cuttingstackheight": 1,
-      "cuttinglarge": 1,
-      "cuttingsmall": 1,
-      "cuttingmaxsmallformat": 1,
-      "cuttingcutcontour": 1,
-      "numbercircleoffer": 1,
-      "numbercirclecalculation": 1,
-      "numbercircleorder": 1,
-      "numbercircleservice": 1,
-      "activeuser": "abc",
-      "activeuserrole": "abc",
-      "activeuserid": "abc",
-      "programmingnote": "abc",
-      "cartonlabels": "abc",
-      "labelprinteripaddress": "abc"
-   }
-}
+################################################## users
+DELETE {{baseUrl}}/users/1
 #####
-
-################################################## TESTpaper
-POST {{baseUrl}}/TESTpaper
-Content-type: application/json
-
-{
-   "id": 1,
-   "name": "abc",
-   "buyPrice": 1,
-   "sellPrice": 1,
-   "notes": "abc"
-}
+GET {{baseUrl}}/users
 #####
-
-################################################## TESTprinter
-POST {{baseUrl}}/TESTprinter
-Content-type: application/json
-
-{
-   "id": 1,
-   "name": "abc",
-   "unprintedEdgeMM": 1,
-   "formatName": "abc",
-   "buyPrinceFor4cKlick": 1,
-   "buyPrinceFor1cKlick": 1,
-   "sellPriceFor4cKlick": 1,
-   "sellPriceFor1cKlick": 1,
-   "formatWidth": 1,
-   "formatLength": 1,
-   "inactive": 1
-}
+GET {{baseUrl}}/users/1
 #####
-
-################################################## TESTuserDto
-POST {{baseUrl}}/TESTuserDto
+POST {{baseUrl}}/users
 Content-type: application/json
 
 {
@@ -338,7 +281,13 @@ Content-type: application/json
    "role": "abc"
 }
 #####
+PUT {{baseUrl}}/users/1
+Content-type: application/json
 
-################################################## users
-GET {{baseUrl}}/users
+{
+   "id": 1,
+   "name": "abc",
+   "password": "abc",
+   "role": "abc"
+}
 #####
