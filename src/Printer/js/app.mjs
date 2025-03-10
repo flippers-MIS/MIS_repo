@@ -2,7 +2,7 @@ import * as Helpers from '../../HelperFunctions/helper.mjs';
 
 const path = 'http://localhost:5192/Printer';
 
-const printers = [];
+let printers = [];
 let updatePrinterId = 0;
 
 
@@ -35,12 +35,13 @@ const clearbutton = document.getElementById('button-clear');
 
 function initializeTable(printerJson) {
     table.innerHTML = '';
+    printers = [];
     printerJson.forEach(item => {
         if (item.inaktiv == 0) {
             printers.push(item);
             const row = document.createElement('tr');
             row.innerHTML = `
-            <td>${item.name}</td>
+            <td>${item.bezeichnung}</td>
             <td>${item.druckformatL}</td>
             <td>${item.druckformatB}</td>
             `;
@@ -85,7 +86,7 @@ async function addRow()
     VK1c: click1cVK.value,
     DruckformatL: parseInt(formatL.value),
     DruckformatB: parseInt(formatB.value),
-    Inaktiv: inactive.checked ? 1 : 0,
+    Inaktiv: 0,
   };
   console.log(JSON.stringify(newPrinter));
   addbutton.disabled = true;
@@ -142,7 +143,7 @@ updateButton.addEventListener('click', async () => {
         VK1c: click1cVK.value,
         DruckformatL: parseInt(formatL.value),
         DruckformatB: parseInt(formatB.value),
-        Inaktiv: inactive.checked ? 1 : 0,
+        Inaktiv: 0,
     };
     console.log(JSON.stringify(newPrinter));
 
@@ -173,10 +174,60 @@ updateButton.addEventListener('click', async () => {
   
     Array.from(inputs).some(input => input.value = "");
     clearbutton.disabled = true;
+    updateButton.disabled = true;
+    updatePrinterId = 0;
 })
 
 
+document.addEventListener("DOMContentLoaded", () => {
+    const table = document.querySelector("#printer-list tbody");
+    const contextMenu = document.createElement("div");
+    contextMenu.classList.add("context-menu");
+    contextMenu.innerHTML = '<button id="context-delete">Inaktiv stellen</button>';
+    document.body.appendChild(contextMenu);
 
+    let selectedPrinterId = null;
+
+    table.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        const row = event.target.closest("tr");
+        if (!row) return;
+
+        selectedPrinterId = row.getAttribute("data-id");
+        contextMenu.style.top = `${event.pageY}px`;
+        contextMenu.style.left = `${event.pageX}px`;
+        contextMenu.style.display = "block";
+    });
+
+    document.addEventListener("click", () => {
+        contextMenu.style.display = "none";
+    });
+
+    document.getElementById("context-delete").addEventListener("click", async () => {
+        if (selectedPrinterId) {
+            try {
+                let printer = printers[selectedPrinterId - 1];
+                printer.inaktiv = 1;
+                const response = await fetch(`${path}/${selectedPrinterId}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json", },
+                    body: JSON.stringify(printer),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Fehler beim Löschen: ${response.status}`);
+                }
+
+                printerJson = await Helpers.fetchTable(path);
+                initializeTable(printerJson); 
+                userMessage.textContent = "Drucker wurde erfolgreich auf inaktiv gestellt";
+                userMessage.style.color = "green"; 
+            } catch (error) {
+                console.error("Fehler beim Löschen des Druckers: ", error);
+            }
+        }
+    });
+});
 
 
 
@@ -205,7 +256,6 @@ document.querySelectorAll('input').forEach(input =>
 
 clearbutton.addEventListener('click', () => {
     Array.from(inputs).some(input => input.value = "");
-    inactive.checked = false
     clearbutton.disabled = true;
     addbutton.disabled = true;
     updateButton.disabled = true;
