@@ -83,20 +83,7 @@ body {
   font-weight: bold;
 }
 
-.form-row input {
-  flex: 2;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
 
-.dimensions input {
-  width: 80px;
-}
-
-.dimensions input:first-child {
-  margin-right: 5px;
-}
 
 .blue-line {
   border: none;
@@ -126,6 +113,24 @@ body {
   background: lightgrey;
 }
 
+
+
+
 input[type='checkbox'] {
   flex: 0;
+}
+
+.form-row input {
+  flex: 2;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.dimensions input {
+  width: 80px;
+}
+
+.dimensions input:first-child {
+  margin-right: 25px;
 }
