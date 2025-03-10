@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Printer</title>
+</head>
+<body>
+
+    <div class="container">
+
+        <header class="header">
+          <h1>Drucker</h1>
+          <button class="button-header" id="button-add" disabled="true">Hinzufügen</button>
+          <button class="button-header" id="button-update" disabled="true">Update</button>
+          <button class="button-header" id="button-clear" disabled="true">Zurücksetzen</button>
+        </header>
+
+
+        <div id="customer-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Kunden Nummer</th>
+                <th>Name</th>
+                <th>Name2</th>
+                <th>Straße</th>
+                <th>PLZ</th>
+                <th>Ort</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- table body -->
+            </tbody>
+          </table>
+
+
+        <hr class="blue-line">
+        <div id="userMessage"></div>
+
+
+        <div class="customer-details">
+          <form>
+            <div class="form-row">
+              <label for="name">Name</label>
+              <input type="text" id="name">
+            </div>
+           
+            <div class="form-row">
+              <label for="name2">Name2</label>
+              <input type="number" id="name2">
+            </div>
+
+            <div class="form-row">
+              <label for="street">Street</label>
+              <input type="text" id="street">
+            </div>
+
+            <div class="form-row">
+                <div class="zip_city_container">
+                    <label for="city">Ort</label>
+                    <input type="number" id="city">
+
+                    <label for="zip">ZIP</label>
+                    <input type="number" id="zip">
+                </div>
+            </div>
+
+            <div class="form-row">
+              <label for="country">Land</label>
+              <input type="number" id="country">
+            </div>
+
+            <div class="form-row">
+                <label for="mobile">Mobile</label>
+                <input type="number" id="mobile" >
+            </div>
+
+            <div class="form-row">
+                <label for="mail">Mail</label>
+                <input type="number" id="mail" >
+            </div>
+
+            <div class="form-row">
+                <label for="discount">Rabatt</label>
+                <input type="number" id="discount" >
+            </div>
+
+            <div class="form-row">
+                <label for="payment_terms">Zahlung</label>
+                <input type="number" id="payment_terms" >
+            </div>
+
+          </form>
+        </div>
+    </div>
+      <script type="module" src="../js/app.mjs"></script>
+</body>
+</html>
