@@ -1,12 +1,12 @@
 import * as Helpers from '../../HelperFunctions/helper.mjs';
 
-const path = 'http://localhost:5192/Printer';
+const path = 'http://localhost:5000/customers';
 
-const printers = [];
-let updatePrinterId = 0;
+const customers = [];
+let updateCustomerId = 0;
 
 
-const table = document.querySelector('#printer-list tbody');
+const table = document.querySelector('#customer-table tbody');
 
 
 const personName = document.querySelector('#name');
@@ -33,33 +33,36 @@ const clearbutton = document.getElementById('button-clear');
 
 
 
-function initializeTable(printerJson) {
+function initializeTable(customerJson) {
     table.innerHTML = '';
-    printerJson.forEach(item => {
-        if (item.inaktiv == 0) {
-            printers.push(item);
-            const row = document.createElement('tr');
-            row.innerHTML = `
-            <td>${item.name}</td>
-            <td>${item.druckformatL}</td>
-            <td>${item.druckformatB}</td>
-            `;
-            row.setAttribute('data-id', item.id);
-            row.addEventListener('click', (e) => {
-                const printer = printers.find(item => item.id === parseInt(e.currentTarget.getAttribute('data-id')));
-                updatePrinterId = parseInt(e.currentTarget.getAttribute('data-id'));
-                name.value = printer.name;
-                formatL.value = printer.druckformatL;
-                formatB.value = printer.druckformatB;
-                border.value = printer.rand;
-                description.value = printer.bezeichnung;
-                click4cEK.value = printer.eK4c;
-                click1cEK.value = printer.eK1c;
-                click4cVK.value = printer.vK4c;
-                click1cVK.value = printer.vK1c;
-            });
-            table.appendChild(row);
-        }
+    customerJson.forEach(item => {
+        customers.push(item);
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td>${item.id}</td>
+        <td>${item.personName}</td>
+        <td>${item.companyName}</td>
+        <td>${item.city}</td>
+        <td>${item.zipCode}</td>
+        <td>${item.street}</td>
+        `;
+        row.setAttribute('data-id', item.id);
+        row.addEventListener('click', (e) => {
+            const customer = customers.find(item => item.id === parseInt(e.currentTarget.getAttribute('data-id')));
+            updateCustomerId = parseInt(e.currentTarget.getAttribute('data-id'));
+            personName.value = customer.personName;
+            companyName.value = customer.companyName;
+            street.value = customer.street;
+            zipCode.value = customer.zipCode;
+            city.value = customer.city;
+            country.value = customer.country;
+            phoneNumber.value = customer.phoneNumber;
+            mailAdress.value = customer.mailAdress;
+            discount.value = customer.discount;
+            payment.value = customer.paymentTerms;
+            clearbutton.disabled = false
+        });
+        table.appendChild(row);
     });
 }
 
@@ -73,21 +76,20 @@ function initializeTable(printerJson) {
 
 async function addRow() 
 {
-  const newPrinter = 
+  const newCustomer = 
   {
-    Id: printers.length + 1,
-    Bezeichnung: description.value,
-    Rand: parseInt(border.value),
-    Name: name.value,
-    EK4c: click4cEK.value,
-    EK1c: click1cEK.value,
-    VK4c: click4cVK.value,
-    VK1c: click1cVK.value,
-    DruckformatL: parseInt(formatL.value),
-    DruckformatB: parseInt(formatB.value),
-    Inaktiv: inactive.checked ? 1 : 0,
+    PersonName: personName.value,
+    CompanyName: companyName.value,
+    MailAdress: mailAdress.value,
+    PhoneNumber: phoneNumber.value,
+    City: city.value,
+    Street: street.value,
+    ZipCode: zipCode.value,
+    Country: country.value,
+    Discount: discount.value,
+    PaymentTerms: payment.value,
   };
-  console.log(JSON.stringify(newPrinter));
+  console.log(JSON.stringify(newCustomer));
   addbutton.disabled = true;
   try 
   {
@@ -96,7 +98,7 @@ async function addRow()
     {
         method: "POST",
         headers: { "Content-Type": "application/json", },
-        body: JSON.stringify(newPrinter),
+        body: JSON.stringify(newCustomer),
     });
 
     const data = await response.json();
@@ -107,8 +109,8 @@ async function addRow()
         throw new Error(`Fehler beim Hinzufügen: ${response.status}`);
     }
 
-    printerJson = await Helpers.fetchTable(path);
-    initializeTable(printerJson); 
+    customerJson = await Helpers.fetchTable(path);
+    initializeTable(customerJson); 
     userMessage.textContent = "Drucker wurde erfolgreich hinzugefügt";
     userMessage.style.color = "green";
   } 
@@ -130,30 +132,29 @@ async function addRow()
 
 
 updateButton.addEventListener('click', async () => {
-    const newPrinter = 
+    const newCustomer = 
     {
-        Id: updatePrinterId,
-        Bezeichnung: description.value,
-        Rand: parseInt(border.value),
-        Name: name.value,
-        EK4c: click4cEK.value,
-        EK1c: click1cEK.value,
-        VK4c: click4cVK.value,
-        VK1c: click1cVK.value,
-        DruckformatL: parseInt(formatL.value),
-        DruckformatB: parseInt(formatB.value),
-        Inaktiv: inactive.checked ? 1 : 0,
+        PersonName: personName.value,
+        CompanyName: companyName.value,
+        MailAdress: mailAdress.value,
+        PhoneNumber: phoneNumber.value,
+        City: city.value,
+        Street: street.value,
+        ZipCode: zipCode.value,
+        Country: country.value,
+        Discount: discount.value,
+        PaymentTerms: payment.value,
     };
-    console.log(JSON.stringify(newPrinter));
+    console.log(JSON.stringify(newCustomer));
 
 
     try 
     {
-      const response = await fetch(`${path}/${updatePrinterId}`, 
+      const response = await fetch(`${path}/${updateCustomerId}`, 
       {
           method: "PUT",
           headers: { "Content-Type": "application/json", },
-          body: JSON.stringify(newPrinter), // Daten an Server senden
+          body: JSON.stringify(newCustomer), // Daten an Server senden
       });
   
       if (!response.ok) 
@@ -161,8 +162,8 @@ updateButton.addEventListener('click', async () => {
           throw new Error(`Response beim PUT-Request fehlerhaft: ${response.status}`);
       }
   
-      printerJson = await Helpers.fetchTable(path);
-      initializeTable(printerJson); 
+      customerJson = await Helpers.fetchTable(path);
+      initializeTable(customerJson); 
       userMessage.textContent = "Drucker wurde erfolgreich geupdated";
       userMessage.style.color = "green";  
     } 
@@ -173,6 +174,8 @@ updateButton.addEventListener('click', async () => {
   
     Array.from(inputs).some(input => input.value = "");
     clearbutton.disabled = true;
+    updateButton.disabled = true;
+    updateCustomerId = 0;
 })
 
 
@@ -189,8 +192,8 @@ function checkFields()
     const allFilled = Array.from(inputs).every(input => input.value.trim() !== "");
     const anyFilled = Array.from(inputs).some(input => input.value.trim() !== "" || !input.value);
 
-    addbutton.disabled = !allFilled || !(updatePrinterId === 0);
-    updateButton.disabled = !anyFilled || updatePrinterId === 0;
+    addbutton.disabled = !allFilled || !(updateCustomerId === 0);
+    updateButton.disabled = !anyFilled || updateCustomerId === 0;
     clearbutton.disabled = !anyFilled;
 }
 
@@ -205,10 +208,10 @@ document.querySelectorAll('input').forEach(input =>
 
 clearbutton.addEventListener('click', () => {
     Array.from(inputs).some(input => input.value = "");
-    inactive.checked = false
     clearbutton.disabled = true;
     addbutton.disabled = true;
     updateButton.disabled = true;
+    updateCustomerId = 0;
 });
 
 
@@ -219,5 +222,5 @@ addbutton.addEventListener('click', async () => {
 
 
 //Main
-let printerJson = await Helpers.fetchTable(path);
-initializeTable(printerJson);
+let customerJson = await Helpers.fetchTable(path);
+initializeTable(customerJson);

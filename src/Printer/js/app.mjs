@@ -1,6 +1,6 @@
 import * as Helpers from '../../HelperFunctions/helper.mjs';
 
-const path = 'http://localhost:5192/Printer';
+const path = 'http://localhost:5000/products/printers';
 
 let printers = [];
 let updatePrinterId = 0;
@@ -18,7 +18,6 @@ const click4cVK = document.querySelector('#klick-4c-vk');
 const click1cVK = document.querySelector('#klick-1c-vk');
 const formatL = document.querySelector('#length');
 const formatB = document.querySelector('#width');
-const inactive = document.querySelector('#inactive');
 
 const inputs = document.querySelectorAll('input');
 
@@ -37,27 +36,28 @@ function initializeTable(printerJson) {
     table.innerHTML = '';
     printers = [];
     printerJson.forEach(item => {
-        if (item.inaktiv == 0) {
+        if (item.inactive == 0) {
             printers.push(item);
             const row = document.createElement('tr');
             row.innerHTML = `
-            <td>${item.bezeichnung}</td>
-            <td>${item.druckformatL}</td>
-            <td>${item.druckformatB}</td>
+            <td>${item.name}</td>
+            <td>${item.formatWidth}</td>
+            <td>${item.formatLength}</td>
             `;
             row.setAttribute('data-id', item.id);
             row.addEventListener('click', (e) => {
                 const printer = printers.find(item => item.id === parseInt(e.currentTarget.getAttribute('data-id')));
                 updatePrinterId = parseInt(e.currentTarget.getAttribute('data-id'));
                 name.value = printer.name;
-                formatL.value = printer.druckformatL;
-                formatB.value = printer.druckformatB;
-                border.value = printer.rand;
-                description.value = printer.bezeichnung;
-                click4cEK.value = printer.eK4c;
-                click1cEK.value = printer.eK1c;
-                click4cVK.value = printer.vK4c;
-                click1cVK.value = printer.vK1c;
+                formatL.value = printer.formatLength;
+                formatB.value = printer.formatWidth;
+                border.value = printer.unprintedEdgeMM;
+                description.value = printer.formatName;
+                click4cEK.value = printer.buyPrinceFor4cKlick;
+                click1cEK.value = printer.buyPrinceFor1cKlick;
+                click4cVK.value = printer.sellPriceFor4cKlick;
+                click1cVK.value = printer.sellPriceFor1cKlick;
+                clearbutton.disabled = false;
             });
             table.appendChild(row);
         }
@@ -76,17 +76,16 @@ async function addRow()
 {
   const newPrinter = 
   {
-    Id: printers.length + 1,
-    Bezeichnung: description.value,
-    Rand: parseInt(border.value),
+    FormatName: description.value,
+    UnprintedEdgeMM: parseInt(border.value),
     Name: name.value,
-    EK4c: click4cEK.value,
-    EK1c: click1cEK.value,
-    VK4c: click4cVK.value,
-    VK1c: click1cVK.value,
-    DruckformatL: parseInt(formatL.value),
-    DruckformatB: parseInt(formatB.value),
-    Inaktiv: 0,
+    BuyPrinceFor4cKlick: click4cEK.value,
+    BuyPrinceFor1cKlick: click1cEK.value,
+    SellPriceFor4cKlick: click4cVK.value,
+    SellPriceFor1cKlick: click1cVK.value,
+    FormatLength: parseInt(formatL.value),
+    FormatWidth: parseInt(formatB.value),
+    Inactive: 0,
   };
   console.log(JSON.stringify(newPrinter));
   addbutton.disabled = true;
@@ -133,17 +132,16 @@ async function addRow()
 updateButton.addEventListener('click', async () => {
     const newPrinter = 
     {
-        Id: updatePrinterId,
-        Bezeichnung: description.value,
-        Rand: parseInt(border.value),
+        FormatName: description.value,
+        UnprintedEdgeMM: parseInt(border.value),
         Name: name.value,
-        EK4c: click4cEK.value,
-        EK1c: click1cEK.value,
-        VK4c: click4cVK.value,
-        VK1c: click1cVK.value,
-        DruckformatL: parseInt(formatL.value),
-        DruckformatB: parseInt(formatB.value),
-        Inaktiv: 0,
+        BuyPrinceFor4cKlick: click4cEK.value,
+        BuyPrinceFor1cKlick: click1cEK.value,
+        SellPriceFor4cKlick: click4cVK.value,
+        SellPriceFor1cKlick: click1cVK.value,
+        FormatLength: parseInt(formatL.value),
+        FormatWidth: parseInt(formatB.value),
+        Inactive: 0,
     };
     console.log(JSON.stringify(newPrinter));
 
@@ -179,6 +177,11 @@ updateButton.addEventListener('click', async () => {
 })
 
 
+
+/*-----------------------------------------Inactive-BUTTON---------------------------------------------------*/
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const table = document.querySelector("#printer-list tbody");
     const contextMenu = document.createElement("div");
@@ -206,9 +209,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("context-delete").addEventListener("click", async () => {
         if (selectedPrinterId) {
             try {
-                let printer = printers[selectedPrinterId - 1];
+                let printer = printers[selectedPrinterId];
                 printer.inaktiv = 1;
-                const response = await fetch(`${path}/${selectedPrinterId}`, {
+                const response = await fetch(`${path}/changeInactive/${selectedPrinterId}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json", },
                     body: JSON.stringify(printer),
@@ -259,6 +262,7 @@ clearbutton.addEventListener('click', () => {
     clearbutton.disabled = true;
     addbutton.disabled = true;
     updateButton.disabled = true;
+    updatePrinterId = 0;
 });
 
 
