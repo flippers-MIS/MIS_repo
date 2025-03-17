@@ -73,10 +73,13 @@ body {
   }
   
   .form-row {
-    display: flex;
     align-items: center;
     margin-bottom: 10px;
-    /* padding-top: 5px; */
+  }
+
+  .flex
+  {
+    display: flex;
   }
   
   .form-row label {
@@ -85,6 +88,25 @@ body {
   }
   
    
+ 
+
+  
+  .form-row input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .flex input
+  {
+    flex: 2;
+  }
+  
+
+
+    /*-------------------------------------------------------------------------------*/
+
+
   .blue-line {
     border: none;
     border-top: 2px solid #ccc;
@@ -92,21 +114,29 @@ body {
     height: 0;
   }
 
-  
-  .form-row input {
-    flex: 2;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+
+  /*-------------------------------------------------------------------------------*/
+
+
+  label#city
+  {
+    width: 100px;
+    display: inline-block;
   }
 
   input#city
   {
-    width: 200px;
+    width: 350px;
   }
 
   label#zip
   {
-    margin-left: 50px;
+    margin-left: 30px;
+    margin-right: 10px;
     width: 50px;
+  }
+
+  input#zip
+  {
+    width: 248px;
   }
