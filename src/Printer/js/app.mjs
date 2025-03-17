@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("context-delete").addEventListener("click", async () => {
         if (selectedPrinterId) {
             try {
-                let printer = printers[selectedPrinterId];
+                let printer = printers.find(x => x.id == selectedPrinterId);
                 printer.inaktiv = 1;
                 const response = await fetch(`${path}/changeInactive/${selectedPrinterId}`, {
                     method: "PUT",
