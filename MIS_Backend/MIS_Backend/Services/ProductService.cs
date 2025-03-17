@@ -8,7 +8,7 @@ public class ProductService(DatabaseContext db)
     {
         try
         {
-            return [.. db.Printers.OrderBy(p => p.Name)];
+            return [.. db.Printers];
         }
         catch (Exception e)
         {

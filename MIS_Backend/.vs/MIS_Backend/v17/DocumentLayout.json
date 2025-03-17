@@ -1,7 +1,40 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\MIS_Backend\\MIS_repo\\MIS_Backend\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Projekt\\MIS_repo\\MIS_Backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1F0EF055-4376-4322-8478-314B703F640D}|MIS_Backend\\MIS_Backend.csproj|c:\\projekt\\mis_repo\\mis_backend\\mis_backend\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F0EF055-4376-4322-8478-314B703F640D}|MIS_Backend\\MIS_Backend.csproj|solutionrelative:mis_backend\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F0EF055-4376-4322-8478-314B703F640D}|MIS_Backend\\MIS_Backend.csproj|c:\\projekt\\mis_repo\\mis_backend\\mis_backend\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F0EF055-4376-4322-8478-314B703F640D}|MIS_Backend\\MIS_Backend.csproj|solutionrelative:mis_backend\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F0EF055-4376-4322-8478-314B703F640D}|MIS_Backend\\MIS_Backend.csproj|c:\\projekt\\mis_repo\\mis_backend\\mis_backend\\dtos\\customerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F0EF055-4376-4322-8478-314B703F640D}|MIS_Backend\\MIS_Backend.csproj|solutionrelative:mis_backend\\dtos\\customerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F0EF055-4376-4322-8478-314B703F640D}|MIS_Backend\\MIS_Backend.csproj|c:\\projekt\\mis_repo\\mis_backend\\mis_backend\\_requests.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{1F0EF055-4376-4322-8478-314B703F640D}|MIS_Backend\\MIS_Backend.csproj|solutionrelative:mis_backend\\_requests.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F0EF055-4376-4322-8478-314B703F640D}|MIS_Backend\\MIS_Backend.csproj|c:\\projekt\\mis_repo\\mis_backend\\mis_backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1F0EF055-4376-4322-8478-314B703F640D}|MIS_Backend\\MIS_Backend.csproj|solutionrelative:mis_backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F0EF055-4376-4322-8478-314B703F640D}|MIS_Backend\\MIS_Backend.csproj|c:\\projekt\\mis_repo\\mis_backend\\mis_backend\\maps\\productapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F0EF055-4376-4322-8478-314B703F640D}|MIS_Backend\\MIS_Backend.csproj|solutionrelative:mis_backend\\maps\\productapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F0EF055-4376-4322-8478-314B703F640D}|MIS_Backend\\MIS_Backend.csproj|c:\\projekt\\mis_repo\\mis_backend\\mis_backend\\dtos\\printerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F0EF055-4376-4322-8478-314B703F640D}|MIS_Backend\\MIS_Backend.csproj|solutionrelative:mis_backend\\dtos\\printerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F0EF055-4376-4322-8478-314B703F640D}|MIS_Backend\\MIS_Backend.csproj|c:\\projekt\\mis_repo\\mis_backend\\mis_backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F0EF055-4376-4322-8478-314B703F640D}|MIS_Backend\\MIS_Backend.csproj|solutionrelative:mis_backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,15 +42,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Bookmark",
@@ -30,6 +59,109 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Backend\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "MIS_Backend\\Services\\UserService.cs",
+              "ToolTip": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Backend\\Services\\UserService.cs",
+              "RelativeToolTip": "MIS_Backend\\Services\\UserService.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAswGEAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T12:39:23.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CustomerDto.cs",
+              "DocumentMoniker": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Backend\\Dtos\\CustomerDto.cs",
+              "RelativeDocumentMoniker": "MIS_Backend\\Dtos\\CustomerDto.cs",
+              "ToolTip": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Backend\\Dtos\\CustomerDto.cs",
+              "RelativeToolTip": "MIS_Backend\\Dtos\\CustomerDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T16:15:06.8Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Backend\\Services\\ProductService.cs",
+              "RelativeDocumentMoniker": "MIS_Backend\\Services\\ProductService.cs",
+              "ToolTip": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Backend\\Services\\ProductService.cs",
+              "RelativeToolTip": "MIS_Backend\\Services\\ProductService.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAUwAoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T15:54:35.347Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Backend\\appsettings.json",
+              "RelativeDocumentMoniker": "MIS_Backend\\appsettings.json",
+              "ToolTip": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Backend\\appsettings.json",
+              "RelativeToolTip": "MIS_Backend\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-16T15:51:58.729Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductApi.cs",
+              "DocumentMoniker": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Backend\\Maps\\ProductApi.cs",
+              "RelativeDocumentMoniker": "MIS_Backend\\Maps\\ProductApi.cs",
+              "ToolTip": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Backend\\Maps\\ProductApi.cs",
+              "RelativeToolTip": "MIS_Backend\\Maps\\ProductApi.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T15:45:35.215Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_requests.http",
+              "DocumentMoniker": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Backend\\_requests.http",
+              "RelativeDocumentMoniker": "MIS_Backend\\_requests.http",
+              "ToolTip": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Backend\\_requests.http",
+              "RelativeToolTip": "MIS_Backend\\_requests.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-03-16T15:43:45.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PrinterDto.cs",
+              "DocumentMoniker": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Backend\\Dtos\\PrinterDto.cs",
+              "RelativeDocumentMoniker": "MIS_Backend\\Dtos\\PrinterDto.cs",
+              "ToolTip": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Backend\\Dtos\\PrinterDto.cs",
+              "RelativeToolTip": "MIS_Backend\\Dtos\\PrinterDto.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwBIAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T15:30:04.056Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Backend\\Program.cs",
+              "RelativeDocumentMoniker": "MIS_Backend\\Program.cs",
+              "ToolTip": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Backend\\Program.cs",
+              "RelativeToolTip": "MIS_Backend\\Program.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAE0AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T15:23:13.829Z"
             }
           ]
         }

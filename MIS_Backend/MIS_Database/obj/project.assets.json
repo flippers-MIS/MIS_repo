@@ -5069,23 +5069,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Katrin\\.nuget\\packages\\": {},
+    "C:\\Users\\ahoel\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\MIS_Backend\\MIS_repo\\MIS_Backend\\MIS_Database\\MIS_Database.csproj",
+      "projectUniqueName": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Database\\MIS_Database.csproj",
       "projectName": "MIS_Database",
-      "projectPath": "C:\\MIS_Backend\\MIS_repo\\MIS_Backend\\MIS_Database\\MIS_Database.csproj",
-      "packagesPath": "C:\\Users\\Katrin\\.nuget\\packages\\",
-      "outputPath": "C:\\MIS_Backend\\MIS_repo\\MIS_Backend\\MIS_Database\\obj\\",
+      "projectPath": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Database\\MIS_Database.csproj",
+      "packagesPath": "C:\\Users\\ahoel\\.nuget\\packages\\",
+      "outputPath": "C:\\Projekt\\MIS_repo\\MIS_Backend\\MIS_Database\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Katrin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ahoel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

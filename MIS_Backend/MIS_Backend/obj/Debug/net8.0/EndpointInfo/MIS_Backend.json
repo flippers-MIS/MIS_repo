@@ -258,6 +258,27 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "MIS_Backend"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/products/printers/changeInactive/{id}": {
@@ -694,11 +715,11 @@
             "type": "integer",
             "format": "int32"
           },
-          "firstName": {
+          "personName": {
             "type": "string",
             "nullable": true
           },
-          "lastName": {
+          "companyName": {
             "type": "string",
             "nullable": true
           },
@@ -744,11 +765,11 @@
             "type": "integer",
             "format": "int32"
           },
-          "firstName": {
+          "personName": {
             "type": "string",
             "nullable": true
           },
-          "lastName": {
+          "companyName": {
             "type": "string",
             "nullable": true
           },

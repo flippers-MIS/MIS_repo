@@ -3,19 +3,19 @@
 
 
 ################################################## customers
-DELETE {{baseUrl}}/customers/3
+DELETE {{baseUrl}}/customers/1
 #####
 GET {{baseUrl}}/customers
 #####
-GET {{baseUrl}}/customers/7
+GET {{baseUrl}}/customers/1
 #####
 POST {{baseUrl}}/customers
 Content-type: application/json
 
 {
    "id": 1,
-   "firstName": "newboy",
-   "lastName": "abc",
+   "personName": "abc",
+   "companyName": "abc",
    "mailAdress": "abc",
    "phoneNumber": "abc",
    "city": "abc",
@@ -31,8 +31,8 @@ Content-type: application/json
 
 {
    "id": 1,
-   "firstName": "abc",
-   "lastName": "abc",
+   "personName": "abc",
+   "companyName": "abc",
    "mailAdress": "abc",
    "phoneNumber": "abc",
    "city": "abc",
@@ -64,8 +64,8 @@ Content-type: application/json
    "customer": 
    {
       "id": 1,
-      "firstname": "abc",
-      "lastname": "abc",
+      "personname": "abc",
+      "companyname": "abc",
       "mailadress": "abc",
       "phonenumber": "abc",
       "city": "abc",
@@ -135,8 +135,8 @@ Content-type: application/json
    "customer": 
    {
       "id": 1,
-      "firstname": "abc",
-      "lastname": "abc",
+      "personname": "abc",
+      "companyname": "abc",
       "mailadress": "abc",
       "phonenumber": "abc",
       "city": "abc",
@@ -196,6 +196,8 @@ Content-type: application/json
 
 ################################################## products
 DELETE {{baseUrl}}/products/papers/1
+#####
+DELETE {{baseUrl}}/products/printers/1
 #####
 GET {{baseUrl}}/products/papers
 #####

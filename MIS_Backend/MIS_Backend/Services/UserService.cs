@@ -91,7 +91,7 @@ public class UserService(DatabaseContext db)
     {
         try
         {
-            return [.. db.Customers.OrderBy(c => c.PersonName)];
+            return [.. db.Customers];
         }
         catch (Exception e)
         {
