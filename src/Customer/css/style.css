@@ -48,6 +48,17 @@ body {
     color: #a1a1a1;
     cursor: not-allowed;
   }
+
+
+
+  /*-------------------------------------------------------------------------------*/
+
+
+  #CustomerNr
+  {
+    width: 110px;
+  }
+
   
   #customer-table table {
     width: 100%;
@@ -120,7 +131,7 @@ body {
 
   label#city
   {
-    width: 100px;
+    width: 95px;
     display: inline-block;
   }
 
@@ -138,5 +149,15 @@ body {
 
   input#zip
   {
-    width: 248px;
+    width: 253px;
+  }
+
+
+
+
+
+  #payment_terms
+  {
+    padding: 5px;
+    width: 360px;
   }
