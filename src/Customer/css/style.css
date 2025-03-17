@@ -100,19 +100,13 @@ body {
     border-radius: 4px;
   }
 
-  .zip_city_container label
-  {
-    width: 100px;
-    /* margin-right: 58px;
-    margin-left: 15px; */
-  }
-
-  /* #zip
-  {
-    width: 100px;
-  }
-
-  #city
+  input#city
   {
     width: 200px;
-  } */
+  }
+
+  label#zip
+  {
+    margin-left: 50px;
+    width: 50px;
+  }
