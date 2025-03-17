@@ -2,7 +2,7 @@ import * as Helpers from '../../HelperFunctions/helper.mjs';
 
 const path = 'http://localhost:5000/customers';
 
-const customers = [];
+let customers = [];
 let updateCustomerId = 0;
 
 
@@ -12,7 +12,7 @@ const table = document.querySelector('#customer-table tbody');
 const personName = document.querySelector('#name');
 const companyName = document.querySelector('#name2');
 const street = document.querySelector('#street');
-const zipCode = document.querySelector('#zip');
+const zipCode = document.querySelector('input#zip');
 const city = document.querySelector('#city');
 const country = document.querySelector('#country');
 const phoneNumber = document.querySelector('#mobile');
@@ -34,6 +34,7 @@ const clearbutton = document.getElementById('button-clear');
 
 
 function initializeTable(customerJson) {
+    customers = [];
     table.innerHTML = '';
     customerJson.forEach(item => {
         customers.push(item);
@@ -120,6 +121,7 @@ async function addRow()
   }
   Array.from(inputs).some(input => input.value = "");
   clearbutton.disabled = true;
+  payment.value = "2";
 }
 
 
@@ -176,6 +178,7 @@ updateButton.addEventListener('click', async () => {
     clearbutton.disabled = true;
     updateButton.disabled = true;
     updateCustomerId = 0;
+    payment.value = "2";
 })
 
 
@@ -219,6 +222,10 @@ addbutton.addEventListener('click', async () => {
     addRow();
 });
 
+
+payment.addEventListener('change', () => {
+    updateButton.disabled = updateCustomerId === 0 ? true : false;
+})
 
 
 //Main

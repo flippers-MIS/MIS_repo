@@ -87,7 +87,13 @@
 
             <div class="form-row flex">
                 <label for="payment_terms">Zahlung</label>
-                <input type="text" id="payment_terms" >
+                <select name="payment_terms" id="payment_terms" >
+                  <option></option>
+                  <option value="1">10 Tage 3%, 30 Tage ohne Abzug</option>
+                  <option selected value="2">10 Tage ohne Abzug</option>
+                  <option value="3">14 Tage 3%, 30 Tage ohne Abzug</option>
+                  <option value="4">BAR</option>
+                </select>
             </div>
 
           </form>
