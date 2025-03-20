@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace CustomersDb;
+namespace DB_Libary;
 public class DatabaseContext : DbContext
 {
     public DatabaseContext() { }

@@ -1,4 +1,4 @@
-﻿namespace CustomersDb;
+﻿namespace DB_Libary;
 public class Printer
 {
     public int Id { get; init; }
