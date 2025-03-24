@@ -33,7 +33,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CustomersDb.Customer",
+        "Type": "DB_Libary.Customer",
         "MediaTypes": [
           "application/json"
         ],
@@ -148,7 +148,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CustomersDb.Order",
+        "Type": "DB_Libary.Order",
         "MediaTypes": [
           "application/json"
         ],
@@ -199,7 +199,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CustomersDb.Order",
+        "Type": "DB_Libary.Order",
         "MediaTypes": [
           "application/json"
         ],
@@ -263,7 +263,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CustomersDb.Paper",
+        "Type": "DB_Libary.Paper",
         "MediaTypes": [
           "application/json"
         ],
@@ -316,7 +316,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CustomersDb.Paper",
+        "Type": "DB_Libary.Paper",
         "MediaTypes": [
           "application/json"
         ],
@@ -356,7 +356,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[CustomersDb.Printer, DB_Libary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[DB_Libary.Printer, DB_Libary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "application/json"
         ],
@@ -380,7 +380,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CustomersDb.Printer",
+        "Type": "DB_Libary.Printer",
         "MediaTypes": [
           "application/json"
         ],
@@ -433,7 +433,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CustomersDb.Printer",
+        "Type": "DB_Libary.Printer",
         "MediaTypes": [
           "application/json"
         ],
@@ -521,7 +521,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CustomersDb.User",
+        "Type": "DB_Libary.User",
         "MediaTypes": [
           "application/json"
         ],
