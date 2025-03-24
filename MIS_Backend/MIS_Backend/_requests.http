@@ -201,7 +201,7 @@ DELETE {{baseUrl}}/products/printers/1
 #####
 GET {{baseUrl}}/products/papers
 #####
-GET {{baseUrl}}/products/papers/1
+GET {{baseUrl}}/products/papers/2
 #####
 GET {{baseUrl}}/products/printers
 #####
@@ -235,12 +235,12 @@ Content-type: application/json
    "inactive": 1
 }
 #####
-PUT {{baseUrl}}/products/papers/1
+PUT {{baseUrl}}/products/papers/2
 Content-type: application/json
 
 {
    "id": 1,
-   "name": "abc",
+   "name": "Jotsch",
    "buyPrice": 1,
    "sellPrice": 1,
    "notes": "abc"

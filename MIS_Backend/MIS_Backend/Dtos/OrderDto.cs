@@ -20,11 +20,11 @@
 
         public string? Notes { get; set; }
 
-        public virtual CustomerDto Customer { get; set; } = null!;
+        public CustomerDto Customer { get; set; } = null!;
 
-        public virtual PrinterDto Printer { get; set; } = null!;
+        public PrinterDto Printer { get; set; } = null!;
 
-        public virtual UserDto User { get; set; } = null!;
+        public UserDto User { get; set; } = null!;
         public PostProcessingDto? PostProcessing { get; set; }
 
     }
