@@ -1,117 +1,119 @@
-   body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-  }
-  
-  .container {
-    max-width: 800px;
-    margin: 20px auto;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .header h1 {
-    font-size: 1.5em;
-    margin: 0;
-  }
-  
-  .button-header {
-    background-color: #0078D7;
-    color: white;
-    font-size: 15px;
-    border: none;
-    padding: 15px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .button-header:hover {
-    background-color: #005bb5;
-  }
-  
-  .button-header:disabled {
-    background-color: #d6d6d6;
-    color: #a1a1a1;
-    cursor: not-allowed;
-  }
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
 
-  /*-------------------------------------------------------------------------------*/
+.container {
+  max-width: 1000px;
+  margin: 20px auto;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  #paper-table table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  #paper-table th, #customer-table td {
-    text-align: left;
-    padding: 8px;
-    border: 1px solid #ddd;
-  }
-  
-  #paper-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  #paper-table tbody tr:hover {
-    background-color: lightgray;
-  }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
 
-  /*-------------------------------------------------------------------------------*/
-  
-  .paper-details {
-    padding-top: 10px;
-  }
-  
-  .form-row {
-    align-items: center;
-    margin-bottom: 10px;
-  }
+.header h1 {
+  font-size: 1.5em;
+  margin: 0;
+}
 
-  .flex
-  {
-    display: flex;
-  }
-  
-  .form-row label {
-    font-weight: bold;
-    flex: 1;  
-    margin-right: ;
-  }
+.button-header {
+  background-color: #0078D7;
+  color: white;
+  font-size: 15px;
+  border: none;
+  padding: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-  .form-row input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+.button-header:hover {
+  background-color: #005bb5;
+}
 
-  .flex input
-  {
-    flex: 2;
-  }
+.button-header:disabled {
+  background-color: #d6d6d6;
+  color: #a1a1a1;
+  cursor: not-allowed;
+}
 
-  /*-------------------------------------------------------------------------------*/
-
-  .blue-line {
-    border: none;
-    border-top: 2px solid #ccc;
-    margin: 10px 0;
-    height: 0;
-  }
 /*-------------------------------------------------------------------------------*/
 
-  #PaperId
-  {
-    width: 90px;
-  }
+#paper-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#paper-table th, #customer-table td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+#paper-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#paper-table tbody tr:hover {
+  background-color: lightgray;
+}
+
+/*-------------------------------------------------------------------------------*/
+
+.paper-details {
+  padding-top: 10px;
+}
+
+.form-row {
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.flex
+{
+  display: flex;
+  gap: 20px;
+}
+
+.form-row label 
+{
+  font-weight: bold;
+  white-space: nowrap; 
+}
+
+.form-row input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.flex input
+{
+  flex: 1;
+}
+
+/*-------------------------------------------------------------------------------*/
+
+.blue-line {
+  border: none;
+  border-top: 2px solid #ccc;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/*-------------------------------------------------------------------------------*/
+
+#PaperId
+{
+  width: 90px;
+}
