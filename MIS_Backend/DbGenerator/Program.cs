@@ -1,5 +1,4 @@
-﻿using CustomersDb;
-
+﻿using DB_Libary;
 using Microsoft.EntityFrameworkCore;
 
 string dbPath = @"C:\Projekt\MIS_repo\MIS_Backend\DB_Libary\MisDatabase.mdf";

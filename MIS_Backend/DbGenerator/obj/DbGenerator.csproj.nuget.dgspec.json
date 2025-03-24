@@ -10,14 +10,14 @@
         "projectUniqueName": "C:\\Projekt\\MIS_repo\\MIS_Backend\\DbGenerator\\DbGenerator.csproj",
         "projectName": "DbGenerator",
         "projectPath": "C:\\Projekt\\MIS_repo\\MIS_Backend\\DbGenerator\\DbGenerator.csproj",
-        "packagesPath": "C:\\Users\\ahoel\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Katrin\\.nuget\\packages\\",
         "outputPath": "C:\\Projekt\\MIS_repo\\MIS_Backend\\DbGenerator\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ahoel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Katrin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -79,14 +79,14 @@
         "projectUniqueName": "C:\\Projekt\\MIS_repo\\MIS_Backend\\DB_Libary\\DB_Libary.csproj",
         "projectName": "DB_Libary",
         "projectPath": "C:\\Projekt\\MIS_repo\\MIS_Backend\\DB_Libary\\DB_Libary.csproj",
-        "packagesPath": "C:\\Users\\ahoel\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Katrin\\.nuget\\packages\\",
         "outputPath": "C:\\Projekt\\MIS_repo\\MIS_Backend\\DB_Libary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ahoel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Katrin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

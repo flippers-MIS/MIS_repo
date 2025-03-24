@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DbGenerator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea748caab61f8950598b58fc30e4285f1dacb075")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63c8181569db6efafc0b2024390e7f823d276a2c")]
 [assembly: System.Reflection.AssemblyProductAttribute("DbGenerator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DbGenerator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
