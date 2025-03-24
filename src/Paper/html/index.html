@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Paper</title>
+</head>
+<body>
+
+    <div class="container">
+
+        <header class="header">
+          <h1>Kunden</h1>
+          <button class="button-header" id="button-add" disabled="true">Hinzufügen</button>
+          <button class="button-header" id="button-update" disabled="true">Update</button>
+          <button class="button-header" id="button-clear" disabled="true">Zurücksetzen</button>
+        </header>
+
+
+        <div id="paper-table">
+          <table>
+            <thead>
+              <tr>
+                <th id="PaperId">Paper Id</th>
+                <th>Papierart</th>
+                <th>Marke</th>
+                <th>Grammatur</th>
+                <th>Format</th>
+                <th>Volumen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- table body -->
+            </tbody>
+          </table>
+
+
+        <hr class="blue-line">
+        <div id="userMessage"></div>
+
+
+        <div class="paper-details">
+          <form>
+
+            <div class="form-row flex">
+              <label for="papierart">Papierart</label>
+              <input type="text" id="papierart">
+            </div>
+
+            <div class="form-row flex">
+              <label for="marke">Marke/Name</label>
+              <input type="text" id="marke">
+            </div>
+           
+            <div class="form-row flex">
+              <label for="ek">Preis EK</label>     
+              <input type="number" id="ek">
+            </div>
+
+            <div class="form-row flex">
+              <label for="vk">Preis VK</label>    
+              <input type="number" id="vk">
+              <label id="ekAufschlag">...% Aufschlag</label>
+            </div>
+         
+            <div class="form-row flex">
+              <label for="lagerbestand">Lagerbestand</label>
+              <input type="number" id="lagerbestand">
+              <button id="btnLagerbestand">Wareneingang</button>
+            </div>
+
+            <div class="form-row flex">
+              <label for="format">Format</label>
+              <div class="format">
+                <input type="number" id="length"> X
+                <input type="number" id="width">
+              </div>
+            </div>
+
+            <div class="form-row flex">
+              <label for="grammatur">Grammatur Text</label>
+              <input type="number" id="grammatur">
+              <label>g/m2</label>
+            </div>
+
+            <div class="form-row flex">
+              <label for="volumen">Volumen</label>
+              <input type="number" id="volumen">
+            </div>
+
+          </form>
+        </div>
+    </div>
+      <script type="module" src="../js/app.mjs"></script>
+</body>
+</html>
