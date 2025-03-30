@@ -1,6 +1,6 @@
 import * as Helpers from '../../HelperFunctions/helper.mjs';
 
-const path = 'http://localhost:5000/customers';
+const path = 'http://localhost:5000/products/papers';
 
 let customers = [];
 let updateCustomerId = 0;
@@ -9,16 +9,20 @@ let updateCustomerId = 0;
 const table = document.querySelector('#customer-table tbody');
 
 
-const personName = document.querySelector('#name');
-const companyName = document.querySelector('#name2');
-const street = document.querySelector('#street');
-const zipCode = document.querySelector('input#zip');
-const city = document.querySelector('input#city');
-const country = document.querySelector('#country');
-const phoneNumber = document.querySelector('#mobile');
-const mailAdress = document.querySelector('#mail');
-const discount = document.querySelector('#discount');
-const payment = document.querySelector('#payment_terms');
+const papertype = document.querySelector('#papierart');
+const brand = document.querySelector('#marke');
+const priceEk = document.querySelector('#ek');
+const priceVk = document.querySelector('#vk');
+const inStorage = document.querySelector('#lagerbestand');
+const formatL = document.querySelector('#length');
+const formatB = document.querySelector('#width');
+const grammatur = document.querySelector('#grammatur');
+const volume = document.querySelector('#volumen');
+const preis = document.querySelector('#preis');
+const preisProKg = document.querySelector('#preisProKg');
+const bogenpreis = document.querySelector('#bogenpreis');
+const stapelhöhe = document.querySelector('#stapelhöhe');
+const bogen = document.querySelector('#bogen');
 
 const inputs = document.querySelectorAll('input');
 
@@ -41,7 +45,7 @@ function initializeTable(customerJson) {
         const row = document.createElement('tr');
         row.innerHTML = `
         <td>${item.id}</td>
-        <td>${item.personName}</td>
+        <td>${item.papertype}</td>
         <td>${item.companyName}</td>
         <td>${item.city}</td>
         <td>${item.zipCode}</td>
@@ -192,6 +196,15 @@ updateButton.addEventListener('click', async () => {
 
 function checkFields() 
 {
+    try {
+        bogenpreis.value = (preis.value / preisProKg.value) * 
+                           ((((((formatL.value / 10) * (formatB.value / 10)) * 
+                           grammatur.value) / 10000) * 1000) / 1000);
+        bogen.value = stapelhöhe.value / ((grammatur.value / 1000) * volume.value);
+    } catch (e) {
+        
+    }
+
     const allFilled = Array.from(inputs).every(input => input.value.trim() !== "");
     const anyFilled = Array.from(inputs).some(input => input.value.trim() !== "" || !input.value);
 
