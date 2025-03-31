@@ -6,7 +6,7 @@ let paper = [];
 let updatePaperId = 0;
 
 
-const table = document.querySelector('#customer-table tbody');
+const table = document.querySelector('#paper-table tbody');
 
 
 const papertype = document.querySelector('#papierart');
@@ -250,10 +250,6 @@ addbutton.addEventListener('click', async () => {
     addRow();
 });
 
-
-payment.addEventListener('change', () => {
-    updateButton.disabled = updatePaperId === 0 ? true : false;
-});
 
 
 
