@@ -149,7 +149,17 @@ public class ProductService(DatabaseContext db)
             oldPaper.Name = updatedPaper.Name;
             oldPaper.BuyPrice = updatedPaper.BuyPrice;
             oldPaper.SellPrice = updatedPaper.SellPrice;
-            oldPaper.Notes = updatedPaper.Notes;
+            oldPaper.Brand = updatedPaper.Brand;
+            oldPaper.FormatWidth = updatedPaper.FormatWidth;
+            oldPaper.FormatLength = updatedPaper.FormatLength;
+            oldPaper.Grammatur = updatedPaper.Grammatur;
+            oldPaper.Volume = updatedPaper.Volume;
+            oldPaper.Amount = updatedPaper.Amount;
+            oldPaper.PricePerKg = updatedPaper.PricePerKg;
+            oldPaper.Kg = updatedPaper.Kg;
+            oldPaper.CalcPricePerKg = updatedPaper.CalcPricePerKg;
+            oldPaper.StapelHöheMM = updatedPaper.StapelHöheMM;
+            oldPaper.Bogen = updatedPaper.Bogen;
 
             db.SaveChanges();
             return updatedPaper;

@@ -201,7 +201,7 @@ DELETE {{baseUrl}}/products/printers/1
 #####
 GET {{baseUrl}}/products/papers
 #####
-GET {{baseUrl}}/products/papers/2
+GET {{baseUrl}}/products/papers/1
 #####
 GET {{baseUrl}}/products/printers
 #####
@@ -215,7 +215,17 @@ Content-type: application/json
    "name": "abc",
    "buyPrice": 1,
    "sellPrice": 1,
-   "notes": "abc"
+   "brand": "abc",
+   "formatWidth": 1,
+   "formatLength": 1,
+   "grammatur": 1,
+   "volume": 1,
+   "amount": 1,
+   "pricePerKg": 1,
+   "kg": 1,
+   "calcPricePerKg": 1,
+   "stapelHöheMM": 1,
+   "bogen": 1
 }
 #####
 POST {{baseUrl}}/products/printers
@@ -235,15 +245,25 @@ Content-type: application/json
    "inactive": 1
 }
 #####
-PUT {{baseUrl}}/products/papers/2
+PUT {{baseUrl}}/products/papers/1
 Content-type: application/json
 
 {
    "id": 1,
-   "name": "Jotsch",
+   "name": "abc",
    "buyPrice": 1,
    "sellPrice": 1,
-   "notes": "abc"
+   "brand": "abc",
+   "formatWidth": 1,
+   "formatLength": 1,
+   "grammatur": 1,
+   "volume": 1,
+   "amount": 1,
+   "pricePerKg": 1,
+   "kg": 1,
+   "calcPricePerKg": 1,
+   "stapelHöheMM": 1,
+   "bogen": 1
 }
 #####
 PUT {{baseUrl}}/products/printers/1

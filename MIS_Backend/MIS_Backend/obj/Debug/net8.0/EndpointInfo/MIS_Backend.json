@@ -911,9 +911,49 @@
             "type": "number",
             "format": "double"
           },
-          "notes": {
+          "brand": {
             "type": "string",
             "nullable": true
+          },
+          "formatWidth": {
+            "type": "number",
+            "format": "double"
+          },
+          "formatLength": {
+            "type": "number",
+            "format": "double"
+          },
+          "grammatur": {
+            "type": "number",
+            "format": "double"
+          },
+          "volume": {
+            "type": "number",
+            "format": "double"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pricePerKg": {
+            "type": "number",
+            "format": "double"
+          },
+          "kg": {
+            "type": "number",
+            "format": "double"
+          },
+          "calcPricePerKg": {
+            "type": "number",
+            "format": "double"
+          },
+          "stapelHöheMM": {
+            "type": "number",
+            "format": "double"
+          },
+          "bogen": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false
@@ -937,9 +977,49 @@
             "type": "number",
             "format": "double"
           },
-          "notes": {
+          "brand": {
             "type": "string",
             "nullable": true
+          },
+          "formatWidth": {
+            "type": "number",
+            "format": "double"
+          },
+          "formatLength": {
+            "type": "number",
+            "format": "double"
+          },
+          "grammatur": {
+            "type": "number",
+            "format": "double"
+          },
+          "volume": {
+            "type": "number",
+            "format": "double"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pricePerKg": {
+            "type": "number",
+            "format": "double"
+          },
+          "kg": {
+            "type": "number",
+            "format": "double"
+          },
+          "calcPricePerKg": {
+            "type": "number",
+            "format": "double"
+          },
+          "stapelHöheMM": {
+            "type": "number",
+            "format": "double"
+          },
+          "bogen": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false

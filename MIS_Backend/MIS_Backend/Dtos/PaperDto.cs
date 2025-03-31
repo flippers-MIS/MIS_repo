@@ -15,9 +15,9 @@
         public int Amount { get; set; } = 0;
         public double PricePerKg { get; set; }
         public double Kg { get; set; }
-        public double CalcPricePerKg => PricePerKg * Kg;                //Bogenpreis in der alten Software. Formel gehört geänder!!!
+        public double CalcPricePerKg { get; set; }
         public double StapelHöheMM { get; set; }
-        public double Bogen => Volume / (FormatWidth * FormatLength);   //Bg. in der alten Software. Formel gehört geänder!!!
+        public double Bogen { get; set; }
 
         //public string? Notes { get; set; }
         //public PrinterDto Printer { get; set; } = null!;
