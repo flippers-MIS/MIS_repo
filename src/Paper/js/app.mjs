@@ -2,7 +2,7 @@ import * as Helpers from '../../HelperFunctions/helper.mjs';
 
 const path = 'http://localhost:5000/products/papers';
 
-let paper = [];
+let papers = [];
 let updatePaperId = 0;
 
 
@@ -40,10 +40,10 @@ const clearbutton = document.getElementById('button-clear');
 
 
 function initializeTable(paperJson) {
-    paper = [];
+    papers = [];
     table.innerHTML = '';
     paperJson.forEach(item => {
-        paper.push(item);
+        papers.push(item);
         const row = document.createElement('tr');
         row.innerHTML = `
         <td>${item.id}</td>
@@ -51,11 +51,11 @@ function initializeTable(paperJson) {
         <td>${item.brand}</td>
         <td>${item.grammatur}</td>
         <td>${item.formatLength} X ${item.formatWidth}</td>
-        <td>${item.Volume}</td>
+        <td>${item.volume}</td>
         `;
         row.setAttribute('data-id', item.id);
         row.addEventListener('click', (e) => {
-            const paper = paper.find(item => item.id === parseInt(e.currentTarget.getAttribute('data-id')));
+            const paper = papers.find(item => item.id === parseInt(e.currentTarget.getAttribute('data-id')));
 
             updatePaperId = parseInt(e.currentTarget.getAttribute('data-id'));
             papertype.value = paper.name;
@@ -154,6 +154,7 @@ async function addRow()
 updateButton.addEventListener('click', async () => {
     const newCustomer = 
     {
+<<<<<<< HEAD
         PersonName: personName.value,
         CompanyName: companyName.value,
         MailAdress: mailAdress.value,
@@ -163,6 +164,22 @@ updateButton.addEventListener('click', async () => {
         ZipCode: zipCode.value,
         Country: country.value,
         Discount: discount.value,
+=======
+        Name: papertype.value,
+        Brand: brand.value,
+        BuyPrice: priceEk.value,
+        SellPrice: priceVk.value,
+        Amount: inStorage .value,
+        FormatLength: formatL.value,
+        FormatWidth: formatB.value,
+        Grammatur: grammatur.value,
+        Volume: volume.value,
+        PricePerKg: preis.value,
+        Kg: amountPerKg.value,
+        CalcPricePerKg: bogenpreis.value,
+        StapelHöheMM: stapelhöhe.value,
+        Bogen: bogen.value,
+>>>>>>> 9134ee307acf8a55c5d4c4e34b358d42717bc4e0
     };
     console.log(JSON.stringify(newCustomer));
 
@@ -202,7 +219,7 @@ updateButton.addEventListener('click', async () => {
 
 
 
-
+// da ist nichts
 
 
 
