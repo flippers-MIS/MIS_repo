@@ -154,17 +154,6 @@ async function addRow()
 updateButton.addEventListener('click', async () => {
     const newCustomer = 
     {
-<<<<<<< HEAD
-        PersonName: personName.value,
-        CompanyName: companyName.value,
-        MailAdress: mailAdress.value,
-        PhoneNumber: phoneNumber.value,
-        City: city.value,
-        Street: street.value,
-        ZipCode: zipCode.value,
-        Country: country.value,
-        Discount: discount.value,
-=======
         Name: papertype.value,
         Brand: brand.value,
         BuyPrice: priceEk.value,
@@ -179,7 +168,6 @@ updateButton.addEventListener('click', async () => {
         CalcPricePerKg: bogenpreis.value,
         StapelHöheMM: stapelhöhe.value,
         Bogen: bogen.value,
->>>>>>> 9134ee307acf8a55c5d4c4e34b358d42717bc4e0
     };
     console.log(JSON.stringify(newCustomer));
 
@@ -225,13 +213,13 @@ updateButton.addEventListener('click', async () => {
 
 function checkFields() 
 {
-    try {
+    if (preis.value > 0 && amountPerKg.value > 0 && formatL.value > 0 && formatB.value > 0 && grammatur.value > 0) {
         bogenpreis.value = (preis.value / amountPerKg.value) * 
                            ((((((formatL.value / 10) * (formatB.value / 10)) * 
                            grammatur.value) / 10000) * 1000) / 1000);
-        bogen.value = stapelhöhe.value / ((grammatur.value / 1000) * volume.value);
-    } catch (e) {
-        
+    }
+    if (stapelhöhe.value > 0 && grammatur.value > 0 && volume.value > 0) {
+            bogen.value = stapelhöhe.value / ((grammatur.value / 1000) * volume.value);
     }
 
     const allFilled = Array.from(inputs).every(input => input.value.trim() !== "");
