@@ -16,10 +16,10 @@ public static class OrderApi
             orders.ForEach(x =>
             {
                 var orderDto = new OrderDto().CopyFrom(x);
-                orderDto.Customer = new CustomerDto().CopyFrom(x.Customer, ["Id"]);
-                orderDto.Printer = new PrinterDto().CopyFrom(x.Printer);
-                orderDto.User = new UserDto().CopyFrom(x.User);
-                orderDto.PostProcessing = new PostProcessingDto().CopyFrom(x.PostProcessing);
+                orderDto.CustomerId = x.Customer.Id;
+                orderDto.PrinterId = x.Printer.Id;
+                orderDto.UserId = x.User.Id;
+                orderDto.PostProcessingId = x.PostProcessing == null ? 0 : x.PostProcessing.Id;
                 orderDtos.Add(orderDto);
             });
             return orderDtos;
@@ -29,36 +29,38 @@ public static class OrderApi
         {
             var order = service.GetOrderById(id);
             var orderDto = new OrderDto().CopyFrom(order);
-            orderDto.Customer = new CustomerDto().CopyFrom(order.Customer);
-            orderDto.Printer = new PrinterDto().CopyFrom(order.Printer);
-            orderDto.User = new UserDto().CopyFrom(order.User);
-            orderDto.PostProcessing = new PostProcessingDto().CopyFrom(order.PostProcessing);
+            orderDto.CustomerId = order.Customer.Id;
+            orderDto.PrinterId = order.Printer.Id;
+            orderDto.UserId = order.User.Id;
+            orderDto.PostProcessingId = order.PostProcessing == null ? 0 : order.PostProcessing.Id;
+            ;
+            return orderDto;
         });
 
-        group.MapPost("", (OrderService service, OrderDto orderDto) => service.AddOrder(new Order
+        group.MapPost("", (UserService userService, ProductService productService, OrderService orderService, OrderDto orderDto) => orderService.AddOrder(new Order
         {
             OrderDate = orderDto.OrderDate,
             Quantity = orderDto.Quantity,
             TotalPrice = orderDto.TotalPrice,
             Status = orderDto.Status,
             Notes = orderDto.Notes,
-            Customer = new Customer().CopyFrom(orderDto.Customer, ["Id"]),
-            Printer = new Printer().CopyFrom(orderDto.Printer, ["Id"]),
-            User = new User().CopyFrom(orderDto.User, ["Id"]),
-            PostProcessing = new PostProcessing().CopyFrom(orderDto.PostProcessing, ["Id"])
+            Customer = userService.GetCustomerById(orderDto.CustomerId),
+            Printer = productService.GetPrinterById(orderDto.PrinterId),
+            User = userService.GetUserById(orderDto.UserId),
+            PostProcessing = orderDto.PostProcessingId == 0 ? null : productService.GetPostProcessingById(orderDto.PostProcessingId)
         }));
 
-        group.MapPut("{id}", (OrderService service, int id, OrderDto orderDto) => service.UpdateOrder(id, new Order
+        group.MapPut("{id}", (UserService userService, ProductService productService, OrderService orderService, int id, OrderDto orderDto) => orderService.UpdateOrder(id, new Order
         {
             OrderDate = orderDto.OrderDate,
             Quantity = orderDto.Quantity,
             TotalPrice = orderDto.TotalPrice,
             Status = orderDto.Status,
             Notes = orderDto.Notes,
-            Customer = new Customer().CopyFrom(orderDto.Customer),
-            Printer = new Printer().CopyFrom(orderDto.Printer),
-            User = new User().CopyFrom(orderDto.User),
-            PostProcessing = new PostProcessing().CopyFrom(orderDto.PostProcessing, ["Id"])
+            Customer = userService.GetCustomerById(orderDto.CustomerId),
+            Printer = productService.GetPrinterById(orderDto.PrinterId),
+            User = userService.GetUserById(orderDto.UserId),
+            PostProcessing = orderDto.PostProcessingId == 0 ? null : productService.GetPostProcessingById(orderDto.PostProcessingId)
         }));
         group.MapDelete("{id}", (OrderService service, int id) => service.DeleteOrder(id));
         return routes;

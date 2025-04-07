@@ -61,65 +61,10 @@ Content-type: application/json
    "totalPrice": 1,
    "status": "abc",
    "notes": "abc",
-   "customer": 
-   {
-      "id": 1,
-      "personname": "abc",
-      "companyname": "abc",
-      "mailadress": "abc",
-      "phonenumber": "abc",
-      "city": "abc",
-      "street": "abc",
-      "zipcode": 1,
-      "country": "abc",
-      "discount": 1,
-      "paymentterms": "abc"
-   },
-   "printer": 
-   {
-      "id": 1,
-      "name": "abc",
-      "unprintededgemm": 1,
-      "formatname": "abc",
-      "buyprincefor4cklick": 1,
-      "buyprincefor1cklick": 1,
-      "sellpricefor4cklick": 1,
-      "sellpricefor1cklick": 1,
-      "formatwidth": 1,
-      "formatlength": 1,
-      "inactive": 1
-   },
-   "user": 
-   {
-      "id": 1,
-      "name": "abc",
-      "password": "abc",
-      "role": "abc"
-   },
-   "postProcessing": 
-   {
-      "id": 1,
-      "printerid": 1,
-      "bindingtype": "abc",
-      "standardpapername": "abc",
-      "cuttingtime": 1,
-      "cuttingcosteur": 1,
-      "cuttingstackheight": 1,
-      "cuttinglarge": 1,
-      "cuttingsmall": 1,
-      "cuttingmaxsmallformat": 1,
-      "cuttingcutcontour": 1,
-      "numbercircleoffer": 1,
-      "numbercirclecalculation": 1,
-      "numbercircleorder": 1,
-      "numbercircleservice": 1,
-      "activeuser": "abc",
-      "activeuserrole": "abc",
-      "activeuserid": "abc",
-      "programmingnote": "abc",
-      "cartonlabels": "abc",
-      "labelprinteripaddress": "abc"
-   }
+   "customerId": 1,
+   "printerId": 1,
+   "userId": 1,
+   "postProcessingId": 1
 }
 #####
 PUT {{baseUrl}}/orders/1
@@ -132,76 +77,25 @@ Content-type: application/json
    "totalPrice": 1,
    "status": "abc",
    "notes": "abc",
-   "customer": 
-   {
-      "id": 1,
-      "personname": "abc",
-      "companyname": "abc",
-      "mailadress": "abc",
-      "phonenumber": "abc",
-      "city": "abc",
-      "street": "abc",
-      "zipcode": 1,
-      "country": "abc",
-      "discount": 1,
-      "paymentterms": "abc"
-   },
-   "printer": 
-   {
-      "id": 1,
-      "name": "abc",
-      "unprintededgemm": 1,
-      "formatname": "abc",
-      "buyprincefor4cklick": 1,
-      "buyprincefor1cklick": 1,
-      "sellpricefor4cklick": 1,
-      "sellpricefor1cklick": 1,
-      "formatwidth": 1,
-      "formatlength": 1,
-      "inactive": 1
-   },
-   "user": 
-   {
-      "id": 1,
-      "name": "abc",
-      "password": "abc",
-      "role": "abc"
-   },
-   "postProcessing": 
-   {
-      "id": 1,
-      "printerid": 1,
-      "bindingtype": "abc",
-      "standardpapername": "abc",
-      "cuttingtime": 1,
-      "cuttingcosteur": 1,
-      "cuttingstackheight": 1,
-      "cuttinglarge": 1,
-      "cuttingsmall": 1,
-      "cuttingmaxsmallformat": 1,
-      "cuttingcutcontour": 1,
-      "numbercircleoffer": 1,
-      "numbercirclecalculation": 1,
-      "numbercircleorder": 1,
-      "numbercircleservice": 1,
-      "activeuser": "abc",
-      "activeuserrole": "abc",
-      "activeuserid": "abc",
-      "programmingnote": "abc",
-      "cartonlabels": "abc",
-      "labelprinteripaddress": "abc"
-   }
+   "customerId": 1,
+   "printerId": 1,
+   "userId": 1,
+   "postProcessingId": 1
 }
 #####
 
 ################################################## products
 DELETE {{baseUrl}}/products/papers/1
 #####
+DELETE {{baseUrl}}/products/postprocessings/1
+#####
 DELETE {{baseUrl}}/products/printers/1
 #####
 GET {{baseUrl}}/products/papers
 #####
 GET {{baseUrl}}/products/papers/1
+#####
+GET {{baseUrl}}/products/postprocessings/1
 #####
 GET {{baseUrl}}/products/printers
 #####
@@ -226,6 +120,33 @@ Content-type: application/json
    "calcPricePerKg": 1,
    "stapelHöheMM": 1,
    "bogen": 1
+}
+#####
+POST {{baseUrl}}/products/postprocessings
+Content-type: application/json
+
+{
+   "id": 1,
+   "printerId": 1,
+   "bindingType": "abc",
+   "standardPaperName": "abc",
+   "cuttingTime": 1,
+   "cuttingCostEur": 1,
+   "cuttingStackHeight": 1,
+   "cuttingLarge": 1,
+   "cuttingSmall": 1,
+   "cuttingMaxSmallFormat": 1,
+   "cuttingCutContour": 1,
+   "numberCircleOffer": 1,
+   "numberCircleCalculation": 1,
+   "numberCircleOrder": 1,
+   "numberCircleService": 1,
+   "activeUser": "abc",
+   "activeUserRole": "abc",
+   "activeUserId": "abc",
+   "programmingNote": "abc",
+   "cartonLabels": "abc",
+   "labelPrinterIpAddress": "abc"
 }
 #####
 POST {{baseUrl}}/products/printers
@@ -264,6 +185,33 @@ Content-type: application/json
    "calcPricePerKg": 1,
    "stapelHöheMM": 1,
    "bogen": 1
+}
+#####
+PUT {{baseUrl}}/products/postprocessings/1
+Content-type: application/json
+
+{
+   "id": 1,
+   "printerId": 1,
+   "bindingType": "abc",
+   "standardPaperName": "abc",
+   "cuttingTime": 1,
+   "cuttingCostEur": 1,
+   "cuttingStackHeight": 1,
+   "cuttingLarge": 1,
+   "cuttingSmall": 1,
+   "cuttingMaxSmallFormat": 1,
+   "cuttingCutContour": 1,
+   "numberCircleOffer": 1,
+   "numberCircleCalculation": 1,
+   "numberCircleOrder": 1,
+   "numberCircleService": 1,
+   "activeUser": "abc",
+   "activeUserRole": "abc",
+   "activeUserId": "abc",
+   "programmingNote": "abc",
+   "cartonLabels": "abc",
+   "labelPrinterIpAddress": "abc"
 }
 #####
 PUT {{baseUrl}}/products/printers/1

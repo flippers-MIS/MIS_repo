@@ -182,4 +182,80 @@ public class ProductService(DatabaseContext db)
             throw new Exception($"Failed to delete paper.\nError: [{e}]");
         }
     }
+    ////////Postprocessing
+
+    public PostProcessing GetPostProcessingById(int id)
+    {
+        try
+        {
+            return db.PostProcessings.Where(p => p.Id == id).First();
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"PostProcess with id [{id}] not found.\nError: [{e}]");
+        }
+    }
+
+    public PostProcessing AddPostProcessing(PostProcessing postProcessing)
+    {
+        try
+        {
+            db.PostProcessings.Add(postProcessing);
+            db.SaveChanges();
+            return postProcessing;
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to add postProcess.\nError: [{e}]");
+        }
+    }
+
+    public PostProcessing UpdatePostProcessing(int id, PostProcessing dto)
+    {
+        try
+        {
+            var oldPostProcess = db.PostProcessings.Where(p => p.Id == id).First();
+
+            oldPostProcess.PrinterId = dto.PrinterId;
+            oldPostProcess.BindingType = dto.BindingType;
+            oldPostProcess.StandardPaperName = dto.StandardPaperName;
+            oldPostProcess.CuttingTime = dto.CuttingTime;
+            oldPostProcess.CuttingCostEUR = dto.CuttingCostEUR;
+            oldPostProcess.CuttingStackHeight = dto.CuttingStackHeight;
+            oldPostProcess.CuttingLarge = dto.CuttingLarge;
+            oldPostProcess.CuttingSmall = dto.CuttingSmall;
+            oldPostProcess.CuttingMaxSmallFormat = dto.CuttingMaxSmallFormat;
+            oldPostProcess.CuttingCutContour = dto.CuttingCutContour;
+            oldPostProcess.NumberCircleOffer = dto.NumberCircleOffer;
+            oldPostProcess.NumberCircleCalculation = dto.NumberCircleCalculation;
+            oldPostProcess.NumberCircleOrder = dto.NumberCircleOrder;
+            oldPostProcess.NumberCircleService = dto.NumberCircleService;
+            oldPostProcess.ActiveUser = dto.ActiveUser;
+            oldPostProcess.ActiveUserRole = dto.ActiveUserRole;
+            oldPostProcess.ActiveUserID = dto.ActiveUserID;
+            oldPostProcess.ProgrammingNote = dto.ProgrammingNote;
+            oldPostProcess.CartonLabels = dto.CartonLabels;
+            oldPostProcess.LabelPrinterIpAddress = dto.LabelPrinterIpAddress;
+
+            db.SaveChanges();
+            return dto;
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to update postProcess.\nError: [{e}]");
+        }
+    }
+
+    public void DeletePostProcessing(int id)
+    {
+        try
+        {
+            db.PostProcessings.Remove(GetPostProcessingById(id));
+            db.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"Failed to delete postProcess.\nError: [{e}]");
+        }
+    }
 }

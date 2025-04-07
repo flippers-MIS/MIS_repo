@@ -35,6 +35,17 @@ public static class ProductApi
         //DELETE
         printerGroup.MapDelete("{id}", (ProductService service, int id) => service.DeletePrinter(id));
 
+        //PostProcessing
+        var postProcessGroup = group.MapGroup("/postprocessings");
+        //GET
+        postProcessGroup.MapGet("{id}", (ProductService service, int id) => service.GetPostProcessingById(id));
+        //POST
+        postProcessGroup.MapPost("", (ProductService service, PostProcessingDto postProcessingDto) => service.AddPostProcessing(new PostProcessing().CopyFrom(postProcessingDto, ["Id"])));
+        //PUT
+        postProcessGroup.MapPut("{id}", (ProductService service, int id, PostProcessingDto postProcessingDto) => service.UpdatePostProcessing(id, new PostProcessing().CopyFrom(postProcessingDto)));
+        //DELETE
+        postProcessGroup.MapDelete("{id}", (ProductService service, int id) => service.DeletePostProcessing(id));
+
         return routes;
     }
 }

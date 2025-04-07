@@ -312,6 +312,124 @@
         }
       }
     },
+    "/products/postprocessings/{id}": {
+      "get": {
+        "tags": [
+          "MIS_Backend"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostProcessing"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "MIS_Backend"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostProcessingDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostProcessing"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "MIS_Backend"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/products/postprocessings": {
+      "post": {
+        "tags": [
+          "MIS_Backend"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostProcessingDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostProcessing"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/orders": {
       "get": {
         "tags": [
@@ -379,7 +497,14 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderDto"
+                }
+              }
+            }
           }
         }
       },
@@ -877,17 +1002,21 @@
             "type": "string",
             "nullable": true
           },
-          "customer": {
-            "$ref": "#/components/schemas/CustomerDto"
+          "customerId": {
+            "type": "integer",
+            "format": "int32"
           },
-          "printer": {
-            "$ref": "#/components/schemas/PrinterDto"
+          "printerId": {
+            "type": "integer",
+            "format": "int32"
           },
-          "user": {
-            "$ref": "#/components/schemas/UserDto"
+          "userId": {
+            "type": "integer",
+            "format": "int32"
           },
-          "postProcessing": {
-            "$ref": "#/components/schemas/PostProcessingDto"
+          "postProcessingId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

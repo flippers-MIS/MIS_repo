@@ -19,13 +19,17 @@
         public string Status { get; set; } = null!;
 
         public string? Notes { get; set; }
+        //public CustomerDto? Customer { get; set; }
+        public int CustomerId { get; set; }
 
-        public CustomerDto Customer { get; set; } = null!;
+        //public PrinterDto? Printer { get; set; }
+        public int PrinterId { get; set; }
 
-        public PrinterDto Printer { get; set; } = null!;
 
-        public UserDto User { get; set; } = null!;
-        public PostProcessingDto? PostProcessing { get; set; }
+        //public UserDto? User { get; set; }
+        public int UserId { get; set; }
 
+        //public PostProcessingDto? PostProcessing { get; set; }
+        public int PostProcessingId { get; set; } = 0;
     }
 }
