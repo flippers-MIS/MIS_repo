@@ -140,7 +140,6 @@ async function addRow()
   }
   Array.from(inputs).some(input => input.value = "");
   clearbutton.disabled = true;
-  payment.value = "2";
 }
 
 
@@ -164,7 +163,6 @@ updateButton.addEventListener('click', async () => {
         ZipCode: zipCode.value,
         Country: country.value,
         Discount: discount.value,
-        PaymentTerms: payment.value,
     };
     console.log(JSON.stringify(newCustomer));
 
@@ -197,7 +195,6 @@ updateButton.addEventListener('click', async () => {
     clearbutton.disabled = true;
     updateButton.disabled = true;
     updatePaperId = 0;
-    payment.value = "2";
 })
 
 
