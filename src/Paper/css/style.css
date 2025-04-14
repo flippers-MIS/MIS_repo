@@ -1,10 +1,12 @@
 body {
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
   background-color: #f4f4f4;
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 60%;
   margin: 20px auto;
   background: white;
   border: 1px solid #ccc;
@@ -54,7 +56,7 @@ body {
   border-collapse: collapse;
 }
 
-#paper-table th, #customer-table td {
+#paper-table th, #paper-table td {
   text-align: left;
   padding: 8px;
   border: 1px solid #ddd;
@@ -72,8 +74,6 @@ body {
 
 .paper-details {
   padding-top: 10px;
-  display: flex;
-  justify-content: space-between;
 }
 
 .form-container {
@@ -98,18 +98,37 @@ body {
   margin-bottom: 10px;
 }
 
+
 .form-row label {
   font-weight: bold;
-  min-width: 130px;
+  width: 130px;
   white-space: nowrap;
   text-align: right;
 }
+
+.form-row.short-labels-calc .shortenedLbl {
+  width: 25px;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+
 
 .form-row input {
   flex: 1;
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.form-row.short-inputs .shortenedInput {
+  width: 80%;
+  flex: none;
+}
+
+.form-row.short-inputs-storage .shortenedInput{
+  width: 61%;
+  flex: none;
 }
 
 /*-------------------------------------------------------------------------------*/
@@ -151,4 +170,20 @@ body {
 
 #PaperId {
   width: 90px;
+}
+
+#btnLagerbestand {
+  background-color: #0078D7;
+  color: white;
+  font-size: 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-row.short-inputs-storage .price-storage{
+  width: 15%;
+  padding: 5px;
+  align-content: center;
+  text-align: center;
 }
