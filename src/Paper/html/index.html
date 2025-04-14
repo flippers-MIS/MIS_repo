@@ -67,7 +67,7 @@
             <div class="form-row flex">
               <label for="lagerbestand">Lagerbestand</label>
               <input type="number" id="lagerbestand">
-              <button id="btnLagerbestand">Wareneingang</button>
+              <button id="btnLagerbestand" type="button">Wareneingang</button>
             </div>
 
 
@@ -116,6 +116,13 @@
 
           </form>
         </div>
+
+    <div id="popup"style="display: none; position: fixed; top: 30%; left: 50%; transform: translate(-50%, -30%); padding: 20px; background-color: white; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0,0,0,0.3); z-index: 1000;">
+      <label for="inputText">Gib etwas ein:</label>
+      <input type="number" id="storageInput">
+      <button id="closePopup" type="button">Abbrechen</button>
+      <button id="okPopup" type="button">Ok</button>
+    </div>
     </div>
       <script type="module" src="../js/app.mjs"></script>
 </body>
