@@ -138,3 +138,8 @@ input[type='checkbox'] {
 .dimensions input:first-child {
   margin-right: 25px;
 }
+
+#backToDashboard {
+  color: white;
+  text-decoration: none;
+}

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/calculation.css">
+    <title>Kalkulation</title>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Kalkulation</h1>
+            <button class="button-header" id="button-add">Hinzufügen</button>
+            <button class="button-header" id="button-update" disabled="true">Update</button>
+            <button class="button-header" id="button-clear" disabled="true">Zurücksetzen</button>
+            <button class="button-header"><a href="index.html" id="backToDashboard">Zurück</a></button>
+        </header>
+
+        <div id="userMessage"></div>
+
+
+
+        <div class="paper-details">
+            <form>
+
+                <div class="customer">
+                    <div class="customerName">
+                        <div class="form-row">
+                            <label for="kundennr">Kunden Nr</label>
+                            <input type="number" id="kundennr" disabled>
+                        </div>
+    
+                        <div class="form-row">
+                            <input type="text" id="name" disabled>
+                        </div>
+                        <div class="form-row">
+                            <input type="text" id="name2" disabled>
+                        </div>
+    
+                        <div class="form-row">
+                            <select id="zahlung">
+                                <option value="1">10 Tage 3%, 30 Tage ohne Abzug</option>
+                                <option selected value="2">10 Tage ohne Abzug</option>
+                                <option value="3">14 Tage 3%, 30 Tage ohne Abzug</option>
+                                <option value="4">BAR</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="customerAddress">
+                        <div class="form-row">
+                            <label for="strasse">Straße</label>
+                            <input type="text" id="strasse" disabled>
+                        </div>
+    
+                        <div class="form-row double-input">
+                            <label for="plz">PLZ / Ort</label>
+                            <input class="plz" type="text" id="plz" disabled>
+                            <input class="ort" type="text" id="ort" disabled>
+                        </div>
+    
+                        <div class="form-row double-input">
+                            <label for="land">Land</label>
+                            <input class="land" type="text" id="land">
+                        </div>
+
+                        <div class="form-row">
+                            <button id="btnCustomer" type="button">Kunde Hinzufügen</button>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="blue-line">
+
+                <div class="product">
+                    <div class="productManuel">
+                        <div class="productTitle">
+                            <div class="form-row">
+                                <label for="kundennr">Produkt</label>
+                                <input type="text" id="kundennr">
+                            </div>
+                            <div class="form-row">
+                                <label for="kundennr">Titel</label>
+                                <input type="text" id="kundennr">
+                            </div>
+                            <div class="form-row">
+                                <label>Bindungsart</label>
+                                <select id="bindung">
+                                    <option value="1" selected>ohne Bindung</option>
+                                    <option value="2">mit Bindung</option>
+                                </select>
+                            </div>
+                            <div class="form-row double-input">
+                                <label>Druckformat</label>
+                                <input class="fromatL" type="number" id="formatL">
+                                <p>X</p>
+                                <input class="formatB" type="number" id="formatB">
+                            </div>
+                            <div class="form-row double-input" id="endFormat" style="opacity: 0;">
+                                <label>Endformat</label>
+                                <input type="number">
+                                <p>X</p>
+                                <input type="number">
+                            </div>
+                            <div class="form-row double-input">
+                                <label for="plz">Seiten</label>
+                                <input class="plz" type="number" id="plz">
+                                <p>0</p>
+                            </div>
+                        </div>
+                        <div class="productCutting">
+                            <div class="form-row">
+                                <label>Zwischenschnitt</label>
+                                <input type="number" id="zwischenschnitt" value="4">
+                            </div>
+                            <div class="form-row">
+                                <label>Nutzen berechnet</label>
+                                <input type="number" id="nutzen" disabled>
+                            </div>
+                            <div class="form-row">
+                                <label>Nutzen manuell</label>
+                                <input type="number" id="nutzenM">
+                            </div>
+                            <div class="form-row">
+                                <label>Endbeschnitt</label>
+                                <select id="endbeschnitt">
+                                    <option value="ja" selected>Ja</option>
+                                    <option value="nein">Nein</option>
+                                </select>
+                            </div>
+                            <div class="form-row">
+                                <label>Versandkosten</label>
+                                <input type="number" id="versandkosten" value="8">
+                            </div>
+                            <div class="form-row">
+                                <label></label>
+                                <input type="number" style="opacity: 0;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="productPaper">
+                        <table id="paperTable">
+                            <thead>
+                              <tr>
+                                <th>Seiten</th>
+                                <th>Druck</th>
+                                <th>Name</th>
+                                <th>Materialbezeichnung</th>
+                                <th>Hersteller</th>
+                                <th>Format</th>
+                                <th>Preis</th>
+                                <th>Druckmaschine</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- table body -->
+                            </tbody>
+                          </table>
+                          <div class="form-row">
+                            <button id="btnPaper" type="button" style="margin-top: 10px;">Papier Hinzufügen</button>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="blue-line">
+
+                <div style="display: flex;">
+                    <div style="width: 33%; margin-right: 10px;">
+                        <div class="form-row">
+                            <label>Auflage</label>
+                            <input type="number" id="batch1">
+                        </div>
+                        <div class="form-row">
+                            <label>Auflage Zusatz</label>
+                            <input type="text">
+                        </div>
+                        <div class="form-row">
+                            <label>Druck</label>
+                            <p id="print1a" style="width: 80px;">0.00</p>
+                            <p id="print1b" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row">
+                            <label>Material</label>
+                            <p id="material1a" style="width: 80px;">0.00</p>
+                            <p id="material1b" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row" style="opacity: 0;">
+                            <label>RK</label>
+                            <p id="rk1" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row" style="opacity: 0;">
+                            <label>Verarbeiung</label>
+                            <p id="finish1" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row">
+                            <label>Schneiden</label>
+                            <p id="cut1" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row" style="opacity: 0;">
+                            <label>EV manuell</label>
+                            <p id="manuell1" style="width: 80px;"></p>
+                        </div>
+                        <div class="form-row">
+                            <label>Zw. Summe</label>
+                            <p id="sum1a" style="width: 80px;">0.00</p>
+                            <p id="sum1b" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row">
+                            <label>Faktor</label>
+                            <p id="factor1" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row">
+                            <label>Preis manuell</label>
+                            <input type="number" id="priceManuell1">
+                        </div>
+                        <div class="form-row">
+                            <label>Preis</label>
+                            <input type="number" id="price1">
+                        </div>
+                        <div class="form-row">
+                            <label>Einzelpreis</label>
+                            <p id="singlePrice1">?</p>
+                        </div>
+                    </div>
+                    <div style="margin-right: 10px;">
+                        <div class="form-row">
+                            <input type="number" id="batch2">
+                        </div>
+                        <div class="form-row">
+                            <input type="text">
+                        </div>
+                        <div class="form-row">
+                            <p id="print2a" style="width: 80px;">0.00</p>
+                            <p id="print2b" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row">
+                            <p id="material2a" style="width: 80px;">0.00</p>
+                            <p id="material2b" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row" style="opacity: 0;">
+                            <label>test</label>
+                            <p id="rk2" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row" style="opacity: 0;">
+                            <label>test</label>
+                            <p id="finish2" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row">
+                            <p id="cut2" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row" style="opacity: 0;">
+                            <label>test</label>
+                            <p id="manuell2" style="width: 80px;"></p>
+                        </div>
+                        <div class="form-row">
+                            <p id="sum2a" style="width: 80px;">0.00</p>
+                            <p id="sum2b" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row">
+                            <p id="factor2" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row">
+                            <input type="number" id="priceManuell2">
+                        </div>
+                        <div class="form-row">
+                            <input type="number" id="price2">
+                        </div>
+                        <div class="form-row">
+                            <p id="singlePrice2">?</p>
+                        </div>
+                    </div>
+                    <div style="margin-right: 10px;">
+                        <div class="form-row">
+                            <input type="number" id="batch3">
+                        </div>
+                        <div class="form-row">
+                            <input type="text">
+                        </div>
+                        <div class="form-row">
+                            <p id="print3a" style="width: 80px;">0.00</p>
+                            <p id="print3b" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row">
+                            <p id="material3a" style="width: 80px;">0.00</p>
+                            <p id="material3b" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row" style="opacity: 0;">
+                            <label>test</label>
+                            <p id="rk3" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row" style="opacity: 0;">
+                            <label>test</label>
+                            <p id="finish3" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row">
+                            <p id="cut3" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row" style="opacity: 0;">
+                            <label>test</label>
+                            <p id="manuell3" style="width: 80px;"></p>
+                        </div>
+                        <div class="form-row">
+                            <p id="sum3a" style="width: 80px;">0.00</p>
+                            <p id="sum3b" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row">
+                            <p id="factor3" style="width: 80px;">0.00</p>
+                        </div>
+                        <div class="form-row">
+                            <input type="number" id="priceManuell3">
+                        </div>
+                        <div class="form-row">
+                            <input type="number" id="price3">
+                        </div>
+                        <div class="form-row">
+                            <p id="singlePrice3">?</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-row">
+                            <label style="width: 60px;">Rabatt</label>
+                            <input type="number" id="discount" value="0" style="width: 70px;">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div id="popup">
+            <div id="customer-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Kunden Nr</th>
+                      <th>Name</th>
+                      <th>PLZ</th>
+                      <th>Ort</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- table body -->
+                  </tbody>
+                </table>
+            <button id="closePopup" type="button">Abbrechen</button>
+        </div>
+    </div>
+    <div id="popupPaper">
+        <div id="paper-table-popup">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Grammatur</th>
+                  <th>Format</th>
+                  <th>Hersteller</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- table body -->
+              </tbody>
+            </table>
+        <button id="closePaper" type="button">Abbrechen</button>
+    </div>
+</div>
+    <script type="module" src="../js/calculation.mjs"></script>
+</body>
+
+</html>

@@ -161,3 +161,9 @@ body {
     padding: 5px;
     width: 360px;
   }
+
+
+  #backToDashboard {
+    color: white;
+    text-decoration: none;
+  }

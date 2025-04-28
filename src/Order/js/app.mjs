@@ -288,8 +288,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 paperJson = await Helpers.fetchTable(path);
-                initializeTable(paperJson); 
-                userMessage.textContent = "Papier wurde erfolgreich gelöscht";
+                initializeTable(printerJson); 
+                userMessage.textContent = "Papier wurde erfolgreich auf inaktiv gestellt";
                 userMessage.style.color = "green"; 
             } catch (error) {
                 console.error("Fehler beim Löschen des Papiers: ", error);

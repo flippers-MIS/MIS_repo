@@ -1,0 +1,194 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .container {
+    max-width: 60%;
+    margin: 20px auto;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .header h1 {
+    font-size: 1.5em;
+    margin: 0;
+  }
+  
+  .button-header {
+    background-color: #0078D7;
+    color: white;
+    font-size: 15px;
+    border: none;
+    padding: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .button-header:hover {
+    background-color: #005bb5;
+  }
+  
+  .button-header:disabled {
+    background-color: #d6d6d6;
+    color: #a1a1a1;
+    cursor: not-allowed;
+  }
+  
+  /*-------------------------------------------------------------------------------*/
+  
+  #paper-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #paper-table th, #paper-table td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  #paper-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  #paper-table tbody tr:hover {
+    background-color: lightgray;
+  }
+  
+  /*-------------------------------------------------------------------------------*/
+  
+  .paper-details {
+    padding-top: 10px;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+  }
+  
+  .right-section {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    padding-left: 20px;
+    border-left: 2px solid #ccc;
+  }
+  
+  .form-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  
+  .form-row label {
+    font-weight: bold;
+    width: 130px;
+    white-space: nowrap;
+    text-align: right;
+  }
+  
+  .form-row.short-labels-calc .shortenedLbl {
+    width: 25px;
+    overflow: visible;
+    white-space: nowrap;
+  }
+  
+  
+  
+  .form-row input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-row.short-inputs .shortenedInput {
+    width: 80%;
+    flex: none;
+  }
+  
+  .form-row.short-inputs-storage .shortenedInput{
+    width: 61%;
+    flex: none;
+  }
+  
+  /*-------------------------------------------------------------------------------*/
+  
+  .blue-line {
+    border: none;
+    border-top: 2px solid #ccc;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .context-menu {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    display: none;
+    z-index: 1000;
+  }
+  
+  
+  .context-menu button {
+    background: white;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  
+  .context-menu button:hover {
+    background: lightgrey;
+  }
+  
+  
+  /*-------------------------------------------------------------------------------*/
+  
+  #PaperId {
+    width: 90px;
+  }
+  
+  #btnLagerbestand {
+    background-color: #0078D7;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .form-row.short-inputs-storage .price-storage{
+    width: 15%;
+    padding: 5px;
+    align-content: center;
+    text-align: center;
+  }
+  
+  #backToDashboard {
+    color: white;
+    text-decoration: none;
+  }
