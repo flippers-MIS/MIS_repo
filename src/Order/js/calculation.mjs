@@ -9,6 +9,9 @@ let usedPapers = [];
 let paperRows = [];
 let usedPrinter;
 
+let updateCalcId;
+let calculation;
+
 let sheets1;
 let sheets2;
 let sheets3;
@@ -51,6 +54,8 @@ const Country = document.querySelector('#land');
 const formatL = document.querySelector('#formatL');
 const formatB = document.querySelector('#formatB');
 const endFormat = document.querySelector('#endFormat');
+const endFormatL = document.querySelector('#endFormatL');
+const endFormatB = document.querySelector('#endFormatB');
 const binding = document.querySelector('#bindung');
 const gap = document.querySelector('#zwischenschnitt');
 const nutzen = document.querySelector('#nutzen');
@@ -127,6 +132,22 @@ const updateButton = document.querySelector("#button-update");
 const addbutton = document.getElementById('button-add');
 const clearbutton = document.getElementById('button-clear');
 
+// restlichen werte für die db
+
+let customerId;
+let paperId;
+let printerId;
+let productName = document.querySelector('#produktName');
+let title = document.querySelector('#title');
+let pages = document.querySelector('#seiten');
+let paperPages;
+let schoen;
+let wider;
+let materialName;
+let batchInformation1 = document.querySelector('#batchZusatz1');
+let batchInformation2 = document.querySelector('#batchZusatz2');
+let batchInformation3 = document.querySelector('#batchZusatz3');
+
 
 function initializeTable(customerJson, paperJson, printerJson) {
     customers = [];
@@ -153,9 +174,12 @@ function initializeTable(customerJson, paperJson, printerJson) {
             City.value = customer.city;
             Country.value = customer.country;
 
+            customerId = customer.id;
+
             popup.style.display = 'none';
 
             clearbutton.disabled = false
+            if (updateCalcId !== undefined) updateButton.disabled = false;
         });
 
         table.appendChild(row);
@@ -179,56 +203,9 @@ function initializeTable(customerJson, paperJson, printerJson) {
             const paper = papers.find(item => item.id === parseInt(e.currentTarget.getAttribute('data-id')));
 
             if (usedPapers.length !== 4) {
-                const rowPaper = document.createElement('tr');
-                rowPaper.setAttribute('data-id', index);
-                index++;
-                rowPaper.innerHTML = `
-                <td><input type="number" style="width: 20px;" onChange="calculatePaper();"></td>
-                <td>
-                    <select>
-                        <option value=0>0</option>
-                        <option value=1>1</option>
-                        <option value=4>4</option>
-                    </select>
-                     / 
-                    <select>
-                        <option value=0>0</option>
-                        <option value=1>1</option>
-                        <option value=4>4</option>
-                    </select>
-                </td>
-                <td><input type="text"></td>
-                <td>${paper.grammatur}  ${paper.name}</td>
-                <td>${paper.brand}</td>
-                <td>${paper.formatLength} X ${paper.formatWidth}</td>
-                <td>${paper.sellPrice}</td>
-                `;
-
-                const combobox = document.createElement('select');
-
-                printerJson.forEach((printer, i) => {
-                    printers.push(printer);
-                    const option = document.createElement('option');
-                    if (i === 1) option.selected = true;
-                    option.value = i;
-                    option.innerHTML = printer.name;
-                    combobox.appendChild(option);
-                });
-
-                const td = document.createElement('td');
-
-                combobox.style.width = "100px";
-
-                combobox.addEventListener('change', checkFields);
-
-                td.appendChild(combobox);
-                rowPaper.appendChild(td);
-                paperRows.push(rowPaper);
-                paperTable.appendChild(rowPaper);
+                addPaper(index, printerJson, paper);
 
                 popupPaper.style.display = 'none';
-
-                usedPapers.push(paper);
 
                 paperEventListeners();
             } else {
@@ -242,6 +219,67 @@ function initializeTable(customerJson, paperJson, printerJson) {
 
         tablePaperPopup.appendChild(row);
     });
+
+    const calc = localStorage.getItem('calculation', null);
+    if (calc) {
+        calculation = JSON.parse(calc);
+        updateCalcId = calculation.id;
+        productName.value = calculation.productName;
+        title.value = calculation.title;
+        binding.value = calculation.binding;
+        formatL.value = calculation.formatL;
+        formatB.value = calculation.formatB;
+        endFormatL.value = calculation.endFormatL === 0 ? "" : calculation.nutzenM;
+        endFormatB.value = calculation.endFormatB === 0 ? "" : calculation.nutzenM;
+        pages.value = calculation.pages;
+        gap.value = calculation.gap;
+        nutzen.value = calculation.nutzen;
+        nutzenM.value = calculation.nutzenM === 0 ? "" : calculation.nutzenM;
+        trimming.value = calculation.trimming;
+        shippingCost.value = calculation.shippingCost;
+        batch1.value = calculation.batch1;
+        batchInformation1.value = calculation.batchInformation1;
+        priceManuell1.value = calculation.priceManuell1 === 0 ? "" : calculation.priceManuell;
+        price1.value = calculation.price1;
+        batch2.value = calculation.batch2;
+        batchInformation2.value = calculation.batchInformation2;
+        priceManuell2.value = calculation.priceManuell2 === 0 ? "" : calculation.priceManuell2;
+        price2.value = calculation.price2;
+        batch3.value = calculation.batch3;
+        batchInformation3.value = calculation.batchInformation3;
+        priceManuell3.value = calculation.priceManuell3 === 0 ? "" : calculation.priceManuell3;
+        price3.value = calculation.price3;
+        discount.value = calculation.discount;
+
+        const customer = customers.find(item => item.id === calculation.customerId);
+
+        CustomerNr.value = customer.id;
+        CustomerName.value = customer.personName;
+        CustomerName2.value = customer.companyName;
+        CustomerPaymentTerms.value = customer.paymentTerms;
+        Street.value = customer.street;
+        ZIP.value = customer.zipCode;
+        City.value = customer.city;
+        Country.value = customer.country;
+
+        customerId = customer.id;
+
+        const paper = papers.find(item => item.id === calculation.paperId);
+        addPaper(index, printerJson, paper);
+
+        paperRows[0].children[0].children[0].value = calculation.paperPages;
+        paperRows[0].children[1].children[0].value = calculation.schoen;
+        paperRows[0].children[1].children[1].value = calculation.wider;
+        paperRows[0].children[2].children[0].value = calculation.materialName;
+
+        paperEventListeners();
+    }
+    localStorage.removeItem('calculation');
+
+    checkFields();
+    addbutton.disabled = true;
+    updateButton.disabled = true;
+    clearbutton.disabled = true;
 }
 
 function paperEventListeners() 
@@ -249,47 +287,83 @@ function paperEventListeners()
     paperRows[0].children[0].children[0].addEventListener('input', checkFields);
     paperRows[0].children[1].children[0].addEventListener('change', checkFields);
     paperRows[0].children[1].children[1].addEventListener('change', checkFields);
+    paperRows[0].children[2].children[0].addEventListener('input', checkFields);
 }
 
+function addPaper(index, printerJson, paper) {
+    const rowPaper = document.createElement('tr');
+    rowPaper.setAttribute('data-id', index);
+    index++;
+    rowPaper.innerHTML = `
+    <td><input type="number" style="width: 20px;" onChange="calculatePaper();"></td>
+    <td>
+        <select>
+            <option value=0>0</option>
+            <option value=1>1</option>
+            <option value=4>4</option>
+        </select>
+            / 
+        <select>
+            <option value=0>0</option>
+            <option value=1>1</option>
+            <option value=4>4</option>
+        </select>
+    </td>
+    <td><input type="text" value="Material 1"></td>
+    <td>${paper.grammatur}  ${paper.name}</td>
+    <td>${paper.brand}</td>
+    <td>${paper.formatLength} X ${paper.formatWidth}</td>
+    <td>${paper.sellPrice}</td>
+    `;
 
+    const combobox = document.createElement('select');
+
+    printerJson.forEach((printer, i) => {
+        printers.push(printer);
+        const option = document.createElement('option');
+        if (i === 1) option.selected = true;
+        option.value = i;
+        option.innerHTML = printer.formatName;
+        combobox.appendChild(option);
+        printerId = printer.id;
+    });
+
+    const td = document.createElement('td');
+
+    combobox.style.width = "100px";
+
+    combobox.addEventListener('change', checkFields);
+
+    td.appendChild(combobox);
+    rowPaper.appendChild(td);
+    paperRows.push(rowPaper);
+    paperTable.appendChild(rowPaper);
+
+    paperId = paper.id;
+
+    usedPapers.push(paper);
+}
 
 
 /*------------------------------------------ADD-BUTTON---------------------------------------------------*/
 
 
 
-
 async function addRow() 
 {
-  const newPaper = 
-  {
-    Name: papertype.value,
-    Brand: brand.value,
-    BuyPrice: priceEk.value,
-    SellPrice: priceVk.value,
-    Amount: inStorage .value,
-    FormatLength: formatL.value,
-    FormatWidth: formatB.value,
-    Grammatur: grammatur.value,
-    Volume: volume.value,
-    PricePerKg: preis.value,
-    Kg: amountPerKg.value,
-    CalcPricePerKg: bogenpreis.value,
-    StapelHöheMM: stapelhöhe.value,
-    Bogen: bogen.value,
-  };
+  const newCalculation = getNewCalculation();
 
-  console.log(JSON.stringify(newPaper));
+  console.log(JSON.stringify(newCalculation));
   
   addbutton.disabled = true;
   try 
   {
     console.log('sending request');
-    const response = await fetch(path, 
+    const response = await fetch(`${path}/orders`, 
     {
         method: "POST",
         headers: { "Content-Type": "application/json", },
-        body: JSON.stringify(newPaper),
+        body: JSON.stringify(newCalculation),
     });
 
     const data = await response.json();
@@ -299,22 +373,52 @@ async function addRow()
     {
         throw new Error(`Fehler beim Hinzufügen: ${response.status}`);
     }
-
-    paperJson = await Helpers.fetchTable(path);
-    initializeTable(paperJson); 
-    userMessage.textContent = "Drucker wurde erfolgreich hinzugefügt";
-    userMessage.style.color = "green";
   } 
   catch (error) 
   {
-    console.error("Fehler beim Hinzufügen eines neuen Druckers: ", error);
+    console.error("Fehler beim Hinzufügen einer neuen Kalkulation: ", error);
   }
-  Array.from(inputs).some(input => input.value = "");
-  clearbutton.disabled = true;
+  location.href = "/src/Order/html/index.html";
 }
 
-
-
+function getNewCalculation() {
+    return {
+        CustomerId: customerId,
+        PaperId: paperId,
+        PrinterId: printerId,
+        ProductName: productName.value,
+        Title: title.value,
+        Binding: parseInt(binding.value),
+        FormatL: parseInt(formatL.value),
+        FormatB: parseInt(formatB.value),
+        endFormatL: parseInt(endFormatL.value) ? parseInt(endFormatL.value) : 0,
+        endFormatB: parseInt(endFormatB.value) ? parseInt(endFormatB.value) : 0,
+        Pages: parseInt(pages.value),
+        Gap: parseInt(gap.value),
+        Nutzen: parseInt(nutzen.value),
+        NutzenM: parseInt(nutzenM.value) ? parseInt(nutzenM.value) : 0,
+        Trimming: trimming.value,
+        ShippingCost: parseInt(shippingCost.value),
+        PaperPages: parseInt(paperPages),
+        Schoen: schoen,
+        Wider: wider,
+        MaterialName: materialName,
+        Batch1: parseInt(batch1.value),
+        BatchInformation1: batchInformation1.value,
+        PriceManuell1: parseFloat(priceManuell1.value) ? parseFloat(priceManuell1.value) : 0,
+        Price1: parseFloat(price1.value),
+        Batch2: parseInt(batch2.value),
+        BatchInformation2: batchInformation2.value,
+        PriceManuell2: parseFloat(priceManuell2.value) ? parseFloat(priceManuell2.value) : 0,
+        Price2: parseFloat(price2.value),
+        Batch3: parseInt(batch3.value),
+        BatchInformation3: batchInformation3.value,
+        PriceManuell3: parseFloat(priceManuell3.value) ? parseFloat(priceManuell3.value) : 0,
+        Price3: parseFloat(price3.value),
+        Discount: parseInt(discount.value),
+        Date: new Date().toLocaleDateString("en-GB"),
+    }
+}
 
 
 /*------------------------------------------UPDATE-BUTTON---------------------------------------------------*/
@@ -323,33 +427,16 @@ async function addRow()
 
 
 updateButton.addEventListener('click', async () => {
-    const newCustomer = 
-    {
-        Name: papertype.value,
-        Brand: brand.value,
-        BuyPrice: priceEk.value,
-        SellPrice: priceVk.value,
-        Amount: inStorage .value,
-        FormatLength: formatL.value,
-        FormatWidth: formatB.value,
-        Grammatur: grammatur.value,
-        Volume: volume.value,
-        PricePerKg: preis.value,
-        Kg: amountPerKg.value,
-        CalcPricePerKg: bogenpreis.value,
-        StapelHöheMM: stapelhöhe.value,
-        Bogen: bogen.value,
-    };
-    console.log(JSON.stringify(newCustomer));
-
+    const newCalculation = getNewCalculation();
+    console.log(JSON.stringify(newCalculation));
 
     try 
     {
-      const response = await fetch(`${path}/${updatePaperId}`, 
+      const response = await fetch(`${path}/orders/${updateCalcId}`, 
       {
           method: "PUT",
           headers: { "Content-Type": "application/json", },
-          body: JSON.stringify(newCustomer), // Daten an Server senden
+          body: JSON.stringify(newCalculation), // Daten an Server senden
       });
   
       if (!response.ok) 
@@ -357,20 +444,12 @@ updateButton.addEventListener('click', async () => {
           throw new Error(`Response beim PUT-Request fehlerhaft: ${response.status}`);
       }
   
-      paperJson = await Helpers.fetchTable(path);
-      initializeTable(paperJson); 
-      userMessage.textContent = "Drucker wurde erfolgreich geupdated";
-      userMessage.style.color = "green";  
     } 
     catch (error) 
     {
       console.error("Fehler beim Hinzufügen eines neuen Druckers: ", error);
     }
-  
-    Array.from(inputs).some(input => input.value = "");
-    clearbutton.disabled = true;
-    updateButton.disabled = true;
-    updatePaperId = 0;
+    location.href = "/src/Order/html/index.html";
 })
 
 
@@ -379,10 +458,12 @@ updateButton.addEventListener('click', async () => {
 
 function calculatePaper() 
 {
+    materialName = paperRows[0].children[2].children[0].value;
     const pages = paperRows[0].children[0].children[0].value;
+    paperPages = pages;
     if (pages !== "") {
-        const schoen = parseInt(paperRows[0].children[1].children[0].value);
-        const wider = parseInt(paperRows[0].children[1].children[1].value);
+        schoen = parseInt(paperRows[0].children[1].children[0].value);
+        wider = parseInt(paperRows[0].children[1].children[1].value);
     
         if (schoen !== 0 && wider !== 0) {
             paperPrice = ((usedPapers[0].sellPrice / 1000) / 2) * parseInt(pages);
@@ -468,21 +549,21 @@ function checkFields()
 
     let costs1 = printMaterialCosts(batch1, print1a, print1b, material1a, material1b);
     let productionCosts1 = sumCosts(batch1, cut1, costs1[0], costs1[1], sum1a, sum1b);
-    endPriceCalc(productionCosts1, factor1, priceManuell1, price1, singlePrice1);
+    endPriceCalc(batch1, productionCosts1, factor1, priceManuell1, price1, singlePrice1);
 
     let costs2 = printMaterialCosts(batch2, print2a, print2b, material2a, material2b);
     let productionCosts2 = sumCosts(batch2, cut2, costs2[0], costs2[1], sum2a, sum2b);
-    endPriceCalc(productionCosts2, factor2, priceManuell2, price2, singlePrice2);
+    endPriceCalc(batch2, productionCosts2, factor2, priceManuell2, price2, singlePrice2);
 
     let costs3 = printMaterialCosts(batch3, print3a, print3b, material3a, material3b);
     let productionCosts3 = sumCosts(batch3, cut3, costs3[0], costs3[1], sum3a, sum3b);
-    endPriceCalc(productionCosts3, factor3, priceManuell3, price3, singlePrice3);
+    endPriceCalc(batch3, productionCosts3, factor3, priceManuell3, price3, singlePrice3);
 
-    const allFilled = Array.from(inputs).every(input => input.value.trim() !== "" || input.id === "storageInput");
+    // const allFilled = Array.from(inputs).every(input => input.value.trim() !== "" || input.id === "storageInput");
     const anyFilled = Array.from(inputs).some(input => input.value.trim() !== "" || !input.value);
 
-    addbutton.disabled = !allFilled;
-    updateButton.disabled = !anyFilled;
+    addbutton.disabled = updateCalcId !== undefined;
+    updateButton.disabled = updateCalcId === undefined;
     clearbutton.disabled = !anyFilled;
 }
 
@@ -499,10 +580,10 @@ function printMaterialCosts(batch, printA, printB, materialA, materialB) {
     let materialCostsA = (Math.ceil(parseInt(batch.value) / parseInt(nutzen.value)) * paperPrice);
     let materialCostsB = (Math.ceil(parseInt(batch.value) / parseInt(nutzen.value)) * paperPriceEk);
 
-    printA.innerHTML = printCostsA.toFixed(2);
-    printB.innerHTML = printCostsB.toFixed(2);
-    materialA.innerHTML = materialCostsA.toFixed(2);
-    materialB.innerHTML = materialCostsB.toFixed(2);
+    printA.innerHTML = isNaN(printCostsA.toFixed(2)) ? "0.00" : printCostsA.toFixed(2);
+    printB.innerHTML = isNaN(printCostsB.toFixed(2)) ? "0.00" : printCostsB.toFixed(2);
+    materialA.innerHTML = isNaN(materialCostsA.toFixed(2)) ? "0.00" : materialCostsA.toFixed(2);
+    materialB.innerHTML = isNaN(materialCostsB.toFixed(2)) ? "0.00" : materialCostsB.toFixed(2);
 
     return [printCostsA + materialCostsA, printCostsB + materialCostsB];
 }
@@ -517,32 +598,32 @@ function sumCosts(batch, cut, costsA, costsB, sumA, sumB) {
     } else {
         cutingCosts = 0;
     }
-    cut.innerHTML = cutingCosts;
+    cut.innerHTML = isNaN(cutingCosts.toFixed(2)) ? "0.00" : cutingCosts.toFixed(2);
 
     let productionCostsA = costsA + parseFloat(cut.innerHTML);
     let productionCostsB = costsB;
 
-    sumA.innerHTML = productionCostsA.toFixed(2);
-    sumB.innerHTML = productionCostsB.toFixed(2);
+    sumA.innerHTML = isNaN(productionCostsA.toFixed(2)) ? "0.00" : productionCostsA.toFixed(2);
+    sumB.innerHTML = isNaN(productionCostsB.toFixed(2)) ? "0.00" : productionCostsB.toFixed(2);
 
     return productionCostsA;
 }
 
-function endPriceCalc(productionCosts, factorLabel, priceManuell, price, singlePrice) {
+function endPriceCalc(batch, productionCosts, factorLabel, priceManuell, price, singlePrice) {
     let factor;
 
     if (productionCosts < 15) factor = 2;
     else if ((2 - (((2 - 1.2) / 100) * productionCosts) / 3.5) < 1.2) factor = 1.2;
     else factor = (2 - (((2 - 1.2) / 100) * productionCosts) / 3.5);
 
-    factorLabel.innerHTML = factor.toFixed(2);
+    factorLabel.innerHTML = isNaN(factor.toFixed(2)) ? "0.00" : factor.toFixed(2);
 
     let endPrice = priceManuell.value !== "" ? priceManuell.value : 
                    Math.ceil((productionCosts * factor) * (1 - (parseInt(discount.value) / 100)) + parseInt(shippingCost.value));
 
     price.value = endPrice;
 
-    singlePrice.innerHTML = (endPrice / parseInt(batch1.value)).toFixed(2);
+    singlePrice.innerHTML = isNaN((endPrice / parseInt(batch.value)).toFixed(3)) ? "?" : (endPrice / parseInt(batch.value)).toFixed(3);
 }
 
 /*------------------------------------------DELETE-BUTTON---------------------------------------------------*/
@@ -612,7 +693,7 @@ clearbutton.addEventListener('click', () => {
     clearbutton.disabled = true;
     addbutton.disabled = true;
     updateButton.disabled = true;
-    updatePaperId = 0;
+    updateCalcId = 0;
     surcharge.innerHTML = '... % Aufschlag';
 });
 
@@ -620,11 +701,6 @@ clearbutton.addEventListener('click', () => {
 addbutton.addEventListener('click', async () => {
     addRow();
 });
-
-
-
-
-
 
 //Main
 let customerJson = await Helpers.fetchTable(`${path}/customers`);

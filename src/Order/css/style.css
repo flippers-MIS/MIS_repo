@@ -51,22 +51,22 @@ body {
   
   /*-------------------------------------------------------------------------------*/
   
-  #paper-table table {
+  #calc-table table {
     width: 100%;
     border-collapse: collapse;
   }
   
-  #paper-table th, #paper-table td {
+  #calc-table th, #calc-table td {
     text-align: left;
     padding: 8px;
     border: 1px solid #ddd;
   }
   
-  #paper-table tr:nth-child(even) {
+  #calc-table tr:nth-child(even) {
     background-color: #f9f9f9;
   }
   
-  #paper-table tbody tr:hover {
+  #calc-table tbody tr:hover {
     background-color: lightgray;
   }
   

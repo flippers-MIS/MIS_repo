@@ -40,7 +40,7 @@ function initializeTable(printerJson) {
             printers.push(item);
             const row = document.createElement('tr');
             row.innerHTML = `
-            <td>${item.name}</td>
+            <td>${item.formatName}</td>
             <td>${item.formatWidth}</td>
             <td>${item.formatLength}</td>
             `;

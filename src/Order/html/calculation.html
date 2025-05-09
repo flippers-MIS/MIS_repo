@@ -63,7 +63,7 @@
     
                         <div class="form-row double-input">
                             <label for="land">Land</label>
-                            <input class="land" type="text" id="land">
+                            <input class="land" type="text" id="land" disabled>
                         </div>
 
                         <div class="form-row">
@@ -78,12 +78,12 @@
                     <div class="productManuel">
                         <div class="productTitle">
                             <div class="form-row">
-                                <label for="kundennr">Produkt</label>
-                                <input type="text" id="kundennr">
+                                <label>Produkt</label>
+                                <input type="text" id="produktName">
                             </div>
                             <div class="form-row">
-                                <label for="kundennr">Titel</label>
-                                <input type="text" id="kundennr">
+                                <label>Titel</label>
+                                <input type="text" id="title">
                             </div>
                             <div class="form-row">
                                 <label>Bindungsart</label>
@@ -100,13 +100,13 @@
                             </div>
                             <div class="form-row double-input" id="endFormat" style="opacity: 0;">
                                 <label>Endformat</label>
-                                <input type="number">
+                                <input type="number" id="endFormatL">
                                 <p>X</p>
-                                <input type="number">
+                                <input type="number" id="endFormatB">
                             </div>
                             <div class="form-row double-input">
-                                <label for="plz">Seiten</label>
-                                <input class="plz" type="number" id="plz">
+                                <label>Seiten</label>
+                                <input type="number" id="seiten">
                                 <p>0</p>
                             </div>
                         </div>
@@ -174,7 +174,7 @@
                         </div>
                         <div class="form-row">
                             <label>Auflage Zusatz</label>
-                            <input type="text">
+                            <input type="text" id="batchZusatz1">
                         </div>
                         <div class="form-row">
                             <label>Druck</label>
@@ -229,7 +229,7 @@
                             <input type="number" id="batch2">
                         </div>
                         <div class="form-row">
-                            <input type="text">
+                            <input type="text" id="batchZusatz2">
                         </div>
                         <div class="form-row">
                             <p id="print2a" style="width: 80px;">0.00</p>
@@ -276,7 +276,7 @@
                             <input type="number" id="batch3">
                         </div>
                         <div class="form-row">
-                            <input type="text">
+                            <input type="text" id="batchZusatz3">
                         </div>
                         <div class="form-row">
                             <p id="print3a" style="width: 80px;">0.00</p>
