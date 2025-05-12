@@ -172,10 +172,8 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "MIS_Backend.Dtos.OrderDto",
-        "MediaTypes": [
-          "application/json"
-        ],
+        "Type": "System.Void",
+        "MediaTypes": [],
         "StatusCode": 200
       }
     ]

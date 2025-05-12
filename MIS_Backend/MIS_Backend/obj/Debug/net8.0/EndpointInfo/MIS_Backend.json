@@ -497,14 +497,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/OrderDto"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       },
@@ -940,23 +933,139 @@
             "type": "integer",
             "format": "int32"
           },
-          "orderDate": {
-            "type": "string",
-            "nullable": true
-          },
-          "quantity": {
+          "customerId": {
             "type": "integer",
             "format": "int32"
           },
-          "totalPrice": {
-            "type": "number",
-            "format": "double"
+          "paperId": {
+            "type": "integer",
+            "format": "int32"
           },
-          "status": {
+          "printerId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productName": {
             "type": "string",
             "nullable": true
           },
-          "notes": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "binding": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "formatL": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "formatB": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "endFormatL": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "endFormatB": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gap": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nutzen": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nutzenM": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "trimming": {
+            "type": "string",
+            "nullable": true
+          },
+          "shippingCost": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paperPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "schoen": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "wider": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "materialName": {
+            "type": "string",
+            "nullable": true
+          },
+          "batch1": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "batchInformation1": {
+            "type": "string",
+            "nullable": true
+          },
+          "priceManuell1": {
+            "type": "number",
+            "format": "double"
+          },
+          "price1": {
+            "type": "number",
+            "format": "double"
+          },
+          "batch2": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "batchInformation2": {
+            "type": "string",
+            "nullable": true
+          },
+          "priceManuell2": {
+            "type": "number",
+            "format": "double"
+          },
+          "price2": {
+            "type": "number",
+            "format": "double"
+          },
+          "batch3": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "batchInformation3": {
+            "type": "string",
+            "nullable": true
+          },
+          "priceManuell3": {
+            "type": "number",
+            "format": "double"
+          },
+          "price3": {
+            "type": "number",
+            "format": "double"
+          },
+          "discount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "date": {
             "type": "string",
             "nullable": true
           },
@@ -966,8 +1075,8 @@
           "printer": {
             "$ref": "#/components/schemas/Printer"
           },
-          "user": {
-            "$ref": "#/components/schemas/User"
+          "paper": {
+            "$ref": "#/components/schemas/Paper"
           },
           "postProcessing": {
             "$ref": "#/components/schemas/PostProcessing"
@@ -982,27 +1091,11 @@
             "type": "integer",
             "format": "int32"
           },
-          "orderDate": {
-            "type": "string",
-            "nullable": true
-          },
-          "quantity": {
+          "customerId": {
             "type": "integer",
             "format": "int32"
           },
-          "totalPrice": {
-            "type": "number",
-            "format": "double"
-          },
-          "status": {
-            "type": "string",
-            "nullable": true
-          },
-          "notes": {
-            "type": "string",
-            "nullable": true
-          },
-          "customerId": {
+          "paperId": {
             "type": "integer",
             "format": "int32"
           },
@@ -1010,13 +1103,129 @@
             "type": "integer",
             "format": "int32"
           },
-          "userId": {
+          "productName": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "binding": {
             "type": "integer",
             "format": "int32"
           },
-          "postProcessingId": {
+          "formatL": {
             "type": "integer",
             "format": "int32"
+          },
+          "formatB": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "endFormatL": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "endFormatB": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gap": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nutzen": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nutzenM": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "trimming": {
+            "type": "string",
+            "nullable": true
+          },
+          "shippingCost": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paperPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "schoen": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "wider": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "materialName": {
+            "type": "string",
+            "nullable": true
+          },
+          "batch1": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "batchInformation1": {
+            "type": "string",
+            "nullable": true
+          },
+          "priceManuell1": {
+            "type": "number",
+            "format": "double"
+          },
+          "price1": {
+            "type": "number",
+            "format": "double"
+          },
+          "batch2": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "batchInformation2": {
+            "type": "string",
+            "nullable": true
+          },
+          "priceManuell2": {
+            "type": "number",
+            "format": "double"
+          },
+          "price2": {
+            "type": "number",
+            "format": "double"
+          },
+          "batch3": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "batchInformation3": {
+            "type": "string",
+            "nullable": true
+          },
+          "priceManuell3": {
+            "type": "number",
+            "format": "double"
+          },
+          "price3": {
+            "type": "number",
+            "format": "double"
+          },
+          "discount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "date": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

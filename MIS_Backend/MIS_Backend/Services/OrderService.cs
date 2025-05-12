@@ -1,5 +1,6 @@
 ﻿using DB_Libary;
 using Microsoft.EntityFrameworkCore;
+using MIS_Backend.Dtos;
 namespace MIS_Backend.Services
 {
     public class OrderService(DatabaseContext db)
@@ -10,7 +11,7 @@ namespace MIS_Backend.Services
             {
                 return db.Orders
                 .Include(o => o.Customer)
-                .Include(o => o.User)
+                .Include(o => o.Paper)
                 .Include(o => o.Printer)
                 .Include(o => o.PostProcessing)
                 .ToList();
@@ -28,7 +29,7 @@ namespace MIS_Backend.Services
                 return db.Orders
                 .Where(o => o.Id == id)
                 .Include(o => o.Customer)
-                .Include(o => o.User)
+                .Include(o => o.Paper)
                 .Include(o => o.Printer)
                 .Include(o => o.PostProcessing)
                 .First();
@@ -39,13 +40,17 @@ namespace MIS_Backend.Services
             }
         }
 
-        public Order AddOrder(Order order)
+        public Order AddOrder(OrderDto order)
         {
             try
             {
-                db.Orders.Add(order);
+                var newOrder = new Order().CopyFrom(order, ["Id"]);
+                newOrder.Customer = db.Customers.Where(c => c.Id == order.CustomerId).First();
+                newOrder.Paper = db.Papers.Where(p => p.Id == order.PaperId).First();
+                newOrder.Printer = db.Printers.Where(p => p.Id == order.PrinterId).First();
+                db.Orders.Add(newOrder);
                 db.SaveChanges();
-                return order;
+                return newOrder;
             }
             catch (Exception e)
             {
@@ -53,23 +58,20 @@ namespace MIS_Backend.Services
             }
         }
 
-        public Order UpdateOrder(int id, Order order)
+        public Order UpdateOrder(int id, OrderDto order)
         {
             try
             {
                 var oldOrder = db.Orders.Where(o => o.Id == id).First();
 
-                oldOrder.User = order.User;
-                oldOrder.Customer = order.Customer;
-                oldOrder.Printer = order.Printer;
-                oldOrder.OrderDate = order.OrderDate;
-                oldOrder.Quantity = order.Quantity;
-                oldOrder.TotalPrice = order.TotalPrice;
-                oldOrder.Status = order.Status;
-                oldOrder.Notes = order.Notes;
+                oldOrder.CopyFrom(order, ["Id"]);
+
+                oldOrder.Customer = db.Customers.Where(c => c.Id == order.CustomerId).First();
+                oldOrder.Paper = db.Papers.Where(p => p.Id == order.PaperId).First();
+                oldOrder.Printer = db.Printers.Where(p => p.Id == order.PrinterId).First();
 
                 db.SaveChanges();
-                return order;
+                return oldOrder;
             }
             catch (Exception e)
             {
