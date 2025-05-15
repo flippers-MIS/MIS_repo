@@ -29,6 +29,7 @@ const userMessage = document.querySelector("#userMessage")
 const updateButton = document.querySelector("#button-update");
 const addbutton = document.getElementById('button-add');
 const clearbutton = document.getElementById('button-clear');
+const backButton = document.querySelector('#button-back');
 
 
 
@@ -225,7 +226,11 @@ addbutton.addEventListener('click', async () => {
 
 payment.addEventListener('change', () => {
     updateButton.disabled = updateCustomerId === 0 ? true : false;
-})
+});
+
+backButton.addEventListener('click', () => {
+    location.href = "/src/Dashboard/html/index.html";
+});
 
 
 //Main

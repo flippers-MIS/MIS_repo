@@ -131,6 +131,7 @@ const userMessage = document.querySelector("#userMessage")
 const updateButton = document.querySelector("#button-update");
 const addbutton = document.getElementById('button-add');
 const clearbutton = document.getElementById('button-clear');
+const backButton = document.querySelector("#backToDashboard");
 
 // restlichen werte für die db
 
@@ -663,6 +664,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+function checkSaved() {
+    if (!addbutton.disabled || !updateButton.disabled) {
+        return confirm("Die Seite wird neu geladen. Alle nicht gespeicherten Daten gehen verloren.");
+    }
+    return true;
+}
+
 
 /*--------------------------------------------BUTTONS------------------------------------------------------*/
 
@@ -700,6 +708,13 @@ clearbutton.addEventListener('click', () => {
 
 addbutton.addEventListener('click', async () => {
     addRow();
+});
+
+backButton.addEventListener('click', () => {
+    if (!checkSaved()) {
+        return;
+    }
+    location.href = "/src/Order/html/index.html";
 });
 
 //Main

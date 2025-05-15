@@ -9,7 +9,8 @@ let calculation;
 
 const table = document.querySelector('#calc-table tbody');
 
-
+const backButton = document.querySelector('#button-back');
+const addButton = document.querySelector('#button-add');
 
 const userMessage = document.querySelector("#userMessage")
 
@@ -43,6 +44,14 @@ async function initializeTable(calcJson) {
         table.appendChild(row);
     });
 }
+
+backButton.addEventListener('click', () => {
+    location.href = "/src/Dashboard/html/index.html";
+});
+
+addButton.addEventListener('click', () => {
+    location.href = "/src/Order/html/calculation.html";
+});
 
 //Main
 let calcJson = await Helpers.fetchTable(`${path}/orders`);
